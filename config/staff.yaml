@@ -1,0 +1,121 @@
+Staffs:
+
+
+# Profs
+
+- name: Patrick Keller
+  role: Professor
+  percent: 50
+  tasks:
+  - type: course
+    course: 1cvmid11b
+  - type: course
+    course: 1cvmid21b
+  - type: theory1
+    coef: 2.2
+    hours: 40
+  - type: theory2
+    coef: 2.2
+    hours: 40
+  - type: r&d
+    hours: 560
+
+- name: Christophe Guignard
+  role: Professor
+  percent: 40
+  tasks:
+  - type: course
+    course: 3cvmid11
+  - type: course
+    course: 3cvmid2
+  - type: pp
+    coef: 2.2
+    hours: 24
+  - type: theory1
+    coef: 2.2
+    hours: 40
+  - type: theory2
+    coef: 2.2
+    hours: 40
+  - type: thesis
+    coef: 2.2
+    hours: 64
+  - type: project_management
+    coef: 2.2
+    hours: 8
+
+- name: Alain Bellet
+  role: Professor
+  percent: 50
+  tasks:
+  - type: course
+    course: 2cvmid12a
+  - type: course
+    course: 2cvmid12c
+  - type: course
+    course: 2cvmid22a
+  - type: course
+    course: 3cvmid11
+  - type: course
+    course: 3cvmid2
+
+- name: Angelo Benedetto
+  role: Professor
+  percent: 16
+  tasks:
+  - type: course
+    course: 1cvmid12a
+  - type: course
+    course: 1cvmid12b
+  - type: course
+    course: 2cvmid22a
+
+- name: Gael Hugo
+  role: Professor
+  percent: 40
+  tasks:
+  - type: course
+    course: 1cvmid21a
+  - type: course
+    course: 1cvmid22c
+  - type: course
+    course: 2cvmid11a
+  - type: course
+    course: 2cvmid21a
+  - type: course
+    course: 3cvmid12
+  - type: course
+    course: 3cvmid2
+
+- name: Cyril Diagne
+  role: Professor
+  percent: 60
+  tasks:
+  - type: course
+    course: 1cvmid11a
+  - type: course
+    course: 1cvmid12b
+  - type: course
+    course: 2cvmid12c
+  - type: course
+    course: 3cvmid11
+  - type: course
+    course: 3cvmid2
+
+# Assistants
+
+- name: Tibor Udvari
+  role: Assistant
+  percent: 40
+
+- name: Laura Perrenoud
+  role: Assistant
+  percent: 30
+
+- name: Marc Dubois
+  role: Assistant
+  percent: 30
+
+- name: Romain Cazier
+  role: Assistant
+  percent: 30
