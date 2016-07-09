@@ -1,13 +1,18 @@
+application: ecal-planneur
 runtime: python27
 api_version: 1
 threadsafe: yes
 
 handlers:
-- url: .*
-  script: main.app
+- url: /
+  script: src.main.APP
+- url: /css
+  static_dir: www/css
+- url: /js
+  static_dir: www/js
+- url: /res
+  static_dir: www/res
+- url: /libs
+  static_dir: www/libs
 
 libraries:
-- name: jinja2
-  version: "2.6"
-- name: markupsafe
-  version: "0.15"
