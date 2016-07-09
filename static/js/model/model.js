@@ -1,7 +1,7 @@
-import Section from 'js/model/section.js';
-import Prof from 'js/model/prof.js';
-import Lecturer from 'js/model/lecturer.js';
-import Assistant from 'js/model/assistant.js';
+import Section from 'static/js/model/section.js';
+import Prof from 'static/js/model/prof.js';
+import Lecturer from 'static/js/model/lecturer.js';
+import Assistant from 'static/js/model/assistant.js';
 
 class Model {
   constructor() {

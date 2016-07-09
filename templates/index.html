@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block scripts %}
+{{ super () }}
+<script type="text/template" id="item-template">
+    <div class="view">
+        <input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
+        <label><%- title %></label>
+    </div>
+</script>
+<!-- <script src="{{ url_for('static', filename='libs/traceur/traceur.js') }}"></script>
+<script src="{{ url_for('static', filename='libs/traceur/BrowserSystem.js') }}"></script>
+<script src="{{ url_for('static', filename='libs/traceur/bootstrap.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}" type="module"></script> -->
+{% endblock %}

@@ -1,4 +1,4 @@
-import Model from 'js/model/model.js';
+import Model from 'static/js/model/model.js';
 
 var model = new Model();
 model.setup();

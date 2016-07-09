@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>écal m&amp;id synoptique</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+  <section id="app" class="app">
+    <header class="header">
+        {% block header %}
+        <img class="logo" src="{{ url_for('static', filename='res/logo.svg') }}">
+        <h2>{{ planning.id }}</h2>
+        {% endblock %}
+    </header>
+    <section id="menu" class="menu">
+        {% block menu %}
+        {% endblock %}
+    </section>
+    <section id="main" class="main">
+        {% block main %}
+        {% endblock %}
+    </section>
+    <section id="info" class="info">
+        {% block info %}
+        {% endblock %}
+    </section>
+  </section>
+  {% block scripts %}
+  {% endblock %}
+</body>
+
+</html>
