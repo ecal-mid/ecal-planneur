@@ -9,7 +9,7 @@ bp = Blueprint('index', __name__, static_folder='../static', template_folder='..
 @bp.route('/')
 def index():
     """Return the homepage."""
-    planning = Planning()
+    planning = Planning('2016-2017')
     return render_template('index.html', planning=planning)
 
 @bp.errorhandler(404)

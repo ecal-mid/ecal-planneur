@@ -1,46 +1,45 @@
 Staffs:
 
-
 # Profs
 
 - name: Patrick Keller
   role: Professor
   percent: 50
   tasks:
-  - type: course
+  - kind: course
     course: 1cvmid11b
-  - type: course
+  - kind: course
     course: 1cvmid21b
-  - type: theory1
+  - kind: theory1
     coef: 2.2
     hours: 40
-  - type: theory2
+  - kind: theory2
     coef: 2.2
     hours: 40
-  - type: r&d
+  - kind: r&d
     hours: 560
 
 - name: Christophe Guignard
   role: Professor
   percent: 40
   tasks:
-  - type: course
+  - kind: course
     course: 3cvmid11
-  - type: course
+  - kind: course
     course: 3cvmid2
-  - type: pp
+  - kind: pp
     coef: 2.2
     hours: 24
-  - type: theory1
+  - kind: theory1
     coef: 2.2
     hours: 40
-  - type: theory2
+  - kind: theory2
     coef: 2.2
     hours: 40
-  - type: thesis
+  - kind: thesis
     coef: 2.2
     hours: 64
-  - type: project_management
+  - kind: project_management
     coef: 2.2
     hours: 8
 
@@ -48,59 +47,65 @@ Staffs:
   role: Professor
   percent: 50
   tasks:
-  - type: course
+  - kind: course
     course: 2cvmid12a
-  - type: course
+  - kind: course
     course: 2cvmid12c
-  - type: course
+  - kind: course
     course: 2cvmid22a
-  - type: course
+  - kind: course
     course: 3cvmid11
-  - type: course
+  - kind: course
     course: 3cvmid2
 
 - name: Angelo Benedetto
   role: Professor
   percent: 16
   tasks:
-  - type: course
+  - kind: course
     course: 1cvmid12a
-  - type: course
+  - kind: course
     course: 1cvmid12b
-  - type: course
+  - kind: course
     course: 2cvmid22a
 
 - name: Gael Hugo
   role: Professor
   percent: 40
   tasks:
-  - type: course
+  - kind: course
     course: 1cvmid21a
-  - type: course
+  - kind: course
     course: 1cvmid22c
-  - type: course
+  - kind: course
     course: 2cvmid11a
-  - type: course
+  - kind: course
     course: 2cvmid21a
-  - type: course
+  - kind: course
     course: 3cvmid12
-  - type: course
+  - kind: course
     course: 3cvmid2
 
 - name: Cyril Diagne
   role: Professor
   percent: 60
   tasks:
-  - type: course
+  - kind: course
     course: 1cvmid11a
-  - type: course
+  - kind: course
     course: 1cvmid12b
-  - type: course
+  - kind: course
     course: 2cvmid12c
-  - type: course
+  - kind: course
     course: 3cvmid11
-  - type: course
+  - kind: course
     course: 3cvmid2
+  - kind: entry_test
+    hours: 24
+  - kind: resp
+    hours: 374
+  - kind: projects
+    hours: 80
 
 # Assistants
 
