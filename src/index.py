@@ -4,7 +4,10 @@ from flask import Blueprint, render_template
 
 from .models import Planning
 
-bp = Blueprint('index', __name__, static_folder='../static', template_folder='../templates')
+bp = Blueprint(
+    'index', __name__,
+    static_folder='../static',
+    template_folder='../templates')
 
 @bp.route('/')
 def index():

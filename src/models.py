@@ -14,14 +14,13 @@ class Config(object):
 
 class Planning(object):
     config = None
-    sections = []
-    courses = []
-    staffs = []
-    activities = None
-
     def __init__(self, name):
         self.name = name
         Planning.config = Config(self.name)
+        self.sections = []
+        self.courses = []
+        self.staffs = []
+        self.activities = None
         self.parse_courses(get_yaml(self.name, 'courses'))
         self.parse_staff(get_yaml(self.name, 'staff'))
 
@@ -62,7 +61,6 @@ class Staff(object):
             for t in data['tasks']:
                 self.tasks.append(Task(t))
         self.add_automatic_tasks()
-        self.debug()
 
     def add_automatic_tasks(self):
         # automatically add tasks to professors
@@ -73,6 +71,11 @@ class Staff(object):
                 'kind' : 'admin',
                 'hours' : 0.01 * self.percent * Planning.config.hours_base * 0.016
             }))
+            # automatically add training (10% of teaching hours)
+            self.tasks.append(Task({
+                'kind' : 'training',
+                'hours' : self.get_teaching_hours() * 0.1
+            }))
 
         # todo:
         # /!\ fill current tasks hours from activities before adding auto tasks
@@ -81,12 +84,6 @@ class Staff(object):
         if len(filter(lambda x: x.course == '3cvmid2', self.tasks)):
             self.tasks.append(Task({'kind': 'pres_diploma'}))
 
-        # automatically add training (10% of teaching hours)
-        self.tasks.append(Task({
-            'kind' : 'training',
-            'hours' : self.get_teaching_hours() * 0.1
-        }))
-
     def get_teaching_hours(self):
         return sum(t.coef if t.coef == 2.2 else 0 for t in self.tasks)
 
@@ -94,11 +91,10 @@ class Staff(object):
         pct = sum(t.get_percent() for t in self.tasks)
         return "{0:.2f}".format(pct)
 
-
     def debug(self):
         print(self.name, self.get_current_percent(), self.percent)
         for t in self.tasks:
-            print('  ', t.id, t.get_percent())
+            print('  ', t.id, "{0:.2f}".format(t.get_percent()))
 
 
 class Task(object):
@@ -117,6 +113,7 @@ class Task(object):
         self.hours = 0
         if 'hours' in data:
             self.hours = data['hours']
+
     def get_percent(self):
         return self.hours * self.coef / Planning.config.hours_base * 100
 
