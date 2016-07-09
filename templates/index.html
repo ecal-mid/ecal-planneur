@@ -1,5 +1,56 @@
 {% extends "base.html" %}
 
+{% block menu %}
+
+<input id="tab1" type="radio" name="tabs" checked>
+<label for="tab1">Courses</label>
+
+<input id="tab2" type="radio" name="tabs">
+<label for="tab2">Staff</label>
+
+<input id="tab3" type="radio" name="tabs">
+<label for="tab3">Events</label>
+
+<section id="content1">
+  <h3>Sections</h3>
+  <ul>
+  {% for section in planning.sections %}
+    <li>{{section.name}}</li>
+  {% endfor %}
+  </ul>
+
+  <h3>Courses</h3>
+  <ul>
+  {% for course in planning.courses %}
+    <li>{{course.desc}}</li>
+  {% endfor %}
+  </ul>
+</section>
+
+<section id="content2">
+  <h3>Professors</h3>
+  <ul>
+  {% for staff in planning.staffs %}
+    {% if staff.role == "Professor" %}
+    <li>{{staff.name}}</li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+
+  <h3>Assistants</h3>
+  <ul>
+  {% for staff in planning.staffs %}
+    {% if staff.role == "Assistant" %}
+    <li>{{staff.name}}</li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+</section>
+
+<section id="content3">
+</section>
+
+{% endblock %}
 
 {% block scripts %}
 {{ super () }}

@@ -1,5 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,700);
 
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
   font-family: 'Roboto', 'Helvetica', sans-serif;
@@ -13,49 +19,145 @@ h1, h2 {
   font-weight: 100;
 }
 
-section {
-  margin: 0;
-  padding: 0;
-}
-
-/* HEADER */
-
-header.header {
-  max-height: 75px;
-  text-align: center;
-}
-
-header.header .logo {
-  position: absolute;
-  left: 1em;
-  max-width: 10em;
-}
-
 
 /* APP */
 
 section.app {
   height: 100%;
   width: 100%;
+  padding-top: 75px;
 }
-
-/* LEFT MENU */
-
-section.menu {
-  height: 100%;
-  width: 15%;
-  display: inline-block;
-  border: 1px solid #e5e5e5;
-}
-
 
 /* MAIN */
 
-section.main {
+.page-wrap {
   height: 100%;
-  width: 49%;
+}
+
+main {
+  height: 100%;
+  background-color: red;
+}
+
+/* HEADER */
+
+header.header {
+  height: 75px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  vertical-align: middle;
+}
+
+header.header > * {
+  vertical-align: middle;
+  height: 100%;
+}
+
+header.header .logo {
+  max-width: 10em;
+  margin-left: 1.5em;
+}
+
+header.header h1 {
+  position: absolute;
+  top: 0.8em;
+  right: 1em;
+  font-size: 1.6em;
+}
+
+
+/* LEFT MENU */
+
+.menu {
+  border: 1px solid #ddd;
+  height: 100%;
+  position: fixed;
+  width:0;
+  overflow-y: auto;
+  transition: width 0.4s ease;
+}
+
+.menu section {
+  display: none;
+  padding: 20px 1em;
+  border-top: 1px solid #ddd;
+}
+
+.menu input {
+  display: none;
+}
+
+.menu label {
   display: inline-block;
-  border: 1px solid #e5e5e5;
+  margin: -1px 0 -1px;
+  padding: 1em 1em;
+  font-weight: 100;
+  color: #bbb;
+  border: 1px solid transparent;
+}
+
+.menu label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+.menu input:checked + label {
+  color: black;
+  border: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3 {
+  display: block;
+}
+
+.menu h3 {
+  font-size: 90%;
+}
+
+.menu ul {
+  padding: 1em;
+  list-style: none;
+  font-size: 90%;
+}
+
+.menu ul li {
+  padding-top: 0.3em;
+  display: block;
+}
+
+.close-menu {
+  display: none;
+}
+
+.close-menu, .open-menu {
+  color: black;
+  text-decoration: none;
+  font-size: 1.5em;
+  margin-left: 1em;
+}
+
+#menu:target {
+  width: 25%;
+  a { margin-left: 0; }
+}
+#menu:target ~ .page-wrap {
+  width: 75%;
+}
+#menu:target ~ .header .open-menu {
+   display: none;
+}
+#menu:target ~ .header  .close-menu {
+  display: inline;
+}
+
+.page-wrap {
+  float: right;
+  width: 100%;
+  transition: width 0.4s ease;
 }
 
 
@@ -65,5 +167,5 @@ section.info {
   height: 100%;
   width: 35%;
   float: right;
-  border: 1px solid #e5e5e5;
+  background-color: blue;
 }
