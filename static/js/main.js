@@ -26,11 +26,48 @@ for (el of els) {
   el.addEventListener('click', onListItemClicked, false);
 }
 
+function registerCloseButton() {
+  info_closebt_el = document.getElementById('close-infos');
+  info_closebt_el.addEventListener('click', function(){
+    infos_el.className = 'info hidden';
+  }, false);
+}
+
+var staff_template = document.getElementById('staff-template').innerHTML;
+
+var currName = null;
 
 function onListItemClicked(ev) {
-  if (infos_el.className == 'info') {
+  var name = ev.currentTarget.innerHTML;
+  if (name == currName) {
     infos_el.className = 'info hidden';
-  } else {
+    currName = null;
+    return;
+  }
+  currName = name;
+  if (infos_el.className == 'info hidden') {
     infos_el.className = 'info';
   }
+  getJSON('/api/staff/'+currName, function(data) {
+    var output = ejs.render(staff_template, data);
+    infos_el.innerHTML = output;
+    registerCloseButton();
+  });
+}
+
+function getJSON(url, handler) {
+  var request = new XMLHttpRequest();
+  request.open('GET', url, true);
+  request.onload = function() {
+    if (request.status >= 200 && request.status < 400) {
+      var data = JSON.parse(request.responseText);
+      handler(data);
+    } else {
+      // We reached our target server, but it returned an error
+    }
+  };
+  request.onerror = function() {
+    // There was a connection error of some sort
+  };
+  request.send();
 }

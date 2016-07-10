@@ -54,14 +54,23 @@
 
 {% block scripts %}
 {{ super () }}
-<script type="text/template" id="item-template">
-    <div class="view">
-        <input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
-        <label><%- title %></label>
-    </div>
+<script type="text/template" id="staff-template">
+    <h3><%= name %></h3>
+    <button id="close-infos">+</button>
+    <section class="detail">
+    <p><%= role %> <span><%= percent %>%</span></p>
+    <ul>
+      <li class="title">Task <span>%</span><span>Hours</span></li>
+      <% for(var task of tasks) { %>
+      <li><%= task.course || task.kind %> <span><%= task.percent.toFixed(2) %></span><span><%= task.hours.toFixed(2) %></span></li>
+      <% } %>
+      <li class="total">Current Total <span><%= current_percent.toFixed(2) %>%</span><span><%= current_hours.toFixed(2) %>h</span></li>
+    </ul>
+  </section>
 </script>
 <!-- <script src="{{ url_for('static', filename='libs/traceur/traceur.js') }}"></script>
 <script src="{{ url_for('static', filename='libs/traceur/BrowserSystem.js') }}"></script>
 <script src="{{ url_for('static', filename='libs/traceur/bootstrap.js') }}"></script>-->
+<script src="{{ url_for('static', filename='libs/ejs.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}

@@ -34,6 +34,11 @@ class Planning(object):
         for s in data['Staffs']:
             self.staffs.append(Staff(s))
 
+    def get_staff_by_name(self, name):
+        s = filter(lambda x: x.name == name, self.staffs)
+        if len(s): return s[0].get_json()
+        return None
+
 
 class Section(object):
     def __init__(self, data):
@@ -53,7 +58,6 @@ class Course(object):
 class Staff(object):
     def __init__(self, data):
         self.name = data['name']
-        self.id = self.name.replace(' ', '.').lower()
         self.role = data['role']
         self.percent = data['percent']
         self.tasks = []
@@ -88,8 +92,22 @@ class Staff(object):
         return sum(t.coef if t.coef == 2.2 else 0 for t in self.tasks)
 
     def get_current_percent(self):
-        pct = sum(t.get_percent() for t in self.tasks)
-        return "{0:.2f}".format(pct)
+        return sum(t.get_percent() for t in self.tasks)
+
+    def get_current_hours(self):
+        return self.get_current_percent() / 100 * Planning.config.hours_base
+
+    def get_json(self):
+        d = self.__dict__.copy()
+        d['tasks'] = []
+        for t in self.tasks:
+            d['tasks'].append(t.get_json())
+        d['current_percent'] = self.get_current_percent()
+        d['current_hours'] = self.get_current_hours()
+        return d
+
+    def get_key(self):
+        return self.name.replace(' ', '.').lower()
 
     def debug(self):
         print(self.name, self.get_current_percent(), self.percent)
@@ -101,21 +119,29 @@ class Task(object):
     def __init__(self, data):
         self.kind = data['kind']
         self.course = None
-        self.id = self.kind
         if 'course' in data:
             self.course = data['course']
-            self.id += '.' + self.course
-        self.coef = 1
+        self.coef = None
         if 'coef' in data:
             self.coef = data['coef']
         else:
-            self.ceof = 2.2 if self.kind is 'course' else 1
+            self.coef = 2.2 if self.kind is 'course' else 1
         self.hours = 0
         if 'hours' in data:
             self.hours = data['hours']
 
+    def get_key(self):
+        key = self.kind
+        if self.course: key += '.' + self.course
+        return key
+
     def get_percent(self):
         return self.hours * self.coef / Planning.config.hours_base * 100
+
+    def get_json(self):
+        d = self.__dict__.copy()
+        d['percent'] = self.get_percent()
+        return d
 
 
 class Activity(ndb.Model):

@@ -10,7 +10,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 html, body {
   margin: 0;
   font-family: 'Roboto', 'Helvetica', sans-serif;
@@ -19,11 +18,16 @@ html, body {
   width:100%;
   overflow: hidden;
 }
-
 h1, h2 {
   font-weight: 100;
 }
-
+button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  margin-left: 1em;
+  cursor: pointer;
+}
 
 /* APP */
 
@@ -33,9 +37,7 @@ section.app {
   width: 100%;
   padding-top: 75px;
 }
-
 /* HEADER */
-
 header.header {
   height: 75px;
   position: absolute;
@@ -44,32 +46,23 @@ header.header {
   width: 100%;
   vertical-align: middle;
 }
-
 header.header > * {
   vertical-align: middle;
   height: 100%;
 }
-
 header.header button {
-  background: none;
-  border: none;
-  font-size: 1.5em;
   margin-left: 1em;
-  cursor: pointer;
 }
-
 header.header .logo {
   max-width: 10em;
   margin-left: 1.5em;
 }
-
 header.header h1 {
   position: absolute;
   top: 0.8em;
   right: 1em;
   font-size: 1.6em;
 }
-
 
 /* LEFT MENU */
 
@@ -80,21 +73,17 @@ header.header h1 {
   min-width: 250px;
   transition: margin-left 0.25s ease;
 }
-
 .menu.hidden {
   margin-left: -250px;
 }
-
 .menu section {
   display: none;
   padding: 20px 1em;
   border-top: 1px solid #ddd;
 }
-
 .menu input {
   display: none;
 }
-
 .menu label {
   display: inline-block;
   margin: -1px 0 -1px;
@@ -103,52 +92,42 @@ header.header h1 {
   color: #bbb;
   border: 1px solid transparent;
 }
-
 .menu label:hover {
   color: #888;
   cursor: pointer;
 }
-
 .menu input:checked + label {
   color: black;
   border: 1px solid #ddd;
   border-bottom: 1px solid #fff;
 }
-
 #tab1:checked ~ #content1,
 #tab2:checked ~ #content2,
 #tab3:checked ~ #content3 {
   display: block;
 }
-
 .menu h3 {
   font-size: 90%;
 }
-
 .menu ul {
   padding: 1em;
   list-style: none;
   font-size: 90%;
 }
-
 .menu ul li {
   padding-top: 0.3em;
   display: block;
   cursor: pointer;
 }
-
 .menu ul li:hover {
   color: blue;
 }
 
 /* MAIN */
-
 main {
   height: 100%;
-  background-color: #ddd;
   flex: 1;
 }
-
 
 /* INFO */
 
@@ -158,8 +137,39 @@ section.info {
   flex: initial;
   width: 400px;
   transition: margin-right 0.25s ease;
+  position: relative;
+  border: 1px solid #ddd;
 }
-
-section.info.hidden {
-  margin-right: -400px;
+section.info button {
+  position: absolute;
+  top: -0.05em;
+  right: 0.3em;
+  font-size: 3em;
+  font-weight: 200;
+  transform: rotate(45deg);
+}
+section.info.hidden { margin-right: -400px; }
+section.info h3 {
+  padding: 0.5em;
+  border-bottom: 1px solid #ddd;
+  font-weight: 100;
+  font-size: 150%;
+  margin-bottom: 1em;
+}
+section.info .detail {
+  padding: 1em;
+  font-size: 90%;
+}
+section.info ul {
+  margin-top: 2em;
+  list-style: none;
+}
+section.info ul li.title {font-weight: 800; margin-bottom: 1em;}
+section.info ul li { margin-bottom: 0.5em;}
+section.info span{ float: right; width: 5em; text-align:right;}
+section.info ul li.total {
+  font-weight: 800;
+  margin-top: 1em;
+  border-top:1px solid #ddd;
+  padding-top:1em;
 }

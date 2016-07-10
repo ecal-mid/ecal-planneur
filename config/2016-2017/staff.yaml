@@ -112,15 +112,23 @@ Staffs:
 - name: Tibor Udvari
   role: Assistant
   percent: 40
+  tasks:
+  - kind: assist
 
 - name: Laura Perrenoud
   role: Assistant
   percent: 30
+  tasks:
+  - kind: assist
 
 - name: Marc Dubois
   role: Assistant
   percent: 30
+  tasks:
+  - kind: assist
 
 - name: Romain Cazier
   role: Assistant
   percent: 30
+  tasks:
+  - kind: assist
