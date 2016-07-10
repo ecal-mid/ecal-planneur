@@ -46,6 +46,15 @@ special:
     - label: helper courses
       start: 12/09
       end: 16/09
+    - label: remediations
+      start: 30/01
+      end: 10/02
+    - label: remediations
+      start: 03/07
+      end: 14/07
+    - label: documentation
+      start: 26/06
+      end: 30/06
   holiday:
     - label: summer
       start: 01/08

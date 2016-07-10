@@ -74,11 +74,13 @@ class Staff(object):
             # automatically add admin (1.6% of staff hours)
             self.tasks.append(Task({
                 'kind' : 'admin',
+                'auto' : True,
                 'hours' : 0.01 * self.percent * Planning.config.hours_base * 0.016
             }))
             # automatically add training (10% of teaching hours)
             self.tasks.append(Task({
                 'kind' : 'training',
+                'auto' : True,
                 'hours' : self.get_teaching_hours() * 0.1
             }))
 
@@ -120,6 +122,12 @@ class Task(object):
     def __init__(self, data):
         self.kind = data['kind']
         self.course = None
+        self.auto = None
+        if 'auto' in data:
+            self.auto = data['auto']
+        self.locked = None
+        if 'locked' in data:
+            self.locked = data['locked']
         if 'course' in data:
             self.course = data['course']
         self.coef = None

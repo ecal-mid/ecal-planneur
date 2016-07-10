@@ -13,11 +13,14 @@ Staffs:
   - kind: theory1
     coef: 2.2
     hours: 40
+    locked: 1
   - kind: theory2
     coef: 2.2
     hours: 40
+    locked: 1
   - kind: r&d
     hours: 560
+    locked: 1
 
 - name: Christophe Guignard
   role: Professor
@@ -27,21 +30,25 @@ Staffs:
     course: 3cvmid11
   - kind: course
     course: 3cvmid2
-  - kind: pp
-    coef: 2.2
-    hours: 24
-  - kind: theory1
-    coef: 2.2
-    hours: 40
-  - kind: theory2
-    coef: 2.2
-    hours: 40
-  - kind: thesis
-    coef: 2.2
-    hours: 64
   - kind: project_management
     coef: 2.2
     hours: 8
+  - kind: pp
+    coef: 2.2
+    hours: 24
+    locked: 1
+  - kind: theory1
+    coef: 2.2
+    hours: 40
+    locked: 1
+  - kind: theory2
+    coef: 2.2
+    hours: 40
+    locked: 1
+  - kind: thesis
+    coef: 2.2
+    hours: 64
+    locked: 1
 
 - name: Alain Bellet
   role: Professor
@@ -102,7 +109,7 @@ Staffs:
     course: 3cvmid2
   - kind: entry_test
     hours: 24
-  - kind: resp
+  - kind: resp m&id
     hours: 374
   - kind: projects
     hours: 80
