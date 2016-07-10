@@ -1,5 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,700);
 
+:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
 *, *:before, *:after {
   margin: 0;
   padding: 0;
@@ -23,28 +28,19 @@ h1, h2 {
 /* APP */
 
 section.app {
+  display: flex;
   height: 100%;
   width: 100%;
   padding-top: 75px;
-}
-
-/* MAIN */
-
-.page-wrap {
-  height: 100%;
-}
-
-main {
-  height: 100%;
-  background-color: red;
 }
 
 /* HEADER */
 
 header.header {
   height: 75px;
-  position: fixed;
+  position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
   vertical-align: middle;
 }
@@ -52,6 +48,14 @@ header.header {
 header.header > * {
   vertical-align: middle;
   height: 100%;
+}
+
+header.header button {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  margin-left: 1em;
+  cursor: pointer;
 }
 
 header.header .logo {
@@ -72,10 +76,13 @@ header.header h1 {
 .menu {
   border: 1px solid #ddd;
   height: 100%;
-  position: fixed;
-  width:0;
-  overflow-y: auto;
-  transition: width 0.4s ease;
+  flex: initial;
+  min-width: 250px;
+  transition: margin-left 0.25s ease;
+}
+
+.menu.hidden {
+  margin-left: -250px;
 }
 
 .menu section {
@@ -127,37 +134,19 @@ header.header h1 {
 .menu ul li {
   padding-top: 0.3em;
   display: block;
+  cursor: pointer;
 }
 
-.close-menu {
-  display: none;
+.menu ul li:hover {
+  color: blue;
 }
 
-.close-menu, .open-menu {
-  color: black;
-  text-decoration: none;
-  font-size: 1.5em;
-  margin-left: 1em;
-}
+/* MAIN */
 
-#menu:target {
-  width: 25%;
-  a { margin-left: 0; }
-}
-#menu:target ~ .page-wrap {
-  width: 75%;
-}
-#menu:target ~ .header .open-menu {
-   display: none;
-}
-#menu:target ~ .header  .close-menu {
-  display: inline;
-}
-
-.page-wrap {
-  float: right;
-  width: 100%;
-  transition: width 0.4s ease;
+main {
+  height: 100%;
+  background-color: #ddd;
+  flex: 1;
 }
 
 
@@ -165,7 +154,12 @@ header.header h1 {
 
 section.info {
   height: 100%;
-  width: 35%;
-  float: right;
-  background-color: blue;
+  background-color: white;
+  flex: initial;
+  width: 400px;
+  transition: margin-right 0.25s ease;
+}
+
+section.info.hidden {
+  margin-right: -400px;
 }

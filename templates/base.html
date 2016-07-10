@@ -10,26 +10,22 @@
 
 <body>
   <section id="app" class="app">
-    <nav id="menu" class="menu">
+    <nav id="menu" class="menu hidden">
         {% block menu %}
         {% endblock %}
     </nav>
     <header class="header">
         {% block header %}
-        <a href="#menu" class="open-menu">☰</a>
-        <a href="#" class="close-menu">☰</a>
+        <button id="toggle-menu">☰</button>
         <img class="logo" src="{{ url_for('static', filename='res/logo.svg') }}">
         <h1>{{ planning.name }}</h1>
         {% endblock %}
     </header>
-    <div class="page-wrap">
-      <main>
-          hello
-          {% block main %}
-          {% endblock %}
-      </main>
-    </div>
-    <section id="info" class="info">
+    <main>
+        {% block main %}
+        {% endblock %}
+    </main>
+    <section id="info" class="info hidden">
         {% block info %}
         {% endblock %}
     </section>
