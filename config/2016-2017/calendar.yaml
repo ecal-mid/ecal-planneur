@@ -112,6 +112,15 @@ special:
     - label: evals m&id
       start: 23/01
       end: 25/01
+    - label: evals s2
+      start: 12/06
+      end: 14/06
     - label: evals m&id
-      start: 23/01
-      end: 25/01
+      start: 15/06
+      end: 16/06
+    - label: diplomes
+      start: 21/06
+      end: 22/06
+    - label: diplomes m&id
+      start: 23/06
+      end: 23/06
