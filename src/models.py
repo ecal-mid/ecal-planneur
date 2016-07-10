@@ -3,6 +3,8 @@
 import yaml
 from google.appengine.ext import ndb
 
+from .calendar import Calendar
+
 def get_yaml(name, filename):
     yaml_path = 'config/'+name+'/'+filename+'.yaml'
     return yaml.load(open(yaml_path))
@@ -23,6 +25,7 @@ class Planning(object):
         self.activities = None
         self.parse_courses(get_yaml(self.name, 'courses'))
         self.parse_staff(get_yaml(self.name, 'staff'))
+        self.calendar = Calendar(self.name)
 
     def parse_courses(self, data):
         for s in data['Sections']:
@@ -39,11 +42,9 @@ class Planning(object):
         if len(s): return s[0].get_json()
         return None
 
-
 class Section(object):
     def __init__(self, data):
         self.name = data['name']
-
 
 class Course(object):
     def __init__(self, data, sections):

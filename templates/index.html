@@ -52,6 +52,26 @@
 
 {% endblock %}
 
+{% block main %}
+<table cellspacing="0" cellpadding="0">
+  <tr>
+    <th></th>
+    {% for month in planning.calendar.months %}
+    <th colspan="2">{{ month[:3] }}</th>
+    {% endfor %}
+  </tr>
+{% for days in range(1, 32) %}
+  <tr>
+    <th class="days"> {{ days }}</th>
+    {% for month in planning.calendar.months %}
+    <td class="am"></td>
+    <td class="pm"></td>
+    {% endfor %}
+  </tr>
+{% endfor %}
+</table>
+{% endblock %}
+
 {% block scripts %}
 {{ super () }}
 <script type="text/template" id="staff-template">
