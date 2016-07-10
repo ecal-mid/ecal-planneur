@@ -70,11 +70,11 @@ header.header h1 {
 .menu {
   height: 100%;
   flex: initial;
-  min-width: 240px;
+  min-width: 230px;
   transition: margin-left 0.25s ease;
 }
 .menu.hidden {
-  margin-left: -240px;
+  margin-left: -230px;
 }
 .menu section {
   display: none;
@@ -88,7 +88,7 @@ header.header h1 {
 .menu label {
   display: inline-block;
   margin: -1px 0 -1px;
-  padding: 0.5em 1em;
+  padding: 0.5em 0.5em 0.5em 1em;
   font-weight: 100;
   color: #bbb;
 }
@@ -108,7 +108,7 @@ header.header h1 {
   font-size: 90%;
 }
 .menu ul {
-  padding: 1em;
+  padding: 1em 0;
   list-style: none;
   font-size: 90%;
 }
@@ -200,6 +200,10 @@ main table th.days {
   border-bottom: 1px solid #fff;
 }
 
+main table tr:hover th {
+  font-weight: 800;
+}
+
 main table tr.am-pm th:not(:first-child) {
   font-size: 0.5em;
   border-bottom: 1px solid #ddd;
@@ -211,6 +215,11 @@ main table td {
   text-align: center;
   color: rgba(0, 0, 0, 0.75);
   white-space: nowrap;
+  padding-left: 0.5em;
+}
+
+main table td.am {
+  border-left: 2px solid black;
 }
 
 main table td.none    { background-color: #ddd;  border-bottom: none; border-top: none;}
@@ -225,6 +234,12 @@ main table td.evals.pm { border-right: 1px solid #ddd;}
 main table td.workshop { background-color: white; border: none;}
 main table td.workshop.pm { border-right: 1px solid #ddd;}
 
+main table td.workshop.am {
+  border-left: 2px solid cyan;
+}
+main table td.evals.am {
+  border-left: 2px solid magenta;
+}
 /*main table td.nocourse.am { border-left: 4px solid black; white-space: nowrap; }
 main table td.evals.am { border-left:4px solid magenta; white-space: nowrap; }
 main table td.workshop.am { border-left:4px solid yellow;  }*/
