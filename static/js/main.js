@@ -1,15 +1,5 @@
-// import Model from 'static/js/model/model.js';
-
-// var model = new Model();
-// model.setup();
-//
-// console.log(model.sections[0].id);
-// console.log(model.profs[4].name, ', id:', model.profs[4].id);
-// console.log(model.lecturer[0].name, ', id:', model.lecturer[0].id);
-// console.log(model.assistant[2].name, ', id:', model.assistant[2].id);
-
-menu_bt_el = document.getElementById('toggle-menu');
-menu_el = document.getElementById('menu');
+var menu_bt_el = document.getElementById('toggle-menu');
+var menu_el = document.getElementById('menu');
 
 menu_bt_el.addEventListener('click', function(){
   if (menu_el.className == 'menu') {
@@ -20,14 +10,14 @@ menu_bt_el.addEventListener('click', function(){
 }, false);
 
 
-infos_el = document.getElementById('info');
-els = document.querySelectorAll("#menu ul li");
-for (el of els) {
+var infos_el = document.getElementById('info');
+var els = document.querySelectorAll("#menu ul li");
+for (var el of els) {
   el.addEventListener('click', onListItemClicked, false);
 }
 
 function registerCloseButton() {
-  info_closebt_el = document.getElementById('close-infos');
+  var info_closebt_el = document.getElementById('close-infos');
   info_closebt_el.addEventListener('click', function(){
     infos_el.className = 'info hidden';
   }, false);
@@ -62,12 +52,23 @@ function getJSON(url, handler) {
     if (request.status >= 200 && request.status < 400) {
       var data = JSON.parse(request.responseText);
       handler(data);
-    } else {
-      // We reached our target server, but it returned an error
     }
   };
-  request.onerror = function() {
-    // There was a connection error of some sort
-  };
   request.send();
+}
+
+// add activity
+
+var els = document.querySelectorAll("main td.am, main td.pm");
+for (var el of els) {
+  el.addEventListener('click', onCaseClicked, false);
+}
+function onCaseClicked(ev) {
+  var date = ev.currentTarget.attributes['data-date'];
+  if (!date) {
+    return;
+  };
+  date = date.value;
+  var isPm = ev.currentTarget.className.indexOf('pm') != -1;
+  console.log(date, isPm);
 }

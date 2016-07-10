@@ -25,7 +25,7 @@ class Planning(object):
         self.activities = None
         self.parse_courses(get_yaml(self.name, 'courses'))
         self.parse_staff(get_yaml(self.name, 'staff'))
-        self.calendar = Calendar(self.name)
+        self.calendar = Calendar(self.name, get_yaml(self.name, 'calendar'))
 
     def parse_courses(self, data):
         for s in data['Sections']:
