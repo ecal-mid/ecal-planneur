@@ -79,7 +79,6 @@ header.header h1 {
 .menu section {
   display: none;
   padding: 20px 1em;
-  border-top: 1px solid #ddd;
   height: 100%;
   overflow-y: scroll;
 }
@@ -89,10 +88,9 @@ header.header h1 {
 .menu label {
   display: inline-block;
   margin: -1px 0 -1px;
-  padding: 1em 1em;
+  padding: 0.5em 1em;
   font-weight: 100;
   color: #bbb;
-  border: 1px solid transparent;
 }
 .menu label:hover {
   color: #888;
@@ -100,8 +98,6 @@ header.header h1 {
 }
 .menu input:checked + label {
   color: black;
-  border: 1px solid #ddd;
-  border-bottom: 1px solid #fff;
 }
 #tab1:checked ~ #content1,
 #tab2:checked ~ #content2,
@@ -131,12 +127,14 @@ main {
   flex: 1;
   padding-bottom: 1em;
   padding-right: 1em;
+  overflow-y: auto;
 }
 
 main table {
   width: 100%;
   height: 100%;
   table-layout: fixed;
+  border-collapse: collapse;
 }
 
 main table th {
@@ -151,6 +149,11 @@ main table td {
   border: 1px solid #ddd;
 }
 
+main table td:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
 /* INFO */
 
 section.info {
@@ -163,7 +166,7 @@ section.info {
 }
 section.info button {
   position: absolute;
-  top: -0.05em;
+  top: -0.3em;
   right: 0.3em;
   font-size: 3em;
   font-weight: 200;
@@ -175,7 +178,8 @@ section.info h3 {
   border-bottom: 1px solid #ddd;
   font-weight: 100;
   font-size: 150%;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
+  padding-top: 0.15em;
 }
 section.info .detail {
   padding: 1em;
