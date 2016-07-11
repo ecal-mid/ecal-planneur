@@ -118,7 +118,7 @@ header.header h1 {
   cursor: pointer;
 }
 .menu ul li:hover {
-  color: blue;
+  font-weight: 800;
 }
 
 
