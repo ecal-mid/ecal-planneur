@@ -67,28 +67,31 @@
     <th>PM</th>
     {% endfor %}
   </tr>
-{% for day in range(1, 32) %}
+{% for d in range(1, 32) %}
   <tr>
-    <th class="days"> {{ day }}</th>
+    <th class="days"> {{ d }}</th>
   {% for month in planning.calendar.months %}
-    {% if day > month['num_days'] %}
+    {% if d > month['num_days'] %}
       <td class="none" colspan="2"></td>
-    {% elif month['days'][day-1]['is_weekend'] %}
-      <td class="weekend" colspan="2"></td>
-    {% elif month['days'][day-1]['holiday'] %}
-      <td class="holiday" colspan="2">{{ month['days'][day-1]['holiday'] }}</td>
-    {% elif month['days'][day-1]['workshop'] %}
-      <td class="workshop am" data-date="{{month['days'][day-1]['date']}}">{{ month['days'][day-1]['workshop'] }}</td>
-      <td class="workshop pm" data-date="{{month['days'][day-1]['date']}}"></td>
-    {% elif month['days'][day-1]['evals'] %}
-      <td class="evals am" data-date="{{month['days'][day-1]['date']}}">{{ month['days'][day-1]['evals'] }}</td>
-      <td class="evals pm" data-date="{{month['days'][day-1]['date']}}"></td>
-    {% elif month['days'][day-1]['nocourse'] %}
-      <td class="nocourse am" data-date="{{month['days'][day-1]['date']}}">{{ month['days'][day-1]['nocourse'] }}</td>
-      <td class="nocourse pm" data-date="{{month['days'][day-1]['date']}}"></td>
     {% else %}
-      <td class="am" data-date="{{month['days'][day-1]['date']}}"></td>
-      <td class="pm" data-date="{{month['days'][day-1]['date']}}"></td>
+      {% set day = month['days'][d-1] %}
+      {% if day['is_weekend'] %}
+        <td class="weekend" colspan="2"></td>
+      {% elif day['holiday'] %}
+        <td class="holiday" colspan="2">{{ day['holiday'] }}</td>
+      {% elif day['workshop'] %}
+        <td class="workshop am" data-date="{{day['date']}}">{{ day['workshop'] }}</td>
+        <td class="workshop pm" data-date="{{day['date']}}"></td>
+      {% elif day['evals'] %}
+        <td class="evals am" data-date="{{day['date']}}">{{ day['evals'] }}</td>
+        <td class="evals pm" data-date="{{day['date']}}"></td>
+      {% elif day['nocourse'] %}
+        <td class="nocourse am" data-date="{{day['date']}}">{{ day['nocourse'] }}</td>
+        <td class="nocourse pm" data-date="{{day['date']}}"></td>
+      {% else %}
+        <td class="am" data-date="{{day['date']}}"></td>
+        <td class="pm" data-date="{{day['date']}}"></td>
+      {% endif %}
     {% endif %}
   {% endfor %}
   </tr>
@@ -106,7 +109,7 @@
     <ul>
       <li class="title">Task <span>%</span><span>Hours</span></li>
       <% for(var task of tasks) { %>
-      <li class="<% if (task.locked) { %>locked<% } else if (task.auto) { %>auto<% } %>"><span class="label" draggable="true"><%= task.course || task.kind %></span> <span><%= task.percent.toFixed(2) %></span><span><%= task.hours.toFixed(2) %></span></li>
+      <li class="<% if (task.locked) { %>locked<% } else if (task.auto) { %>auto<% } else { %>draggable<% }%>"><span class="label" draggable="true"><%= task.course || task.kind %></span> <span><%= task.percent.toFixed(2) %></span><span><%= task.hours.toFixed(2) %></span></li>
       <% } %>
       <li class="total">Current Total <span><%= current_percent.toFixed(2) %>%</span><span><%= current_hours.toFixed(2) %>h</span></li>
     </ul>
@@ -132,5 +135,6 @@
   </section>
 </script>
 <script src="{{ url_for('static', filename='libs/ejs.min.js') }}"></script>
+<script src="{{ url_for('static', filename='libs/qwest.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}

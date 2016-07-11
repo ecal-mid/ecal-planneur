@@ -38,37 +38,40 @@ function onListItemClicked(ev) {
   if (infos_el.classList.contains('hidden')) {
     infos_el.classList.remove('hidden')
   }
-  getJSON('/api/staff/'+currName, function(data) {
-    var output = ejs.render(staff_template, data);
-    infos_el.innerHTML = output;
-    registerCloseButton();
-  });
-}
-
-function getJSON(url, handler) {
-  var request = new XMLHttpRequest();
-  request.open('GET', url, true);
-  request.onload = function() {
-    if (request.status >= 200 && request.status < 400) {
-      var data = JSON.parse(request.responseText);
-      handler(data);
-    }
-  };
-  request.send();
+  qwest.get('/api/staff/'+currName)
+     .then(function(xhr, response) {
+        var output = ejs.render(staff_template, response);
+        infos_el.innerHTML = output;
+        registerCloseButton();
+        registerDragStart();
+     });
 }
 
 // add activity
 
-function onListItemDragOver(ev) {
+var dragItem;
+
+function registerDragStart() {
+  var els = document.querySelectorAll("section.info ul li.draggable");
+  for (var el of els) {
+    el.addEventListener('dragstart', onListItemDragStart, false);
+  }
+}
+
+function onListItemDragStart(ev) {
+  dragItem = ev.currentTarget;
+}
+
+function onDragOver(ev) {
   event.preventDefault();
   ev.currentTarget.classList.add('hover');
 }
 
-function onListItemDragLeave(ev) {
+function onDragLeave(ev) {
   ev.currentTarget.classList.remove('hover');
 }
 
-function onListItemDrop(ev) {
+function onDrop(ev) {
   ev.currentTarget.classList.remove('hover');
   var date = ev.currentTarget.attributes['data-date'];
   if (!date) {
@@ -76,14 +79,34 @@ function onListItemDrop(ev) {
   }
   date = date.value;
   var isPm = ev.currentTarget.className.indexOf('pm') != -1;
-  console.log(ev);
-  console.log(date, isPm);
+  var taskId = dragItem.querySelector('.label').innerHTML;
+  addActivity(currName, taskId, date, isPm);
+  dragItem = null;
 }
 
 var els = document.querySelectorAll("main td.am, main td.pm");
 for (var el of els) {
-  el.addEventListener('dragover', onListItemDragOver, false);
-  el.addEventListener('dragenter', onListItemDragOver, false);
-  el.addEventListener('dragleave', onListItemDragLeave, false);
-  el.addEventListener('drop', onListItemDrop, false);
+  el.addEventListener('dragover', onDragOver, false);
+  el.addEventListener('dragenter', onDragOver, false);
+  el.addEventListener('dragleave', onDragLeave, false);
+  el.addEventListener('drop', onDrop, false);
 }
+
+function addActivity(staff, task, date, isPm) {
+  qwest.post('/api/activity', {
+        staff: staff,
+        task: task,
+        date: new Date(date).toUTCString(),
+        is_pm: isPm
+     })
+     .then(function(xhr, response) {
+       console.log('done', reponse);
+     });
+}
+
+// render activities
+
+qwest.get('/api/activity')
+   .then(function(xhr, response) {
+     console.log(reponse);
+   });

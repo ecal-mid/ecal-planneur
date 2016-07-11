@@ -158,3 +158,4 @@ class Activity(ndb.Model):
     task_id = ndb.StringProperty(required=True)
     date = ndb.DateProperty(required=True)
     is_pm = ndb.BooleanProperty(required=True)
+    
