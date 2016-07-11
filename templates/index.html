@@ -106,7 +106,7 @@
     <ul>
       <li class="title">Task <span>%</span><span>Hours</span></li>
       <% for(var task of tasks) { %>
-      <li class="<% if (task.locked) { %> locked <% }; if (task.auto) { %> auto <% } %>"><%= task.course || task.kind %> <span><%= task.percent.toFixed(2) %></span><span><%= task.hours.toFixed(2) %></span></li>
+      <li class="<% if (task.locked) { %>locked<% } else if (task.auto) { %>auto<% } %>"><span class="label" draggable="true"><%= task.course || task.kind %></span> <span><%= task.percent.toFixed(2) %></span><span><%= task.hours.toFixed(2) %></span></li>
       <% } %>
       <li class="total">Current Total <span><%= current_percent.toFixed(2) %>%</span><span><%= current_hours.toFixed(2) %>h</span></li>
     </ul>
