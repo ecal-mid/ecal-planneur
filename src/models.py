@@ -154,8 +154,7 @@ class Task(object):
 
 
 class Activity(ndb.Model):
-    staff_id = ndb.StringProperty(required=True)
-    task_id = ndb.StringProperty(required=True)
+    staff = ndb.StringProperty(required=True)
+    task = ndb.StringProperty(required=True)
     date = ndb.DateProperty(required=True)
     is_pm = ndb.BooleanProperty(required=True)
-    

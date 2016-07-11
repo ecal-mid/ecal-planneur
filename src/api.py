@@ -29,17 +29,14 @@ def get_activity():
 
 @bp.route('/activity', methods=['POST'])
 def add_activity():
-    staff = request.form['staff']
-    task = request.form['task']
-    date = request.form['date']
-    is_pm = request.form['is_pm']
+    date_format = "%a, %d %b %Y %H:%M:%S %Z"
     # todo: add activity
     activity = Activity()
-    activity.staff_id = staff
-    activity.task_id = task
-    activity.date = datetime.strptime(date, "%a, %d %b %Y %H:%M:%S %Z")
-    activity.is_pm = (is_pm == "false")
+    activity.staff = request.form['staff']
+    activity.task = request.form['task']
+    activity.date = datetime.strptime(request.form['date'], date_format)
+    activity.is_pm = (request.form['is_pm'] == "false")
     activity.put()
     # get updated staff
-    staff = planning.get_staff_by_name(staff)
+    staff = planning.get_staff_by_name(activity.staff)
     return jsonify(staff)

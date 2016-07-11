@@ -73,14 +73,15 @@ function onDragLeave(ev) {
 
 function onDrop(ev) {
   ev.currentTarget.classList.remove('hover');
-  var date = ev.currentTarget.attributes['data-date'];
-  if (!date) {
+  var dataDate = ev.currentTarget.attributes['data-date'];
+  if (!dataDate) {
     return;
   }
-  date = date.value;
+  var date = new Date(dataDate.value).toUTCString();
   var isPm = ev.currentTarget.className.indexOf('pm') != -1;
-  var taskId = dragItem.querySelector('.label').innerHTML;
-  addActivity(currName, taskId, date, isPm);
+  var task = dragItem.querySelector('.label').innerHTML;
+  var activity = new Activity({staff:currName, date:date, task:task, is_pm:isPm});
+  activity.put();
   dragItem = null;
 }
 
@@ -92,21 +93,10 @@ for (var el of els) {
   el.addEventListener('drop', onDrop, false);
 }
 
-function addActivity(staff, task, date, isPm) {
-  qwest.post('/api/activity', {
-        staff: staff,
-        task: task,
-        date: new Date(date).toUTCString(),
-        is_pm: isPm
-     })
-     .then(function(xhr, response) {
-       console.log('done', reponse);
-     });
-}
-
 // render activities
 
-qwest.get('/api/activity')
-   .then(function(xhr, response) {
-     console.log(reponse);
-   });
+Activities.fetch(function(activities){
+  for (var act of activities) {
+    console.log(act);
+  }
+});
