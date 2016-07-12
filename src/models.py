@@ -84,7 +84,6 @@ class Staff(object):
             for a in activities:
                 if a.task == t.get_key():
                     t.hours += 4
-                    print 'added 4 hours to ' + t.get_key()
         # update auto tasks
         for t in self.tasks[:]:
             if t.get_key() in ['pres_diploma', 'admin', 'training']:
