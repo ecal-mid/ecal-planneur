@@ -41,7 +41,6 @@ function onListItemClicked(ev) {
   qwest.get('/api/staff/'+currName)
      .then(function(xhr, response) {
         updateStaffPanel(response);
-        registerCloseButton();
      });
 }
 
@@ -49,6 +48,7 @@ function updateStaffPanel(data){
   var output = ejs.render(staff_template, data);
   infos_el.innerHTML = output;
   registerDragStart();
+  registerCloseButton();
 }
 
 // add activity
