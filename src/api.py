@@ -35,7 +35,8 @@ def add_activity():
     activity.staff = request.form['staff']
     activity.task = request.form['task']
     activity.date = datetime.strptime(request.form['date'], date_format)
-    activity.is_pm = (request.form['is_pm'] == "false")
+    activity.is_pm = (int(request.form['is_pm']) == 1)
+    print request.form
     activity.put()
     # get updated staff
     staff = planning.get_staff_by_name(activity.staff)

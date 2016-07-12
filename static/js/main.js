@@ -77,7 +77,7 @@ function onDrop(ev) {
   if (!dataDate) {
     return;
   }
-  var date = new Date(dataDate.value).toUTCString();
+  var date = dataDate.value.replace(/-/g, ' ');
   var isPm = ev.currentTarget.className.indexOf('pm') != -1;
   var task = dragItem.querySelector('.label').innerHTML;
   var activity = new Activity({staff:currName, date:date, task:task, is_pm:isPm});
@@ -97,6 +97,6 @@ for (var el of els) {
 
 Activities.fetch(function(activities){
   for (var act of activities) {
-    console.log(act);
+    act.show();
   }
 });

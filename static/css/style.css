@@ -244,8 +244,11 @@ main table td {
   font-size: 0.2em;
   text-align: center;
   color: rgba(0, 0, 0, 0.75);
-  white-space: nowrap;
   padding-left: 0.5em;
+}
+
+main table td.am, main table td.pm {
+  text-align: left;
 }
 
 main table td.am {
@@ -278,3 +281,18 @@ main table td.workshop.am { border-left:4px solid yellow;  }*/
   background-color: black !important;
   cursor: pointer;
 }
+
+table td span {
+  background-color: black;
+  padding: 0.3em 0.3em;
+  color: white;
+  width: 6px;
+  font-size: 8px;
+  border-radius: 2px;
+  cursor: default;
+  margin-right: 2px;
+}
+
+span.color1 { background-color: #f00; }
+span.color2 { background-color: #0d0; }
+span.color3 { background-color: #00f; }

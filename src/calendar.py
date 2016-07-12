@@ -15,8 +15,9 @@ class Calendar(object):
                 'num_days': m['days']
             }
             for d in range(1, m['days']+1):
+                year = '201'+('6' if len(self.months) < 5 else '7')
                 day = {
-                    'date' : str(d)+' '+m['label']+' 201'+('6' if len(self.months) < 5 else '7'),
+                    'date' : str(d) + '-' + m['label'] + '-' + year,
                     'is_weekend': i%7 > 4
                 }
                 month['days'].append(day)
