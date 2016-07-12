@@ -268,7 +268,7 @@ main table td.workshop { background-color: white; border: none;}
 main table td.workshop.pm { border-right: 1px solid #ddd;}
 
 main table td.workshop.am {
-  border-left: 2px solid cyan;
+  border-left: 2px solid #fd0;
 }
 main table td.evals.am {
   border-left: 2px solid magenta;
@@ -293,6 +293,8 @@ table td span {
   margin-right: 2px;
 }
 
-span.color1 { background-color: #f00; }
-span.color2 { background-color: #0d0; }
-span.color3 { background-color: #00f; }
+span.color-1cv { background-color: #f00; }
+span.color-2cv { background-color: #0d0; }
+span.color-3cv { background-color: #00f; }
+span.color-ass { background-color: cyan; }
+span.color-eva { background-color: magenta; }
