@@ -4,6 +4,8 @@ from flask import Blueprint, render_template
 
 from .models import Planning
 
+planning = Planning('2016-2017')
+
 bp = Blueprint(
     'index', __name__,
     static_folder='../static',
@@ -12,7 +14,6 @@ bp = Blueprint(
 @bp.route('/')
 def index():
     """Return the homepage."""
-    planning = Planning('2016-2017')
     return render_template('index.html', planning=planning)
 
 @bp.errorhandler(404)

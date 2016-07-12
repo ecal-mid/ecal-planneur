@@ -7,6 +7,8 @@ from flask import (
     jsonify,
     request)
 
+from google.appengine.ext import ndb
+
 from .models import Planning, Activity
 
 planning = Planning('2016-2017')
@@ -24,20 +26,35 @@ def get_staff(name):
 
 @bp.route('/activity')
 def get_activity():
-    activities = Activity.query().fetch()
-    return jsonify([a.to_dict() for a in activities])
+    ancestor_key = ndb.Key("Planning", Planning.config.name)
+    activities = Activity.query(ancestor=ancestor_key).fetch()
+    result = [a.get_dict() for a in activities]
+    return jsonify(result)
 
 @bp.route('/activity', methods=['POST'])
 def add_activity():
     date_format = "%a, %d %b %Y %H:%M:%S %Z"
     # todo: add activity
-    activity = Activity()
+    ancestor_key = parent=ndb.Key("Planning", Planning.config.name)
+    activity = Activity(parent=ancestor_key)
     activity.staff = request.form['staff']
     activity.task = request.form['task']
     activity.date = datetime.strptime(request.form['date'], date_format)
     activity.is_pm = (int(request.form['is_pm']) == 1)
-    print request.form
     activity.put()
     # get updated staff
     staff = planning.get_staff_by_name(activity.staff)
+    return jsonify({
+        'staff': staff,
+        'activity': activity.get_dict()
+    })
+
+@bp.route('/activity/delete/<int:id>')
+def delete_activity(id):
+    ancestor_key = ndb.Key("Planning", Planning.config.name)
+    activity = Activity.get_by_id(id, parent=ancestor_key)
+    staff_name = activity.staff
+    activity.key.delete()
+    # get updated staff
+    staff = planning.get_staff_by_name(staff_name)
     return jsonify(staff)

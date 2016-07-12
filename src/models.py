@@ -2,7 +2,7 @@
 
 import yaml
 from google.appengine.ext import ndb
-
+from flask import jsonify
 from .calendar import Calendar
 
 def get_yaml(name, filename):
@@ -11,6 +11,7 @@ def get_yaml(name, filename):
 
 class Config(object):
     def __init__(self, name):
+        self.name = name
         self.yaml = get_yaml(name, 'config')
         self.hours_base = self.yaml['hours_base']
 
@@ -39,7 +40,9 @@ class Planning(object):
 
     def get_staff_by_name(self, name):
         s = filter(lambda x: x.name == name, self.staffs)
-        if len(s): return s[0].get_json()
+        if len(s):
+            s[0].update()
+            return s[0].get_json()
         return None
 
 class Section(object):
@@ -58,19 +61,39 @@ class Course(object):
 
 class Staff(object):
     def __init__(self, data):
+        self.data = data
         self.name = data['name']
         self.role = data['role']
         self.percent = data['percent']
         self.tasks = []
-        if 'tasks' in data:
-            for t in data['tasks']:
+        if 'tasks' in self.data:
+            for t in self.data['tasks']:
                 self.tasks.append(Task(t))
+        self.update()
+
+    def update(self):
+        # retrieve all current recorded activities of that staff
+        ancestor_key = ndb.Key("Planning", Planning.config.name)
+        activities = Activity.query(Activity.staff==self.name, ancestor=ancestor_key).fetch()
+        # update tasks with appropriate hours
+        for t in self.tasks:
+            if t.locked:
+                continue
+            else:
+                t.hours = 0
+            for a in activities:
+                if a.task == t.get_key():
+                    t.hours += 4
+                    print 'added 4 hours to ' + t.get_key()
+        # update auto tasks
+        for t in self.tasks[:]:
+            if t.get_key() in ['pres_diploma', 'admin', 'training']:
+                self.tasks.remove(t)
         self.add_automatic_tasks()
 
     def add_automatic_tasks(self):
         # automatically add tasks to professors
         if self.role == 'Professor':
-            self.tasks.append(Task({'kind' : 'eval'}))
             # automatically add admin (1.6% of staff hours)
             self.tasks.append(Task({
                 'kind' : 'admin',
@@ -83,13 +106,6 @@ class Staff(object):
                 'auto' : True,
                 'hours' : self.get_teaching_hours() * 0.1
             }))
-
-        # todo:
-        # /!\ fill current tasks hours from activities before adding auto tasks
-
-        # automatically add diploma task if has task with course 3cvmid2
-        if len(filter(lambda x: x.course == '3cvmid2', self.tasks)):
-            self.tasks.append(Task({'kind': 'pres_diploma'}))
 
     def get_teaching_hours(self):
         return sum(t.coef if t.coef == 2.2 else 0 for t in self.tasks)
@@ -134,15 +150,13 @@ class Task(object):
         if 'coef' in data:
             self.coef = data['coef']
         else:
-            self.coef = 2.2 if self.kind is 'course' else 1
+            self.coef = 2.2 if self.kind == 'course' else 1
         self.hours = 0
         if 'hours' in data:
             self.hours = data['hours']
 
     def get_key(self):
-        key = self.kind
-        if self.course: key += '.' + self.course
-        return key
+        return (self.course or self.kind)
 
     def get_percent(self):
         return self.hours * self.coef / Planning.config.hours_base * 100
@@ -158,3 +172,8 @@ class Activity(ndb.Model):
     task = ndb.StringProperty(required=True)
     date = ndb.DateProperty(required=True)
     is_pm = ndb.BooleanProperty(required=True)
+
+    def get_dict(self):
+        result = self.to_dict()
+        result['key'] = self.key.id()
+        return result

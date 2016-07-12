@@ -6,113 +6,125 @@ Staffs:
   role: Professor
   percent: 50
   tasks:
-  - kind: course
-    course: 1cvmid11b
-  - kind: course
-    course: 1cvmid21b
-  - kind: theory1
-    coef: 2.2
-    hours: 40
-    locked: 1
-  - kind: theory2
-    coef: 2.2
-    hours: 40
-    locked: 1
-  - kind: r&d
-    hours: 560
-    locked: 1
+    - kind: course
+      course: 1cvmid11b
+    - kind: course
+      course: 1cvmid21b
+    - kind: theory1
+      coef: 2.2
+      hours: 40
+      locked: 1
+    - kind: theory2
+      coef: 2.2
+      hours: 40
+      locked: 1
+    - kind: r&d
+      hours: 560
+      locked: 1
+    - kind: eval
+    - kind: diplome_blanc
 
 - name: Christophe Guignard
   role: Professor
   percent: 40
   tasks:
-  - kind: course
-    course: 3cvmid11
-  - kind: course
-    course: 3cvmid2
-  - kind: project_management
-    coef: 2.2
-    hours: 8
-  - kind: pp
-    coef: 2.2
-    hours: 24
-    locked: 1
-  - kind: theory1
-    coef: 2.2
-    hours: 40
-    locked: 1
-  - kind: theory2
-    coef: 2.2
-    hours: 40
-    locked: 1
-  - kind: thesis
-    coef: 2.2
-    hours: 64
-    locked: 1
+    - kind: course
+      course: 3cvmid11
+    - kind: course
+      course: 3cvmid2
+    - kind: project_management
+      coef: 2.2
+      hours: 8
+    - kind: pp
+      coef: 2.2
+      hours: 24
+      locked: 1
+    - kind: theory1
+      coef: 2.2
+      hours: 40
+      locked: 1
+    - kind: theory2
+      coef: 2.2
+      hours: 40
+      locked: 1
+    - kind: thesis
+      coef: 2.2
+      hours: 64
+      locked: 1
+    - kind: eval
+    - kind: diplome_blanc
 
 - name: Alain Bellet
   role: Professor
   percent: 50
   tasks:
-  - kind: course
-    course: 2cvmid12a
-  - kind: course
-    course: 2cvmid12c
-  - kind: course
-    course: 2cvmid22a
-  - kind: course
-    course: 3cvmid11
-  - kind: course
-    course: 3cvmid2
+    - kind: course
+      course: 2cvmid12a
+    - kind: course
+      course: 2cvmid12c
+    - kind: course
+      course: 2cvmid22a
+    - kind: course
+      course: 3cvmid11
+    - kind: course
+      course: 3cvmid2
+    - kind: eval
+    - kind: diplome_blanc
 
 - name: Angelo Benedetto
   role: Professor
   percent: 16
   tasks:
-  - kind: course
-    course: 1cvmid12a
-  - kind: course
-    course: 1cvmid12b
-  - kind: course
-    course: 2cvmid22a
+    - kind: eval
+    - kind: course
+      course: 1cvmid12a
+    - kind: course
+      course: 1cvmid12b
+    - kind: course
+      course: 2cvmid22a
+    - kind: eval
 
 - name: Gael Hugo
   role: Professor
   percent: 40
   tasks:
-  - kind: course
-    course: 1cvmid21a
-  - kind: course
-    course: 1cvmid22c
-  - kind: course
-    course: 2cvmid11a
-  - kind: course
-    course: 2cvmid21a
-  - kind: course
-    course: 3cvmid12
-  - kind: course
-    course: 3cvmid2
+    - kind: course
+      course: 1cvmid21a
+    - kind: course
+      course: 1cvmid22c
+    - kind: course
+      course: 2cvmid11a
+    - kind: course
+      course: 2cvmid21a
+    - kind: course
+      course: 3cvmid12
+    - kind: course
+      course: 3cvmid2
+    - kind: eval
+    - kind: diplome_blanc
 
 - name: Cyril Diagne
   role: Professor
   percent: 60
   tasks:
-  - kind: course
-    course: 1cvmid11a
-  - kind: course
-    course: 1cvmid12b
-  - kind: course
-    course: 2cvmid12c
-  - kind: course
-    course: 3cvmid11
-  - kind: course
-    course: 3cvmid2
-  - kind: entry_test
-    hours: 24
-  - kind: resp m&id
-    hours: 374
-  - kind: projects
-    hours: 80
+    - kind: course
+      course: 1cvmid11a
+    - kind: course
+      course: 1cvmid12b
+    - kind: course
+      course: 2cvmid12c
+    - kind: course
+      course: 3cvmid11
+    - kind: course
+      course: 3cvmid2
+    - kind: entry_test
+      hours: 24
+    - kind: resp m&id
+      hours: 374
+    - kind: projects
+      hours: 80
+    - kind: eval
+    - kind: diplome_blanc
 
 # Assistants
 

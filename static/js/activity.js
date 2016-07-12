@@ -21,6 +21,7 @@ class Activities {
 class Activity {
 
   constructor(data) {
+    this.key = data.key;
     this.staff = data.staff;
     this.task = data.task;
     this.date = new Date(data.date);
@@ -28,13 +29,19 @@ class Activity {
     this.isPm = data.is_pm;
   }
 
-  put() {
+  put(callback) {
     qwest.post('/api/activity', this.json())
-       .then(function(xhr, response) {});
+       .then(callback);
+  }
+
+  delete(callback) {
+    qwest.get('/api/activity/delete/'+ this.key)
+       .then(callback);
   }
 
   json(){
     return {
+      key: this.key,
       staff: this.staff,
       task: this.task,
       date: this.date.toUTCString(),
@@ -47,7 +54,13 @@ class Activity {
     var td = document.querySelector(query);
     var initials = this.staff.split(' ').map( (x) => x[0] ).join('');
     var color = 'color' + this.task[0];
-    td.innerHTML += '<span class="'+color+'">' + initials + '</span>';
+
+    var el = document.createElement('span');
+    el.className = color;
+    el.innerHTML = initials;
+    td.appendChild(el);
+
+    return el;
   }
 
   getDateLabel() {
