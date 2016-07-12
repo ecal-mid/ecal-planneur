@@ -19,6 +19,7 @@ for (var el of els) {
 function registerCloseButton() {
   var info_closebt_el = document.getElementById('close-infos');
   info_closebt_el.addEventListener('click', function(){
+    currName = null;
     infos_el.classList.add('hidden');
   }, false);
 }
