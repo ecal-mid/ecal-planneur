@@ -55,6 +55,10 @@ function updateStaffPanel(data){
   registerCloseButton();
 }
 
+// setup activity visibility
+
+
+
 // render activities
 
 if (!window.showActivity) {
@@ -64,7 +68,14 @@ if (!window.showActivity) {
 }
 
 Activities.fetch(function(activities){
-  for (var act of activities) {
-    showActivity(act);
+  if (window.detail) {
+    for (var act of activities) {
+      if (act.staff == detail.name) {
+        showActivity(act);
+      }
+    }
+  } else {
+    // show all
+    for (var act of activities) { showActivity(act); }
   }
 });

@@ -170,7 +170,7 @@ header.header h1 {
   color: white;
   border-radius: 0.5em;
 }
-.menu ul.staff span.vis-icon.on, .menu ul.staff span.vis-icon:hover {
+.menu ul.staff span.vis-icon.on {
   background: black;
 }
 .menu ul.staff span.name {
