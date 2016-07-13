@@ -70,6 +70,7 @@ function onActivityClicked(ev) {
   activity.delete((xhr, result) => {
     el.remove()
     updateStaffPanel(result);
+    registerDragStart();
   });
 }
 
