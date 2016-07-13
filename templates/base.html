@@ -10,7 +10,7 @@
 
 <body>
   <section id="app" class="app">
-    <nav id="menu" class="menu hidden">
+    <nav id="menu" class="menu {% if detail is defined %}hidden{% endif %}">
         {% block menu %}
         {% endblock %}
     </nav>
@@ -25,7 +25,7 @@
         {% block main %}
         {% endblock %}
     </main>
-    <section id="info" class="info hidden">
+    <section id="info" class="info {% if detail is not defined %}hidden{% endif %}">
         {% block info %}
         {% endblock %}
     </section>

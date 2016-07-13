@@ -7,6 +7,10 @@ threadsafe: yes
 handlers:
 - url: /
   script: src.main.app
+- url: /detail/.*
+  script: src.main.app
+- url: /admin
+  script: src.main.app
 - url: /api/.*
   script: src.main.app
 - url: /static

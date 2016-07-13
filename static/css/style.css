@@ -13,7 +13,7 @@
 html, body {
   margin: 0;
   font-family: 'Roboto', 'Helvetica', sans-serif;
-  font-size: 1em;
+  font-size: 0.95em;
   height: 100%;
   width:100%;
   overflow: hidden;
@@ -108,19 +108,76 @@ header.header h1 {
   font-size: 90%;
 }
 .menu ul {
-  padding: 1em 0;
+  padding: 1em 0 1.5em;
   list-style: none;
   font-size: 90%;
 }
 .menu ul li {
   padding-top: 0.3em;
   display: block;
-  cursor: pointer;
+  cursor: default;
+  padding-bottom: 0.4em;
 }
-.menu ul li:hover {
-  font-weight: 800;
+.menu ul li.detail:hover {
+  background-color: #f9f9f9;
+}
+.menu ul.courses li {
+  padding-left: 2.75em;
+  position: relative;
+}
+.menu ul.courses li span {
+  color: white;
+  position: absolute;
+  left: 0;
+  font-size: 0.5em;
+  border-radius: 2px;
+  padding: 0.25em;
+}
+.menu ul li.bw span {
+  border-left: 3px solid #fd0;
+  margin-left: -3px;
+  border-radius: 0;
+}
+.menu ul.courses li span.course { color: grey; }
+.menu h3.color-1cv:before,
+.menu h3.color-2cv:before,
+.menu h3.color-3cv:before {
+    content: ' ';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border-radius: 2px;
+    margin-right: 0.5em;
+}
+.menu h3.color-1cv:before { background-color: #f00; }
+.menu h3.color-2cv:before { background-color: #0f0; }
+.menu h3.color-3cv:before { background-color: #00f; }
+
+.menu ul.sections li span.color-1cv:before { display: block; width: 0.5em; height:0.5em; background-color: #f00; }
+
+.menu ul.staff {
+  color: grey;
+  overflow: hidden;
 }
 
+.menu ul.staff .detail {
+  color: black;
+}
+
+.menu ul.staff span.vis-icon {
+  position: absolute;
+  background: #ddd;
+  color: white;
+  border-radius: 0.5em;
+}
+.menu ul.staff span.vis-icon.on, .menu ul.staff span.vis-icon:hover {
+  background: black;
+}
+.menu ul.staff span.name {
+  display: inline-block;
+  width: 100%;
+  margin-left: 2em;
+}
 
 /* INFO */
 
@@ -235,10 +292,6 @@ main table th.days {
   border-bottom: 1px solid #fff;
 }
 
-main table tr:hover th {
-  font-weight: 800;
-}
-
 main table tr.am-pm th:not(:first-child) {
   font-size: 0.5em;
   border-bottom: 1px solid #ddd;
@@ -278,9 +331,7 @@ main table td.workshop.am {
 main table td.evals.am {
   border-left: 2px solid magenta;
 }
-/*main table td.nocourse.am { border-left: 4px solid black; white-space: nowrap; }
-main table td.evals.am { border-left:4px solid magenta; white-space: nowrap; }
-main table td.workshop.am { border-left:4px solid yellow;  }*/
+main table td.nocourse.am, main table td.evals.am, main table td.workshop.am { white-space: nowrap; }
 
 .drag main table td.am:hover, .drag main table td.pm:hover, td.hover {
   background-color: black !important;
