@@ -163,7 +163,8 @@
       <li class="<% if (task.locked) { %>locked<% } else if (task.auto) { %>auto<% } else { %>{%if admin%}draggable{%endif%}<% }%>">
         <% if (task.locked) { %> <i class="md-icon">lock_outline</i> <% } %>
         <% if (task.auto) { %> <i class="md-icon">autorenew</i> <% } %>
-        <span class="label" {% if admin %} draggable="true" {% endif %}><%= task.course || task.kind %></span>
+
+        <span class="label color-<%= (task.course || task.kind).substr(0,3) %>" {% if admin %} draggable="true" {% endif %}><%= task.course || task.kind %></span>
         <span><%= task.percent.toFixed(2) %></span>
         <span><%= task.hours.toFixed(2) %></span>
       </li>

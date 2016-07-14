@@ -146,19 +146,26 @@ header.header h1 {
 .menu ul.courses li span.course { color: grey; }
 .menu h3.color-1cv:before,
 .menu h3.color-2cv:before,
-.menu h3.color-3cv:before {
+.menu h3.color-3cv:before,
+li:not(.locked):not(.auto) span.label:before {
     content: ' ';
     display: inline-block;
-    width: 1em;
-    height: 1em;
+    width: 0.8em;
+    height: 0.8em;
     border-radius: 2px;
     margin-right: 0.5em;
 }
-.menu h3.color-1cv:before { background-color: #f00; }
-.menu h3.color-2cv:before { background-color: #0f0; }
-.menu h3.color-3cv:before { background-color: #00f; }
+li:not(.locked):not(.auto) span.label:before { background-color: black; }
+h3.color-1cv:before, span.label.color-1cv:before { background-color: #f00 !important; }
+h3.color-2cv:before, span.label.color-2cv:before { background-color: #0f0 !important; }
+h3.color-3cv:before, span.label.color-3cv:before { background-color: #00f !important; }
+h3.color-eva:before, span.label.color-eva:before { background-color: magenta !important; }
 
-.menu ul.sections li span.color-1cv:before { display: block; width: 0.5em; height:0.5em; background-color: #f00; }
+li span.label {
+  background-color: white !important;
+}
+
+/*ul.sections li span.color-1cv:before, span.label.color-1cv:before { display: block; width: 0.5em; height:0.5em; background-color: #f00; }*/
 
 .menu ul.staff {
   color: #bbb;
