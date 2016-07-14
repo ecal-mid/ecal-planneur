@@ -88,7 +88,7 @@ class Staff(object):
                     t.hours += 4
         # update auto tasks
         for t in self.tasks[:]:
-            if t.get_key() in ['pres_diploma', 'admin', 'training']:
+            if t.get_key() in ['admin', 'training']:
                 self.tasks.remove(t)
         self.add_automatic_tasks()
 
