@@ -1,3 +1,7 @@
+/*
+this file is incredibly ugly and messy
+proceed with caution
+*/
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,700);
 
 :focus {
@@ -324,11 +328,11 @@ main table td {
   color: rgba(0, 0, 0, 0.75);
   padding-left: 0.5em;
   position: relative;
+  overflow-wrap: break-word;
 }
 
 main table td.am, main table td.pm {
   text-align: left;
-  overflow-wrap: break-word;
   padding-left: 0.3em;
 }
 
@@ -354,7 +358,6 @@ main table td.workshop.am {
 main table td.evals.am {
   border-left: 2px solid magenta;
 }
-main table td.nocourse.am, main table td.evals.am, main table td.workshop.am { white-space: nowrap; }
 
 .drag main table td.am:hover, .drag main table td.pm:hover, td.hover {
   background-color: black !important;
@@ -370,7 +373,7 @@ table td span.day-label {
 
 table td span:not(.day-label) {
   background-color: black;
-  padding: 0.1em 0.2em;
+  padding: 4%;
   color: white;
   font-size: 6px;
   border-radius: 2px;
