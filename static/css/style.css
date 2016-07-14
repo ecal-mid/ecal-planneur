@@ -353,9 +353,9 @@ main table td.nocourse.am, main table td.evals.am, main table td.workshop.am { w
 
 table td span {
   background-color: black;
-  padding: 0.2em 0.2em 0;
+  padding: 0.1em 0.2em;
   color: white;
-  font-size: 7px;
+  font-size: 6px;
   border-radius: 2px;
   cursor: default;
   margin-top: 2px;
