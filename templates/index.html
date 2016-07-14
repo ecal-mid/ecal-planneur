@@ -17,13 +17,13 @@
   {% for staff in planning.staffs %}
     {% if staff.role == "Professor" %}
       {% if admin or (detail and detail.name == staff.name) %}
-      <li  class="detail" ><span class="vis-icon on"><> </span>
+      <li  class="detail" ><span class="vis-icon on">
       {% elif detail is not defined %}
-      <li><span class="vis-icon on"><> </span>
+      <li><span class="vis-icon on">
       {% else %}
-      <li><span class="vis-icon"><> </span>
+      <li><span class="vis-icon">
       {% endif %}
-      <span class="name">{{staff.name}}</li>
+      <> </span><span class="name">{{staff.name}}</li>
     {% endif %}
   {% endfor %}
   </ul>

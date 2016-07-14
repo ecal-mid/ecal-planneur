@@ -5,13 +5,13 @@
 
 
 var infos_el = document.getElementById('info');
-var els = document.querySelectorAll("#content1 .staff .detail span.name"); // staff
+var els = document.querySelectorAll("#content1 .staff .detail"); // staff
 for (var el of els) {
   el.addEventListener('click', onStaffClicked, false);
 }
 
 function onStaffClicked(ev) {
-  var name = ev.currentTarget.innerHTML;
+  var name = ev.currentTarget.querySelector('span.name').innerHTML;
   qwest.get('/api/staff/'+name)
      .then(function(xhr, response) {
         updateStaffPanel(response);

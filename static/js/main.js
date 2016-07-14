@@ -16,7 +16,7 @@ menu_bt_el.addEventListener('click', function(){
 
 
 var infos_el = document.getElementById('info');
-var els = document.querySelectorAll("#content1 .staff .detail span.name"); // staff
+var els = document.querySelectorAll("#content1 .staff .detail"); // staff
 for (var el of els) {
   el.addEventListener('click', onListItemClicked, false);
 }
@@ -35,7 +35,7 @@ var staff_template = document.getElementById('staff-template').innerHTML;
 var currName = null;
 
 function onListItemClicked(ev) {
-  var name = ev.currentTarget.innerHTML;
+  var name = ev.currentTarget.querySelector('span.name').innerHTML;
   if (name == currName) {
     infos_el.classList.add('hidden');
     currName = null;
