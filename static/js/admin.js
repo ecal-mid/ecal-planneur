@@ -44,16 +44,19 @@ function onDragLeave(ev) {
   ev.currentTarget.classList.remove('hover');
 }
 
-function onDrop(ev) {
-  ev.currentTarget.classList.remove('hover');
-  var dataDate = ev.currentTarget.attributes['data-date'];
-  if (!dataDate) {
-    return;
-  }
-  var date = dataDate.value.replace(/-/g, ' ');
-  var isPm = ev.currentTarget.className.indexOf('pm') != -1;
-  var task = dragItem.querySelector('.label').innerHTML;
-  var activity = new Activity({staff:currName, date:date, task:task, is_pm:isPm});
+function moveActivity(activity, el, date, isPm) {
+  // remove previous one
+  activity.delete((xhr, response) => {
+    el.remove();
+    // add new one
+    addActivity({
+      staff:activity.staff, task:activity.task, date:date, is_pm:isPm
+    });
+  });
+}
+
+function addActivity(data) {
+  var activity = new Activity(data);
   activity.put((xhr, result) => {
     // update staff panel
     updateStaffPanel(result.staff);
@@ -62,6 +65,24 @@ function onDrop(ev) {
     activity.key = result.activity.key;
     showActivity(activity);
   });
+}
+
+function onDrop(ev) {
+  ev.currentTarget.classList.remove('hover');
+  var dataDate = ev.currentTarget.attributes['data-date'];
+  if (!dataDate) {
+    return;
+  }
+  var date = dataDate.value.replace(/-/g, ' ');
+  var isPm = ev.currentTarget.className.indexOf('pm') != -1;
+
+  if (dragItem.classList.contains('activity')) {
+    moveActivity(dragItem.activity, dragItem, date, isPm);
+  }
+  else {
+    var task = dragItem.querySelector('.label').innerHTML;
+    addActivity({staff:currName, date:date, task:task, is_pm:isPm});
+  }
   dragItem = null;
 }
 
@@ -79,6 +100,7 @@ function onActivityClicked(ev) {
 function showActivity(activity) {
   var el = activity.show();
   el.addEventListener('click', this.onActivityClicked.bind(this), false);
+  el.addEventListener('dragstart', onListItemDragStart, false);
   el.activity = activity;
 }
 

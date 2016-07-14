@@ -58,7 +58,10 @@ class Activity {
     var color = 'color-' + this.task.substr(0,3);
 
     var el = document.createElement('span');
-    el.className = color;
+    el.setAttribute('draggable', true);
+    el.classList.add(color);
+    el.classList.add('activity');
+    el.classList.add('draggable');
     el.innerHTML = initials;
     td.appendChild(el);
 
