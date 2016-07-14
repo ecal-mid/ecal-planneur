@@ -9,6 +9,8 @@ handlers:
   script: src.main.app
 - url: /detail/.*
   script: src.main.app
+- url: /report/.*
+  script: src.main.app
 - url: /admin
   script: src.main.app
 - url: /api/.*
