@@ -370,9 +370,17 @@ main table td.evals.am {
 
 table td span.day-label {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 1px;
+  top: 0px;
   z-index: 999;
+  white-space: nowrap;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
 }
 
 table td span:not(.day-label) {
