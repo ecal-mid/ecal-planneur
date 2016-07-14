@@ -17,13 +17,13 @@
   {% for staff in planning.staffs %}
     {% if staff.role == "Professor" %}
       {% if admin or (detail and detail.name == staff.name) %}
-      <li  class="detail" ><span class="vis-icon on">
+      <li  class="detail" ><i class="vis-icon md-icon on">
       {% elif detail is not defined %}
-      <li><span class="vis-icon on">
+      <li><i class="vis-icon md-icon on">
       {% else %}
-      <li><span class="vis-icon">
+      <li><i class="vis-icon md-icon">
       {% endif %}
-      <⊙> </span><span class="name">{{staff.name}}</li>
+      visibility</i><span class="name">{{staff.name}}</li>
     {% endif %}
   {% endfor %}
   </ul>
@@ -33,13 +33,13 @@
   {% for staff in planning.staffs %}
     {% if staff.role == "Assistant" %}
       {% if admin or (detail and detail.name == staff.name) %}
-      <li  class="detail" ><span class="vis-icon on"><⊙> </span>
+      <li  class="detail" ><i class="vis-icon md-icon on">
       {% elif detail is not defined %}
-      <li><span class="vis-icon on"><⊙> </span>
+      <li><i class="vis-icon md-icon on">
       {% else %}
-      <li><span class="vis-icon"><⊙> </span>
+      <li><i class="vis-icon md-icon">
       {% endif %}
-      <span class="name">{{staff.name}}</span></li>
+      visibility</i><span class="name">{{staff.name}}</span></li>
     {% endif %}
   {% endfor %}
   </ul>
@@ -49,13 +49,13 @@
   {% for staff in planning.staffs %}
     {% if staff.role == "Lecturer" %}
       {% if admin or (detail and detail.name == staff.name) %}
-      <li  class="detail" ><span class="vis-icon on"><⊙> </span>
+      <li  class="detail" ><i class="vis-icon md-icon on">
       {% elif detail is not defined %}
-      <li><span class="vis-icon on"><⊙> </span>
+      <li><i class="vis-icon md-icon on">
       {% else %}
-      <li><span class="vis-icon"><⊙> </span>
+      <li><i class="vis-icon md-icon">
       {% endif %}
-      <span class="name">{{staff.name}}</span></li>
+      visibility</i><span class="name">{{staff.name}}</span></li>
     {% endif %}
   {% endfor %}
   </ul>
@@ -161,6 +161,8 @@
       <li class="title">Task <span>%</span><span>Hours</span></li>
       <% for(var task of tasks) { %>
       <li class="<% if (task.locked) { %>locked<% } else if (task.auto) { %>auto<% } else { %>{%if admin%}draggable{%endif%}<% }%>">
+        <% if (task.locked) { %> <i class="md-icon">lock_outline</i> <% } %>
+        <% if (task.auto) { %> <i class="md-icon">autorenew</i> <% } %>
         <span class="label" {% if admin %} draggable="true" {% endif %}><%= task.course || task.kind %></span>
         <span><%= task.percent.toFixed(2) %></span>
         <span><%= task.hours.toFixed(2) %></span>

@@ -29,6 +29,13 @@ button {
   cursor: pointer;
 }
 
+.md-icon {
+  font-family: 'Material Icons';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-style: normal;
+}
+
 /* APP */
 
 section.app {
@@ -162,20 +169,20 @@ header.header h1 {
   color: black;
 }
 
-.menu ul.staff span.vis-icon {
+svg path {
+  fill: red;
+}
+
+.menu ul.staff .vis-icon {
   position: absolute;
-  background: #ddd;
-  color: white;
   display: inline-block;
-  height: 1.3em;
-  border-radius: 0.8em;
-  font-size: 0.5em;
+  font-size: 1em;
   padding: 0.1em 0.2em 0.08em;
 }
-.menu ul.staff span.vis-icon.on {
-  background: black;
+.menu ul.staff .vis-icon.on {
+  color: black;
 }
-.menu ul.staff span.name {
+.menu ul.staff .name {
   display: inline-block;
   width: 100%;
   margin-left: 2em;
@@ -239,12 +246,10 @@ section.info ul li.locked {
   color:#999;
   font-weight: 100;
 }
-section.info ul li.locked::before { content : "⊝"; margin-right: 0.5em; }
 section.info ul li.locked, section.info ul li.auto {
   color:#999;
   font-weight: 100;
 }
-section.info ul li.auto::before { content : "↺"; margin-right: 0.5em; }
 
 section.info span:not(.label){ float: right; width: 5em; text-align:right; }
 /*section.info li.dynamic { font-weight: 200;}*/
