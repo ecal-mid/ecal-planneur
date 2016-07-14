@@ -8,8 +8,6 @@ Staffs:
   tasks:
     - kind: course
       course: 1cvmid11b
-    - kind: course
-      course: 1cvmid21b
     - kind: eval
     - kind: diplome_blanc
     - kind: theory1
