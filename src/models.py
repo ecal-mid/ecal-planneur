@@ -109,7 +109,7 @@ class Staff(object):
             }))
 
     def get_teaching_hours(self):
-        return sum(t.coef if t.coef == 2.2 else 0 for t in self.tasks)
+        return sum(t.hours * (t.coef if t.coef == 2.2 else 0) for t in self.tasks)
 
     def get_current_percent(self):
         return sum(t.get_percent() for t in self.tasks)
