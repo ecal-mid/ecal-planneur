@@ -154,7 +154,7 @@ header.header h1 {
 .menu ul.sections li span.color-1cv:before { display: block; width: 0.5em; height:0.5em; background-color: #f00; }
 
 .menu ul.staff {
-  color: grey;
+  color: #bbb;
   overflow: hidden;
 }
 
@@ -187,7 +187,7 @@ section.info {
   height: 100%;
   background-color: white;
   flex: initial;
-  width: 330px;
+  width: 300px;
   transition: margin-right 0.25s ease;
   position: relative;
 }
@@ -199,7 +199,7 @@ section.info button {
   font-weight: 200;
   transform: rotate(45deg);
 }
-section.info.hidden { margin-right: -330px; }
+section.info.hidden { margin-right: -300px; }
 section.info h3 {
   padding: 0.5em;
   font-weight: 100;
