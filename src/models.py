@@ -58,13 +58,15 @@ class Course(object):
             self.is_blockweek = data['is_blockweek']
         self.section = filter(lambda x: x.name == self.name[:6], sections)[0]
 
-
 class Staff(object):
     def __init__(self, data):
         self.data = data
         self.name = data['name']
         self.role = data['role']
-        self.percent = data['percent']
+        if self.role == 'Lecturer':
+            self.hours = data['hours']
+        else:
+            self.percent = data['percent']
         self.tasks = []
         if 'tasks' in self.data:
             for t in self.data['tasks']:
@@ -120,15 +122,18 @@ class Staff(object):
         d['tasks'] = []
         for t in self.tasks:
             d['tasks'].append(t.get_json())
-        d['current_percent'] = self.get_current_percent()
-        d['current_hours'] = self.get_current_hours()
+        if self.role == 'Lecturer':
+            d['current_hours'] = sum(t.hours for t in self.tasks)
+        else:
+            d['current_percent'] = self.get_current_percent()
+            d['current_hours'] = self.get_current_hours()
         return d
 
     def get_key(self):
         return self.name.replace(' ', '.').lower()
 
     def debug(self):
-        print(self.name, self.get_current_percent(), self.percent)
+        print(self.name, self.get_current_percent(), self.percent or self.hours)
         for t in self.tasks:
             print('  ', t.id, "{0:.2f}".format(t.get_percent()))
 

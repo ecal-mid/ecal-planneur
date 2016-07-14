@@ -130,13 +130,11 @@ header.header h1 {
   position: absolute;
   left: 0;
   font-size: 0.5em;
-  border-radius: 2px;
   padding: 0.25em;
+  border-left: 2px solid black;
 }
 .menu ul li.bw span {
-  border-left: 3px solid cyan;
-  margin-left: -3px;
-  border-radius: 0;
+  border-left: 2px solid cyan;
 }
 .menu ul.courses li span.course { color: grey; }
 .menu h3.color-1cv:before,

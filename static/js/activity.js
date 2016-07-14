@@ -31,12 +31,14 @@ class Activity {
 
   put(callback) {
     qwest.post('/api/activity', this.json())
-       .then(callback);
+       .then(callback)
+       .catch((e) => console.error(e));
   }
 
   delete(callback) {
     qwest.get('/api/activity/delete/'+ this.key)
-       .then(callback);
+       .then(callback)
+       .catch((e) => console.error(e));
   }
 
   json(){

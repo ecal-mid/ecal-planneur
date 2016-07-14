@@ -16,7 +16,8 @@ function onStaffClicked(ev) {
      .then(function(xhr, response) {
         updateStaffPanel(response);
         registerDragStart();
-     });
+     })
+     .catch((e) => console.error(e));
 }
 
 // add activity
