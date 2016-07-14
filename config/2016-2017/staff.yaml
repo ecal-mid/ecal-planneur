@@ -75,7 +75,6 @@ Staffs:
   role: Professor
   percent: 16
   tasks:
-    - kind: eval
     - kind: course
       course: 1cvmid12a
     - kind: course
