@@ -153,6 +153,14 @@ Staffs:
 
 # Lecturers
 
+- name: Andreas Gysin
+  role: Lecturer
+  hours: 80
+  tasks:
+    - kind: course
+      course: 2cvmid11b
+    - kind: course
+      course: 1cvmid22c
 - name: Mario VonRickenbach
   role: Lecturer
   hours: 80
