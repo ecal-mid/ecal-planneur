@@ -2,9 +2,7 @@
 
 from flask import Blueprint, render_template, jsonify
 
-from .models import Planning
-
-planning = Planning('2016-2017')
+from .models import planning
 
 bp = Blueprint(
     'index', __name__,

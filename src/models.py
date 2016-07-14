@@ -181,3 +181,5 @@ class Activity(ndb.Model):
         result = self.to_dict()
         result['key'] = self.key.id()
         return result
+
+planning = Planning('2016-2017')

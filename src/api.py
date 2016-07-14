@@ -9,9 +9,7 @@ from flask import (
 
 from google.appengine.ext import ndb
 
-from .models import Planning, Activity
-
-planning = Planning('2016-2017')
+from .models import Planning, planning, Activity
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 
