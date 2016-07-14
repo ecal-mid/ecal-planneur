@@ -52,7 +52,7 @@ class Activity {
     }
   }
 
-  show() {
+  addView() {
     var query = 'td[data-date="'+ this.getDateLabel()+'"].' + (this.isPm?'pm':'am');
     var td = document.querySelector(query);
     var initials = this.staff.split(' ').map( (x) => x[0] ).join('');

@@ -1,9 +1,3 @@
-/*
-  activity detail on rollover
-  filter for : prof / section / course
-*/
-
-
 var infos_el = document.getElementById('info');
 var els = document.querySelectorAll("#content1 .staff .detail"); // staff
 for (var el of els) {
@@ -98,7 +92,7 @@ function onActivityClicked(ev) {
 
 // overwrite
 function showActivity(activity) {
-  var el = activity.show();
+  var el = activity.addView();
   el.addEventListener('click', this.onActivityClicked.bind(this), false);
   el.addEventListener('dragstart', onListItemDragStart, false);
   el.activity = activity;

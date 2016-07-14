@@ -15,7 +15,7 @@
 
 <body>
   <section id="app" class="app">
-    <nav id="menu" class="menu {% if detail is defined %}hidden{% endif %}">
+    <nav id="menu" class="menu {% if detail is defined %}folded{% endif %}">
         {% block menu %}
         {% endblock %}
     </nav>
@@ -30,7 +30,7 @@
         {% block main %}
         {% endblock %}
     </main>
-    <section id="info" class="info {% if detail is not defined %}hidden{% endif %}">
+    <section id="info" class="info {% if detail is not defined %}folded{% endif %}">
         {% block info %}
         {% endblock %}
     </section>

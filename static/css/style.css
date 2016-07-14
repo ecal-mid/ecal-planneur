@@ -40,6 +40,10 @@ button {
   font-style: normal;
 }
 
+.hidden {
+  display: none !important;
+}
+
 /* APP */
 
 section.app {
@@ -84,7 +88,7 @@ header.header h1 {
   min-width: 230px;
   transition: margin-left 0.25s ease;
 }
-.menu.hidden {
+.menu.folded {
   margin-left: -230px;
 }
 .menu section {
@@ -129,7 +133,7 @@ header.header h1 {
   cursor: default;
   padding-bottom: 0.4em;
 }
-.menu ul li.detail:hover {
+.menu ul li.detail .name:hover {
   background-color: #f9f9f9;
 }
 .menu ul.courses li {
@@ -170,14 +174,12 @@ li span.label {
   background-color: white !important;
 }
 
-/*ul.sections li span.color-1cv:before, span.label.color-1cv:before { display: block; width: 0.5em; height:0.5em; background-color: #f00; }*/
-
 .menu ul.staff {
   color: #bbb;
   overflow: hidden;
 }
 
-.menu ul.staff .detail {
+.menu ul.staff .detail .name {
   color: black;
 }
 
@@ -190,6 +192,9 @@ svg path {
   display: inline-block;
   font-size: 1em;
   padding: 0.1em 0.2em 0.08em;
+}
+.menu ul.staff .vis-icon:hover {
+  color: #777;
 }
 .menu ul.staff .vis-icon.on {
   color: black;
@@ -218,7 +223,7 @@ section.info button {
   font-weight: 200;
   transform: rotate(45deg);
 }
-section.info.hidden { margin-right: -300px; }
+section.info.folded { margin-right: -300px; }
 section.info h3 {
   padding: 0.5em;
   font-weight: 100;
