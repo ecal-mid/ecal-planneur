@@ -10,6 +10,8 @@ Staffs:
       course: 1cvmid11b
     - kind: course
       course: 1cvmid21b
+    - kind: eval
+    - kind: diplome_blanc
     - kind: theory1
       coef: 2.2
       hours: 40
@@ -21,8 +23,6 @@ Staffs:
     - kind: r&d
       hours: 560
       locked: 1
-    - kind: eval
-    - kind: diplome_blanc
 
 - name: Christophe Guignard
   role: Professor
@@ -32,7 +32,9 @@ Staffs:
       course: 3cvmid11
     - kind: course
       course: 3cvmid2
-    - kind: project_management
+    - kind: eval
+    - kind: diplome_blanc
+    - kind: gestion_projet
       coef: 2.2
       hours: 8
     - kind: pp
@@ -51,8 +53,6 @@ Staffs:
       coef: 2.2
       hours: 64
       locked: 1
-    - kind: eval
-    - kind: diplome_blanc
 
 - name: Alain Bellet
   role: Professor
