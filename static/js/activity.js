@@ -12,7 +12,8 @@ class Activities {
            result.push(new Activity(act))
          }
          callback(result);
-       });
+       })
+       .catch((e) => console.error(e));
   }
 }
 
@@ -45,7 +46,7 @@ class Activity {
     return {
       key: this.key,
       staff: this.staff,
-      task: this.task,
+      task: this.task.trim(),
       date: this.date.toUTCString(),
       is_pm: this.isPm ? 1 : 0
     }

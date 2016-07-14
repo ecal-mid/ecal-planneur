@@ -113,15 +113,15 @@
       {% if day['is_weekend'] %}
         <td class="weekend" colspan="2"></td>
       {% elif day['holiday'] %}
-        <td class="holiday" colspan="2">{{ day['holiday'] }}</td>
+        <td class="holiday" colspan="2"><span class="day-label">{{ day['holiday'] }}</span></td>
       {% elif day['workshop'] %}
-        <td class="workshop am" data-date="{{day['date']}}">{{ day['workshop'] }}</td>
+        <td class="workshop am" data-date="{{day['date']}}"><span class="day-label">{{ day['workshop'] }}</span></td>
         <td class="workshop pm" data-date="{{day['date']}}"></td>
       {% elif day['evals'] %}
-        <td class="evals am" data-date="{{day['date']}}">{{ day['evals'] }}</td>
+        <td class="evals am" data-date="{{day['date']}}"><span class="day-label">{{ day['evals'] }}</span></td>
         <td class="evals pm" data-date="{{day['date']}}"></td>
       {% elif day['nocourse'] %}
-        <td class="nocourse am" data-date="{{day['date']}}">{{ day['nocourse'] }}</td>
+        <td class="nocourse am" data-date="{{day['date']}}"><span class="day-label">{{ day['nocourse'] }}</span></td>
         <td class="nocourse pm" data-date="{{day['date']}}"></td>
       {% else %}
         <td class="am" data-date="{{day['date']}}"></td>
@@ -146,7 +146,7 @@
       <li class="title">Task <span>Hours</span></li>
       <% for(var task of tasks) { %>
       <li class="{%if admin%}draggable{%endif%}">
-        <span class="label" {% if admin %} draggable="true" {% endif %}><%= task.course || task.kind %></span>
+        <span class="label color-<%= (task.course || task.kind).substr(0,3) %>" {% if admin %} draggable="true" {% endif %}><%= task.course || task.kind %></span>
         <span><%= task.hours.toFixed(2) %></span>
       </li>
       <% } %>
@@ -163,7 +163,6 @@
       <li class="<% if (task.locked) { %>locked<% } else if (task.auto) { %>auto<% } else { %>{%if admin%}draggable{%endif%}<% }%>">
         <% if (task.locked) { %> <i class="md-icon">lock_outline</i> <% } %>
         <% if (task.auto) { %> <i class="md-icon">autorenew</i> <% } %>
-
         <span class="label color-<%= (task.course || task.kind).substr(0,3) %>" {% if admin %} draggable="true" {% endif %}><%= task.course || task.kind %></span>
         <span><%= task.percent.toFixed(2) %></span>
         <span><%= task.hours.toFixed(2) %></span>
