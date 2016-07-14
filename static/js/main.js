@@ -41,6 +41,7 @@ function updateStaffPanel(data){
   var output = ejs.render(staff_template, data);
   infos_el.innerHTML = output;
   registerCloseButton();
+  currName = data.name;
 }
 
 setupStaffControls();
