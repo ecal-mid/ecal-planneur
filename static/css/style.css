@@ -134,7 +134,7 @@ header.header h1 {
   padding: 0.25em;
 }
 .menu ul li.bw span {
-  border-left: 3px solid #fd0;
+  border-left: 3px solid cyan;
   margin-left: -3px;
   border-radius: 0;
 }
@@ -200,7 +200,6 @@ section.info button {
 section.info.hidden { margin-right: -330px; }
 section.info h3 {
   padding: 0.5em;
-  border-bottom: 1px solid #ddd;
   font-weight: 100;
   font-size: 150%;
   margin-bottom: 0.5em;
@@ -250,8 +249,8 @@ section.info span:not(.label){ float: right; width: 5em; text-align:right; }
 section.info ul li.total {
   font-weight: 800;
   margin-top: 1em;
-  border-top:1px solid #ddd;
-  padding-top:1em;
+  border-top:1px solid #f2f2f2;
+  padding-top:2em;
 }
 
 .drag {
@@ -307,6 +306,8 @@ main table td {
 
 main table td.am, main table td.pm {
   text-align: left;
+  overflow-wrap: break-word;
+  padding-left: 0.3em;
 }
 
 main table td.am {
@@ -326,7 +327,7 @@ main table td.workshop { background-color: white; border: none;}
 main table td.workshop.pm { border-right: 1px solid #ddd;}
 
 main table td.workshop.am {
-  border-left: 2px solid #fd0;
+  border-left: 2px solid cyan;
 }
 main table td.evals.am {
   border-left: 2px solid magenta;
@@ -340,17 +341,18 @@ main table td.nocourse.am, main table td.evals.am, main table td.workshop.am { w
 
 table td span {
   background-color: black;
-  padding: 0.3em 0.3em;
+  padding: 0.2em 0.2em 0;
   color: white;
-  width: 6px;
-  font-size: 8px;
+  font-size: 7px;
   border-radius: 2px;
   cursor: default;
+  margin-top: 2px;
   margin-right: 2px;
+  display: inline-block;
 }
 
 span.color-1cv { background-color: #f00; }
 span.color-2cv { background-color: #0d0; }
 span.color-3cv { background-color: #00f; }
-span.color-ass { background-color: cyan; }
+span.color-ass { background-color: #fd0; }
 span.color-eva { background-color: magenta; }
