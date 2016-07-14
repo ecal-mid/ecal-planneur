@@ -273,7 +273,6 @@ section.info span:not(.label){ float: right; width: 5em; text-align:right; }
 section.info ul li.total {
   font-weight: 800;
   margin-top: 1em;
-  border-top:1px solid #f2f2f2;
   padding-top:2em;
 }
 
