@@ -291,6 +291,11 @@ main table th.days {
   border-bottom: 1px solid #fff;
 }
 
+main table tr:nth-child(n+3):hover th{
+  background-color: #f7f7f7;
+   border-left: 1px solid #ddd;
+}
+
 main table tr.am-pm th:not(:first-child) {
   font-size: 0.5em;
   border-bottom: 1px solid #ddd;
