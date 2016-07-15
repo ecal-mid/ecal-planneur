@@ -169,6 +169,7 @@ h3.color-2cv:before, span.label.color-2cv:before { background-color: #0f0 !impor
 h3.color-3cv:before, span.label.color-3cv:before { background-color: #00f !important; }
 h3.color-eva:before, span.label.color-eva:before { background-color: magenta !important; }
 h3.color-ass:before, span.label.color-ass:before { background-color: #fd0 !important; }
+h3.color-res:before, span.label.color-res:before { background-color: #888 !important; }
 
 li span.label {
   background-color: white !important;
@@ -400,3 +401,4 @@ td span.color-2cv { background-color: #0d0 !important; }
 td span.color-3cv { background-color: #00f !important; }
 td span.color-ass { background-color: #fd0 !important; }
 td span.color-eva { background-color: magenta !important; }
+td span.color-res { background-color: #888 !important; }
