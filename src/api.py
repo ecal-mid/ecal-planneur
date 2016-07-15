@@ -25,7 +25,6 @@ def get_staff(name):
 @bp.route('/activity')
 def get_activities():
     activities = planning.get_activities()
-    # return results from cache
     result = [act.get_dict() for key, act in activities.iteritems()]
     return jsonify(result)
 
@@ -41,8 +40,9 @@ def add_activity():
     activity.is_pm = (int(request.form['is_pm']) == 1)
     activity.put()
     # update cache
-    aid = activity.key.id()
-    planning.activities[aid] = activity
+    # aid = activity.key.id()
+    # planning.activities[aid] = activity
+    planning.add_activity(activity)
     # get updated staff
     staff = planning.get_staff_by_name(activity.staff)
     return jsonify({

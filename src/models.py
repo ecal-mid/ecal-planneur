@@ -48,6 +48,10 @@ class Planning(object):
             self.activities_cache_need_update = False
         return self.activities
 
+    def add_activity(self, activity):
+        aid = activity.key.id()
+        planning.activities[aid] = activity
+
     def update_activity_cache(self):
         self.activities = {}
         ancestor_key = ndb.Key("Planning", Planning.config.name)
