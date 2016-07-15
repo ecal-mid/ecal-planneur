@@ -13,6 +13,7 @@ handlers:
   script: src.main.app
 - url: /admin
   script: src.main.app
+  login: admin
 - url: /api/.*
   script: src.main.app
 - url: /static
