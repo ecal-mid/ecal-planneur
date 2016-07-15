@@ -116,7 +116,7 @@ Staffs:
       course: 3cvmid2
     - kind: entry_test
       hours: 24
-    - kind: resp m&id
+    - kind: resp mid
       hours: 374
     - kind: projects
       hours: 80
