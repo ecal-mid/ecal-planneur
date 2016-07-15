@@ -9,6 +9,7 @@ def get_yaml(name, filename):
     yaml_path = 'config/'+name+'/'+filename+'.yaml'
     return yaml.load(open(yaml_path))
 
+
 class Config(object):
     def __init__(self, name):
         self.name = name
@@ -23,7 +24,8 @@ class Planning(object):
         self.sections = []
         self.courses = []
         self.staffs = []
-        self.activities = None
+        self.activities = {}
+        self.activities_cache_need_update = True
         self.parse_courses(get_yaml(self.name, 'courses'))
         self.parse_staff(get_yaml(self.name, 'staff'))
         self.calendar = Calendar(self.name, get_yaml(self.name, 'calendar'))
@@ -36,12 +38,37 @@ class Planning(object):
 
     def parse_staff(self, data):
         for s in data['Staffs']:
-            self.staffs.append(Staff(s))
+            activities = self.get_staff_activities(s['name'])
+            self.staffs.append(Staff(s, activities))
+
+    def get_activities(self):
+        # update cache if necessary
+        if self.activities_cache_need_update is True:
+            self.update_activity_cache()
+            self.activities_cache_need_update = False
+        return self.activities
+
+    def update_activity_cache(self):
+        self.activities = {}
+        ancestor_key = ndb.Key("Planning", Planning.config.name)
+        act = Activity.query(ancestor=ancestor_key).fetch()
+        for a in act:
+            self.activities[a.key.id()] = a
+
+    def get_staff_activities(self, staff_name):
+        # Activity.query(Activity.staff==self.name, ancestor=ancestor_key).fetch()
+        result = []
+        for key, act in self.get_activities().iteritems():
+            if act.staff == staff_name:
+                result.append(act)
+        return result
 
     def get_staff_by_name(self, name):
         s = filter(lambda x: x.name == name, self.staffs)
         if len(s):
-            s[0].update()
+            # retrieve all current recorded activities of that staff
+            activities = self.get_staff_activities(s[0].name)
+            s[0].update(activities)
             return s[0].get_json()
         return None
 
@@ -59,7 +86,7 @@ class Course(object):
         self.section = filter(lambda x: x.name == self.name[:6], sections)[0]
 
 class Staff(object):
-    def __init__(self, data):
+    def __init__(self, data, staff_activities):
         self.data = data
         self.name = data['name']
         self.role = data['role']
@@ -71,19 +98,16 @@ class Staff(object):
         if 'tasks' in self.data:
             for t in self.data['tasks']:
                 self.tasks.append(Task(t))
-        self.update()
+        self.update(staff_activities)
 
-    def update(self):
-        # retrieve all current recorded activities of that staff
-        ancestor_key = ndb.Key("Planning", Planning.config.name)
-        activities = Activity.query(Activity.staff==self.name, ancestor=ancestor_key).fetch()
+    def update(self, staff_activities):
         # update tasks with appropriate hours
         for t in self.tasks:
             if t.locked:
                 continue
             else:
                 t.hours = 0
-            for a in activities:
+            for a in staff_activities:
                 if a.task == t.get_key():
                     t.hours += 4
         # update auto tasks

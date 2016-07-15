@@ -13,17 +13,6 @@ from .models import Planning, planning, Activity
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 
-activities = {}
-activities_cache_need_update = True
-
-def update_activity_cache():
-    global activities
-    activities = {}
-    ancestor_key = ndb.Key("Planning", Planning.config.name)
-    act = Activity.query(ancestor=ancestor_key).fetch()
-    for a in act:
-        activities[a.key.id()] = a
-
 @bp.route('/')
 def hello():
     return 'API v1'
@@ -35,11 +24,7 @@ def get_staff(name):
 
 @bp.route('/activity')
 def get_activities():
-    # update cache if necessary
-    global activities_cache_need_update
-    if activities_cache_need_update is True:
-        update_activity_cache()
-        activities_cache_need_update = False
+    activities = planning.get_activities()
     # return results from cache
     result = [act.get_dict() for key, act in activities.iteritems()]
     return jsonify(result)
@@ -57,7 +42,7 @@ def add_activity():
     activity.put()
     # update cache
     aid = activity.key.id()
-    activities[aid] = activity
+    planning.activities[aid] = activity
     # get updated staff
     staff = planning.get_staff_by_name(activity.staff)
     return jsonify({
@@ -72,7 +57,7 @@ def delete_activity(id):
     staff_name = activity.staff
     activity.key.delete()
     # update cache
-    del activities[id]
+    del planning.activities[id]
     # get updated staff
     staff = planning.get_staff_by_name(staff_name)
     return jsonify(staff)
