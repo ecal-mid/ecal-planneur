@@ -394,6 +394,7 @@ table td span:not(.day-label) {
   margin-top: 2px;
   margin-right: 2px;
   display: inline-block;
+  transition: all 0.1s;
 }
 
 td span.color-1cv { background-color: #f00 !important; }
@@ -402,3 +403,6 @@ td span.color-3cv { background-color: #00f !important; }
 td span.color-ass { background-color: #fd0 !important; }
 td span.color-eva { background-color: magenta !important; }
 td span.color-res { background-color: #888 !important; }
+
+main td span.highlight { box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.5); }
+main td span.fade { opacity: 0.2; }

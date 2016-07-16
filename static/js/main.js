@@ -21,6 +21,20 @@ function setupStaffControls() {
   }
 }
 
+function setupStaffPanelRollover() {
+  var els = document.querySelectorAll("section.info ul li.draggable");
+  for (var i=0; i<els.length; i++) {
+    var el = els[i];
+    el.addEventListener('mouseover', function(ev) {
+      var task = ev.currentTarget.querySelector('.label').innerHTML;
+      highlightTaskActivity(task);
+    }, false);
+    el.addEventListener('mouseout', function(ev) {
+      resetActivityHightlight();
+    }, false);
+  }
+}
+
 function registerCloseButton() {
   var info_closebt_el = document.getElementById('close-infos');
   info_closebt_el.addEventListener('click', function(){
@@ -44,6 +58,7 @@ function updateStaffPanel(data){
   var output = ejs.render(staff_template, data);
   infos_el.innerHTML = output;
   registerCloseButton();
+  setupStaffPanelRollover();
   currName = data.name;
 }
 
@@ -94,6 +109,27 @@ function hideAllStaffVisibilityControls() {
 }
 setupStaffVisibilityControls();
 
+
+// activity highlight
+function highlightTaskActivity(task) {
+  var actEls = document.querySelectorAll("main span.activity");
+  for (var i=0; i<actEls.length; i++) {
+    var el = actEls[i];
+    if (el.activity.task == task) {
+      el.classList.add('highlight');
+    } else {
+      el.classList.add('fade');
+    }
+  }
+}
+function resetActivityHightlight() {
+  var actEls = document.querySelectorAll("main span.activity");
+  for (var i=0; i<actEls.length; i++) {
+    var el = actEls[i];
+    el.classList.remove('highlight');
+    el.classList.remove('fade');
+  }
+}
 // render activities
 
 if (!window.showActivity) {
