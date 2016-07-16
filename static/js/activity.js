@@ -55,7 +55,7 @@ class Activity {
   addView() {
     var query = 'td[data-date="'+ this.getDateLabel()+'"].' + (this.isPm?'pm':'am');
     var td = document.querySelector(query);
-    var initials = this.staff.split(' ').map( function(x) { x[0] } ).join('');
+    var initials = this.staff.split(' ').map(function(x) { return x[0]; }).join('');
     var color = 'color-' + this.task.substr(0,3);
 
     var el = document.createElement('span');
