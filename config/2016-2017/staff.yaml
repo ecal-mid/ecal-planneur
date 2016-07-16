@@ -156,6 +156,8 @@ Staffs:
   tasks:
     - kind: course
       course: 2cvmid22b
+    - kind: course
+      course: 3cvmid2
 - name: Andreas Gysin
   role: Lecturer
   hours: 80
