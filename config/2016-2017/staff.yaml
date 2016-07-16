@@ -166,10 +166,12 @@ Staffs:
       course: 1cvmid22c
 - name: Mario VonRickenbach
   role: Lecturer
-  hours: 80
+  hours: 96
   tasks:
     - kind: course
       course: 2cvmid12b
     - kind: course
       course: 1cvmid11c
+    - kind: course
+      course: 3cvmid2
     - kind: eval
