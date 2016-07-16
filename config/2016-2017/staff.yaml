@@ -150,6 +150,12 @@ Staffs:
 
 # Lecturers
 
+- name: Cedric Duchene
+  role: Lecturer
+  hours: 40
+  tasks:
+    - kind: course
+      course: 2cvmid22b
 - name: Andreas Gysin
   role: Lecturer
   hours: 80
