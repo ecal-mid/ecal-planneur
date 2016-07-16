@@ -1,3 +1,5 @@
+'use strict';
+
 var menu_bt_el = document.getElementById('toggle-menu');
 var menu_el = document.getElementById('menu');
 

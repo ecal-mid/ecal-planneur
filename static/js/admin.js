@@ -1,3 +1,5 @@
+'use strict';
+
 var infos_el = document.getElementById('info');
 var els = document.querySelectorAll("#content1 .staff .detail"); // staff
 for (var el of els) {
