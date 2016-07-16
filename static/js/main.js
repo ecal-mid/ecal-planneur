@@ -18,6 +18,13 @@ function setupStaffControls() {
   for (var i=0; i<els.length; i++) {
     var el = els[i];
     el.addEventListener('click', onListItemClicked, false);
+    el.addEventListener('mouseover', function(ev){
+      var name = ev.currentTarget.querySelector('span.name').innerHTML;
+      highlightStaffActivity(name);
+    }, false);
+    el.addEventListener('mouseout', function(ev){
+      resetActivityHightlight();
+    }, false);
   }
 }
 
@@ -116,6 +123,17 @@ function highlightTaskActivity(task) {
   for (var i=0; i<actEls.length; i++) {
     var el = actEls[i];
     if (el.activity.task == task) {
+      el.classList.add('highlight');
+    } else {
+      el.classList.add('fade');
+    }
+  }
+}
+function highlightStaffActivity(staff) {
+  var actEls = document.querySelectorAll("main span.activity");
+  for (var i=0; i<actEls.length; i++) {
+    var el = actEls[i];
+    if (el.activity.staff == staff) {
       el.classList.add('highlight');
     } else {
       el.classList.add('fade');
