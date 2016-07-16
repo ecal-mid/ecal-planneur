@@ -77,7 +77,7 @@ Staffs:
     - kind: course
       course: 1cvmid12b
     - kind: course
-      course: 2cvmid22a
+      course: 1cvmid22a
     - kind: eval
 
 - name: Gael Hugo
