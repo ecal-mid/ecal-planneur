@@ -32,9 +32,8 @@ Staffs:
       course: 3cvmid2
     - kind: eval
     - kind: diplome_blanc
-    - kind: gestion_projet
-      coef: 2.2
-      hours: 8
+    - kind: course
+      course: 3cvmid22
     - kind: pp
       coef: 2.2
       hours: 24
