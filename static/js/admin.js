@@ -7,7 +7,13 @@ for (var el of els) {
 }
 
 function onStaffClicked(ev) {
-  var name = ev.currentTarget.querySelector('span.name').innerHTML;
+  // isolate visibility of staff's activities
+  hideAllStaffVisibilityControls();
+  var icon = ev.currentTarget.querySelector('.vis-icon');
+  icon.classList.toggle('on');
+  updateActivityVisibility();
+  // show staff details
+  var name = ev.currentTarget.querySelector('.name').innerHTML;
   qwest.get('/api/staff/'+name)
      .then(function(xhr, response) {
         updateStaffPanel(response);

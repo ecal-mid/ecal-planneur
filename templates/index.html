@@ -32,7 +32,7 @@
   <ul class="staff">
   {% for staff in planning.staffs %}
     {% if staff.role == "Assistant" %}
-      {% if detail and detail.name == staff.name %}
+      {% if admin or (detail and detail.name == staff.name) %}
       <li  class="detail" ><i class="vis-icon md-icon on">
       {% elif detail is not defined %}
       <li><i class="vis-icon md-icon">
