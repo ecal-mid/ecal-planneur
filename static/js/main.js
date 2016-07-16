@@ -18,6 +18,14 @@ function setupStaffControls() {
   for (var i=0; i<els.length; i++) {
     var el = els[i];
     el.addEventListener('click', onListItemClicked, false);
+  }
+  setupStaffRollover();
+}
+
+function setupStaffRollover(){
+  var els = document.querySelectorAll("#content1 .staff li"); // staff
+  for (var i=0; i<els.length; i++) {
+    var el = els[i];
     el.addEventListener('mouseover', function(ev){
       var name = ev.currentTarget.querySelector('span.name').innerHTML;
       highlightStaffActivity(name);
