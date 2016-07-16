@@ -244,10 +244,8 @@ section.info ul {
   list-style: none;
 }
 section.info ul li {
-  padding: 0.2em;
+  padding: 0.5em 0.2em;
   cursor: default;
-  margin-bottom: 0.5em;
-  background-color: white;
 }
 section.info ul li.title {font-weight: 800; margin-bottom: 1em;}
 section.info ul li.draggable {
@@ -256,6 +254,7 @@ section.info ul li.draggable {
   cursor:-webkit-grab;
 }
 section.info ul li.draggable:hover  {
+  background-color: white;
   box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.1);
   border-radius: 2px;
 }
@@ -394,7 +393,7 @@ table td span:not(.day-label) {
   margin-top: 2px;
   margin-right: 2px;
   display: inline-block;
-  transition: opacity 0.1s; 
+  transition: opacity 0.1s;
 }
 
 td span.color-1cv { background-color: #f00 !important; }
