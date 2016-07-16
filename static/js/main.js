@@ -13,7 +13,8 @@ var currName = null;
 
 function setupStaffControls() {
   var els = document.querySelectorAll("#content1 .staff .detail"); // staff
-  for (var el of els) {
+  for (var i=0; i<els.length; i++) {
+    var el = els[i];
     el.addEventListener('click', onListItemClicked, false);
   }
 }
@@ -49,8 +50,9 @@ setupStaffControls();
 // setup activity visibility
 
 function setupStaffVisibilityControls() {
-  var staffVisIcons = document.querySelectorAll("#content1 .vis-icon");
-  for (var el of staffVisIcons) {
+  var els = document.querySelectorAll("#content1 .vis-icon");
+  for (var i=0; i<els.length; i++) {
+    var el = els[i];
     el.addEventListener('click', onStaffVisIconClicked, false);
   }
 }
@@ -62,17 +64,18 @@ function onStaffVisIconClicked(ev) {
 }
 function updateActivityVisibility() {
   // retrieve list of requested staff visibility
-  var staffVisIcons = document.querySelectorAll("#content1 .vis-icon");
+  var els = document.querySelectorAll("#content1 .vis-icon");
   var visibleStaff = [];
-  for (var i = 0; i < staffVisIcons.length; i++) {
-    if (staffVisIcons[i].classList.contains('on')) {
-      var staffName = staffVisIcons[i].nextSibling.innerHTML;
+  for (var i = 0; i < els.length; i++) {
+    if (els[i].classList.contains('on')) {
+      var staffName = els[i].nextSibling.innerHTML;
       visibleStaff.push(staffName);
     }
   }
   // loop through all the activities elements
   var actEls = document.querySelectorAll("main span.activity");
-  for (var el of actEls) {
+  for (var i=0; i<actEls.length; i++) {
+    var el = actEls[i];
     el.classList.remove('hidden');
     if (visibleStaff.indexOf(el.activity.staff) == -1) {
       el.classList.add('hidden');
@@ -92,6 +95,9 @@ if (!window.showActivity) {
 
 Activities.fetch(function(activities){
   // show all
-  for (var act of activities) { showActivity(act); }
+  for (var i=0; i<activities.length; i++) {
+    var act = activities[i];
+    showActivity(act);
+  }
   updateActivityVisibility();
 });
