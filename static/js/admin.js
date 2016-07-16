@@ -93,9 +93,9 @@ function onActivityClicked(ev) {
 }
 
 // overwrite
-function showActivity(activity) {
+window.showActivity = function(activity) {
   var el = activity.addView();
-  el.addEventListener('click', this.onActivityClicked.bind(this), false);
+  el.addEventListener('click', onActivityClicked.bind(this), false);
   el.addEventListener('dragstart', onListItemDragStart, false);
   el.activity = activity;
 }

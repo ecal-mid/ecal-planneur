@@ -89,7 +89,7 @@ setupStaffVisibilityControls();
 // render activities
 
 if (!window.showActivity) {
-  function showActivity(activity) {
+  window.showActivity = function(activity) {
     var el = activity.addView();
     el.activity = activity;
   }
@@ -99,7 +99,7 @@ Activities.fetch(function(activities){
   // show all
   for (var i=0; i<activities.length; i++) {
     var act = activities[i];
-    showActivity(act);
+    window.showActivity(act);
   }
   updateActivityVisibility();
 });
