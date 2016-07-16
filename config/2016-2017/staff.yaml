@@ -98,6 +98,7 @@ Staffs:
       course: 3cvmid2
     - kind: eval
     - kind: diplome_blanc
+    - kind: representation
 
 - name: Cyril Diagne
   role: Professor
