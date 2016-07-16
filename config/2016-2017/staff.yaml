@@ -177,3 +177,9 @@ Staffs:
     - kind: course
       course: 3cvmid2
     - kind: eval
+- name: Florian Pittet
+  role: Lecturer
+  hours: 40
+  tasks:
+    - kind: course
+      course: 1cvmid12c
