@@ -17,7 +17,7 @@
 
 <body>
   <section id="app" class="app">
-    <nav id="menu" class="menu {% if detail is defined %}folded{% endif %}">
+    <nav id="menu" class="menu {% if not admin %}folded{% endif %}">
         {% block menu %}
         {% endblock %}
     </nav>
