@@ -13,7 +13,7 @@ class Activities {
          }
          callback(result);
        })
-       .catch((e) => console.error(e));
+       .catch(function(e){ console.error(e) });
   }
 }
 
@@ -33,13 +33,13 @@ class Activity {
   put(callback) {
     qwest.post('/api/activity', this.json())
        .then(callback)
-       .catch((e) => console.error(e));
+       .catch(function(e){ console.error(e) });
   }
 
-  delete(callback) {
+  remove(callback) {
     qwest.get('/api/activity/delete/'+ this.key)
        .then(callback)
-       .catch((e) => console.error(e));
+       .catch(function(e){ console.error(e) });
   }
 
   json(){
@@ -55,7 +55,7 @@ class Activity {
   addView() {
     var query = 'td[data-date="'+ this.getDateLabel()+'"].' + (this.isPm?'pm':'am');
     var td = document.querySelector(query);
-    var initials = this.staff.split(' ').map( (x) => x[0] ).join('');
+    var initials = this.staff.split(' ').map( function(x) { x[0] } ).join('');
     var color = 'color-' + this.task.substr(0,3);
 
     var el = document.createElement('span');
