@@ -186,3 +186,9 @@ Staffs:
   tasks:
     - kind: course
       course: 1cvmid12c
+- name: Jussi Angesleva
+  role: Lecturer
+  hours: 24
+  tasks:
+    - kind: course
+      course: 3cvmid11
