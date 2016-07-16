@@ -40,7 +40,7 @@ function onDragLeave(ev) {
 
 function moveActivity(activity, el, date, isPm) {
   // remove previous one
-  activity.delete((xhr, response) => {
+  activity.remove((xhr, response) => {
     el.remove();
     // add new one
     addActivity({
@@ -83,7 +83,7 @@ function onDrop(ev) {
 function onActivityClicked(ev) {
   var el = ev.currentTarget;
   var activity = el.activity;
-  activity.delete((xhr, result) => {
+  activity.remove((xhr, result) => {
     el.remove()
     updateStaffPanel(result);
     registerDragStart();
