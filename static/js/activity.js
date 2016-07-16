@@ -57,6 +57,7 @@ class Activity {
     var td = document.querySelector(query);
     var initials = this.staff.split(' ').map(function(x) { return x[0]; }).join('');
     if (this.staff == "Angelo Benedetto") initials = "AN"; // hack to distinguish Angelo from Alain
+    if (this.staff == "Cedric Duchene") initials = "CE"; // hack to distinguish Cedric from Cyril
     var color = 'color-' + this.task.substr(0,3);
 
     var el = document.createElement('span');
