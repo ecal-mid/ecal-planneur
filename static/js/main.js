@@ -166,6 +166,12 @@ if (!window.showActivity) {
 }
 
 Activities.fetch(function(activities){
+  // sort array by task name
+  activities.sort(function(a, b){
+    if(a.task < b.task) return -1;
+    if(a.task > b.task) return 1;
+    return 0;
+  });
   // show all
   for (var i=0; i<activities.length; i++) {
     var act = activities[i];
