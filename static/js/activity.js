@@ -56,6 +56,7 @@ class Activity {
     var query = 'td[data-date="'+ this.getDateLabel()+'"].' + (this.isPm?'pm':'am');
     var td = document.querySelector(query);
     var initials = this.staff.split(' ').map(function(x) { return x[0]; }).join('');
+    if (this.staff == "Angelo Benedetto") initials = "AN"; // hack to distinguish Angelo from Alain
     var color = 'color-' + this.task.substr(0,3);
 
     var el = document.createElement('span');
