@@ -37,7 +37,7 @@ function setupStaffRollover(){
 }
 
 function setupStaffPanelRollover() {
-  var els = document.querySelectorAll("section.info ul li.draggable");
+  var els = document.querySelectorAll("section.info ul li:not(.title):not(.total)");
   for (var i=0; i<els.length; i++) {
     var el = els[i];
     el.addEventListener('mouseover', function(ev) {
