@@ -95,7 +95,7 @@ header.header h1 {
   display: none;
   padding: 20px 1em;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .menu input {
   display: none;
