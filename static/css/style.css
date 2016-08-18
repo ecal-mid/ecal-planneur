@@ -388,7 +388,7 @@ table td span.day-label {
 
 table td span:not(.day-label) {
   background-color: black;
-  padding: 4%;
+  padding: 3%;
   color: white;
   font-size: 6px;
   border-radius: 2px;
