@@ -157,6 +157,9 @@ Staffs:
   percent: 60
   tasks:
   - kind: assist
+  - kind: san_francisco
+    hours: 220
+    locked: 1
 
 # Lecturers
 
