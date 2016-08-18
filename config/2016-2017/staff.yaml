@@ -36,7 +36,7 @@ Staffs:
       course: 3cvmid22
     - kind: pp
       coef: 2.2
-      hours: 24
+      hours: 15
       locked: 1
     - kind: theory1
       coef: 2.2
@@ -52,6 +52,12 @@ Staffs:
       locked: 1
     - kind: thesis_reading
       hours: 48
+      locked: 1
+    - kind: eval_thesis
+      hours: 4
+      locked: 1
+    - kind: eval_pp
+      hours: 16
       locked: 1
 
 - name: Alain Bellet
@@ -130,7 +136,7 @@ Staffs:
 
 - name: Tibor Udvari
   role: Assistant
-  percent: 40
+  percent: 50
   tasks:
   - kind: assist
 
@@ -148,7 +154,7 @@ Staffs:
 
 - name: Romain Cazier
   role: Assistant
-  percent: 30
+  percent: 60
   tasks:
   - kind: assist
 
