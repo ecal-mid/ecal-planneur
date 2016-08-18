@@ -50,11 +50,11 @@ section.app {
   display: flex;
   height: 100%;
   width: 100%;
-  padding-top: 55px;
+  padding-top: 45px;
 }
 /* HEADER */
 header.header {
-  height: 50px;
+  height: 45px;
   position: absolute;
   top: 0;
   left: 0;
