@@ -5,9 +5,12 @@ Staffs:
 - name: Patrick Keller
   role: Professor
   percent: 50
+  email: patrick.keller@ecal.ch
   tasks:
     - kind: course
       course: 1cvmid11b
+    - kind: course
+      course: 3cvmid2
     - kind: eval
     - kind: diplome_blanc
     - kind: theory1
@@ -25,6 +28,7 @@ Staffs:
 - name: Christophe Guignard
   role: Professor
   percent: 40
+  email: christophe.guignard@ecal.ch
   tasks:
     - kind: course
       course: 3cvmid11
@@ -54,8 +58,6 @@ Staffs:
       hours: 48
       locked: 1
     - kind: eval_thesis
-      hours: 4
-      locked: 1
     - kind: eval_pp
       hours: 16
       locked: 1
@@ -63,6 +65,7 @@ Staffs:
 - name: Alain Bellet
   role: Professor
   percent: 50
+  email: alain.bellet@ecal.ch
   tasks:
     - kind: course
       course: 2cvmid12a
@@ -76,10 +79,12 @@ Staffs:
       course: 3cvmid2
     - kind: eval
     - kind: diplome_blanc
+    - kind: when_objects_dream
 
 - name: Angelo Benedetto
   role: Professor
   percent: 16
+  email: angelo.benedetto@ecal.ch
   tasks:
     - kind: course
       course: 1cvmid12a
@@ -92,6 +97,7 @@ Staffs:
 - name: Gael Hugo
   role: Professor
   percent: 40
+  email: gael.hugo@ecal.ch
   tasks:
     - kind: course
       course: 1cvmid21a
@@ -112,6 +118,7 @@ Staffs:
 - name: Cyril Diagne
   role: Professor
   percent: 60
+  email: cyril.diagne@ecal.ch
   tasks:
     - kind: course
       course: 1cvmid11a
@@ -123,38 +130,56 @@ Staffs:
       course: 3cvmid11
     - kind: course
       course: 3cvmid2
+    - kind: course
+      course: 3cvtrans1
     - kind: entry_test
       hours: 24
     - kind: resp mid
       hours: 374
+    - kind: resp_mid_rdu
     - kind: projects
       hours: 80
     - kind: eval
     - kind: diplome_blanc
+    - kind: thesis_reading
+      hours: 16
+      locked: 1
+    - kind: eval_thesis
 
 # Assistants
 
 - name: Tibor Udvari
   role: Assistant
   percent: 50
+  email: tibor.udvari@ecal.ch
   tasks:
   - kind: assist
+  - kind: intro_course
+    coef: 2.2
 
 - name: Laura Perrenoud
   role: Assistant
   percent: 30
+  email: laura.perrenoud@ecal.ch
   tasks:
   - kind: assist
+  - kind: intro_course
+    coef: 2.2
 
 - name: Marc Dubois
   role: Assistant
   percent: 30
+  email: marc.dubois@ecal.ch
   tasks:
   - kind: assist
+  - kind: assist_web
+  - kind: assist_harry
+  - kind: assist_trans
 
 - name: Romain Cazier
   role: Assistant
   percent: 60
+  email: romain.cazier@ecal.ch
   tasks:
   - kind: assist
   - kind: san_francisco
@@ -166,22 +191,28 @@ Staffs:
 - name: Cedric Duchene
   role: Lecturer
   hours: 40
+  email: cedric.duchene@epfl.ch
   tasks:
     - kind: course
       course: 2cvmid22b
     - kind: course
       course: 3cvmid2
+    - kind: diplome_blanc
+
 - name: Andreas Gysin
   role: Lecturer
   hours: 80
+  email: andreas@ertdfgcvb.com
   tasks:
     - kind: course
       course: 2cvmid11b
     - kind: course
       course: 1cvmid22c
+
 - name: Mario VonRickenbach
   role: Lecturer
   hours: 136
+  email: mario@mariov.ch
   tasks:
     - kind: course
       course: 2cvmid12b
@@ -192,15 +223,19 @@ Staffs:
     - kind: course
       course: 3cvmid2
     - kind: eval
+
 - name: Florian Pittet
   role: Lecturer
   hours: 40
+  email: florian@sigma6.ch
   tasks:
     - kind: course
       course: 1cvmid12c
+
 - name: Jussi Angesleva
   role: Lecturer
   hours: 24
+  email: jussi.angesleva@iki.fi
   tasks:
     - kind: course
       course: 3cvmid11
