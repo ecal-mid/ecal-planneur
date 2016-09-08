@@ -111,7 +111,8 @@
     {% else %}
       {% set day = month['days'][d-1] %}
       {% if day['is_weekend'] %}
-        <td class="weekend" colspan="2"></td>
+        <td class="weekend am" data-date="{{day['date']}}"></td>
+        <td class="weekend pm" data-date="{{day['date']}}"></td>
       {% elif day['holiday'] %}
         <td class="holiday" colspan="2"><span class="day-label">{{ day['holiday'] }}</span></td>
       {% elif day['workshop'] %}
