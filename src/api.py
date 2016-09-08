@@ -10,6 +10,7 @@ from flask import (
 from google.appengine.ext import ndb
 
 from .models import Planning, planning, Activity
+from .changelist import Change, add_change, current_changes
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 
@@ -19,7 +20,7 @@ def hello():
 
 @bp.route('/staff/<string:name>')
 def get_staff(name):
-    staff = planning.get_staff_by_name(name)
+    staff = planning.get_staff_by_name(name).get_json()
     return jsonify(staff)
 
 @bp.route('/activity')
@@ -43,8 +44,11 @@ def add_activity():
     # aid = activity.key.id()
     # planning.activities[aid] = activity
     planning.add_activity(activity)
+    # add to changelist
+    change = Change(activity, 'added')
+    add_change(change)
     # get updated staff
-    staff = planning.get_staff_by_name(activity.staff)
+    staff = planning.get_staff_by_name(activity.staff).get_json()
     return jsonify({
         'staff': staff,
         'activity': activity.get_dict()
@@ -58,6 +62,9 @@ def delete_activity(id):
     activity.key.delete()
     # update cache
     del planning.activities[id]
+    # add to changelist
+    change = Change(activity, 'removed')
+    add_change(change)
     # get updated staff
-    staff = planning.get_staff_by_name(staff_name)
+    staff = planning.get_staff_by_name(staff_name).get_json()
     return jsonify(staff)

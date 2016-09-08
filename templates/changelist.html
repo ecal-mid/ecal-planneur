@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family:'Roboto', 'Helvetica', sans-serif;">
+
+{% if changelist|length == 0 %}
+
+<p>No pending change</p>
+
+{% else %}
+
+{% for change in changelist %}
+<div>
+
+<p>{{ change.staff_name }} :</p>
+
+<ul>
+{% for c in change.changes %}
+  <li style="color:{% if c.kind == 'added' %} green {% else %} red {% endif %};">
+  A <b>{{ c.activity.task }}</b> session has been {{ c.kind }}
+  on <b>{% if c.activity.is_pm %} morning {% else %} afternoon {% endif %} of
+  {{ c.activity.date }}</b>
+  </li>
+{% endfor %}
+</ul>
+
+<p>
+  <a href="/report_staff_changelist/{{change.staff_name}}">send</a> -
+  <a href="/silence_staff_changelist/{{change.staff_name}}">ignore</a>
+</p>
+
+<hr>
+
+{% endfor %}
+
+{% endif %}
+</body>

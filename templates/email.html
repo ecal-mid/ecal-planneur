@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family:'Roboto', 'Helvetica', sans-serif;">
+<p>Hi {{ name }},</p>
+
+<p>Your planning with ECAL M&amp;ID Bachelor has been updated.</p>
+
+<ul>
+{% for change in changelist %}
+  <li style="color:{% if change.kind == 'added' %} green {% else %} red {% endif %};">
+  A <b>{{ change.activity.task }}</b> session has been {{ change.kind }}
+  on <b>{% if change.activity.is_pm %} morning {% else %} afternoon {% endif %} of
+  {{ change.activity.date }}</b>
+  </li>
+{% endfor %}
+</ul>
+
+Your full schedule is available <a href="{{url}}">here</a>.
+
+<p>Best,</p>
+
+<p>
+  <b>Bachelor Media &amp; Interaction Design</b><br>
+</p>
+<p style="color:grey;">ECAL Ecole cantonale d’art de Lausanne<br>
+  5, avenue du Temple,<br>
+  CH-1020 Renens<br>
+  www.ecal.ch<br>
+</p>
+
+<div style="width: 92px; height: 28px; background-color: rgb(255, 255,255); margin: -1px; background-image: url(data:image/png;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QNxaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6MDQ4MDExNzQwNzIwNjgxMTgyMkFFMUJGQzIwMzAwNDkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjFFNzhDOEIyMzg4MTFFM0E0ODBCREU2NkJEMzc0Q0IiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjFFNzhDOEEyMzg4MTFFM0E0ODBCREU2NkJEMzc0Q0IiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjA1ODAxMTc0MDcyMDY4MTE4MjJBRTFCRkMyMDMwMDQ5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjA0ODAxMTc0MDcyMDY4MTE4MjJBRTFCRkMyMDMwMDQ5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwv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);"></div>
+
+</body>

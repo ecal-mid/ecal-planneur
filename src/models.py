@@ -73,7 +73,7 @@ class Planning(object):
             # retrieve all current recorded activities of that staff
             activities = self.get_staff_activities(s[0].name)
             s[0].update(activities)
-            return s[0].get_json()
+            return s[0]
         return None
 
 class Section(object):
@@ -94,6 +94,7 @@ class Staff(object):
         self.data = data
         self.name = data['name']
         self.role = data['role']
+        self.email = data['email']
         if self.role == 'Lecturer':
             self.hours = data['hours']
         else:

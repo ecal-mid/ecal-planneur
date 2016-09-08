@@ -11,6 +11,14 @@ handlers:
   script: src.main.app
 - url: /report/.*
   script: src.main.app
+- url: /changelist
+  script: src.main.app
+- url: /changelist/.*
+  script: src.main.app
+- url: /report_staff_changelist/.*
+  script: src.main.app
+- url: /silence_staff_changelist/.*
+  script: src.main.app
 - url: /admin
   script: src.main.app
   login: admin
