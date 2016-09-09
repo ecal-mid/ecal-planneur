@@ -359,6 +359,11 @@ main table td.evals.pm { border-right: 1px solid #ddd;}
 main table td.workshop { background-color: white; border: none;}
 main table td.workshop.pm { border-right: 1px solid #ddd;}
 
+main table td.na {
+  background-image: linear-gradient( to right top, transparent 33%, grey 33%, grey 66%, transparent 66% );
+  background-size: 3px 3px;
+}
+
 main table td.workshop.am {
   border-left: 2px solid cyan;
 }
