@@ -364,6 +364,18 @@ main table td.na {
   background-size: 3px 3px;
 }
 
+main table td.past {
+  opacity: 0.3;
+}
+main table td.am.past {
+  border-left: none;
+}
+main table td.weekend.past { border: 1px solid #e7e7e7;}
+
+main table td.today {
+  background-color: yellow !important;
+}
+
 main table td.workshop.am {
   border-left: 2px solid cyan;
 }

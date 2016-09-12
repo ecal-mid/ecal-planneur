@@ -107,26 +107,31 @@
     <th class="days"> {{ d }}</th>
   {% for month in planning.calendar.months %}
     {% if d > month['num_days'] %}
-      <td class="none" colspan="2"></td>
+      <td class="{{day['tags']}} none" colspan="2"></td>
     {% else %}
       {% set day = month['days'][d-1] %}
-      {% if day['is_weekend'] %}
-        <td class="weekend am" data-date="{{day['date']}}"></td>
-        <td class="weekend pm" data-date="{{day['date']}}"></td>
-      {% elif day['holiday'] %}
-        <td class="holiday" colspan="2"><span class="day-label">{{ day['holiday'] }}</span></td>
+      {% if day['holiday'] %}
+        <td class="{{day['tags']}} holiday" colspan="2">
+          <span class="day-label">{{ day['holiday'] }}</span>
+        </td>
       {% elif day['workshop'] %}
-        <td class="workshop am" data-date="{{day['date']}}"><span class="day-label">{{ day['workshop'] }}</span></td>
-        <td class="workshop pm" data-date="{{day['date']}}"></td>
+        <td class="{{day['tags']}} workshop am" data-date="{{day['date']}}">
+          <span class="day-label">{{ day['workshop'] }}</span>
+        </td>
+        <td class="{{day['tags']}} workshop pm" data-date="{{day['date']}}"></td>
       {% elif day['evals'] %}
-        <td class="evals am" data-date="{{day['date']}}"><span class="day-label">{{ day['evals'] }}</span></td>
-        <td class="evals pm" data-date="{{day['date']}}"></td>
+        <td class="{{day['tags']}} evals am" data-date="{{day['date']}}">
+          <span class="day-label">{{ day['evals'] }}</span>
+        </td>
+        <td class="{{day['tags']}} evals pm" data-date="{{day['date']}}"></td>
       {% elif day['nocourse'] %}
-        <td class="nocourse am" data-date="{{day['date']}}"><span class="day-label">{{ day['nocourse'] }}</span></td>
-        <td class="nocourse pm" data-date="{{day['date']}}"></td>
+        <td class="{{day['tags']}} nocourse am" data-date="{{day['date']}}">
+          <span class="day-label">{{ day['nocourse'] }}</span>
+        </td>
+        <td class="{{day['tags']}} nocourse pm" data-date="{{day['date']}}"></td>
       {% else %}
-        <td class="am" data-date="{{day['date']}}"></td>
-        <td class="pm" data-date="{{day['date']}}"></td>
+        <td class="{{day['tags']}} am" data-date="{{day['date']}}"></td>
+        <td class="{{day['tags']}} pm" data-date="{{day['date']}}"></td>
       {% endif %}
     {% endif %}
   {% endfor %}

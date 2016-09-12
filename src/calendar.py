@@ -1,12 +1,13 @@
 """ Models """
 
+from datetime import datetime
+
 class Calendar(object):
     def __init__(self, name, data):
         self.name = name;
         self.start = data['start']
         self.months = []
         i = 0
-
         # first fill
         for m in data['months']:
             month = {
@@ -16,10 +17,29 @@ class Calendar(object):
             }
             for d in range(1, m['days']+1):
                 year = '201'+('6' if len(self.months) < 5 else '7')
+                date_str = str(d) + '-' + m['label'] + '-' + year
+                date_val = datetime.strptime(date_str, '%d-%B-%Y')
                 day = {
-                    'date' : str(d) + '-' + m['label'] + '-' + year,
-                    'is_weekend': i%7 > 4
+                    'date': date_str,
+                    'date_value': date_val,
+                    'tags': [] # used as class in template
                 }
+
+                # add tags :
+                # check if day is weekend
+                if i%7 > 4:
+                    day['tags'].append('weekend')
+                # check if day is today or past
+                now = datetime.now()
+                now_str = datetime.strftime(now, '%d-%B-%Y')
+                if now_str == date_str:
+                    day['tags'].append('today')
+                elif now > date_val:
+                    day['tags'].append('past')
+
+                # format tag string
+                day['tags'] = ' '.join(day['tags'])
+                # append day to month
                 month['days'].append(day)
                 i += 1
             self.months.append(month)
