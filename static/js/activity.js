@@ -55,6 +55,10 @@ class Activity {
   addView() {
     var query = 'td[data-date="'+ this.getDateLabel()+'"].' + (this.isPm?'pm':'am');
     var td = document.querySelector(query);
+    if (!td) {
+      throw 'could not find cell for activity: ' + query;
+      return null;
+    }
     var initials = this.staff.split(' ').map(function(x) { return x[0]; }).join('');
     if (this.staff == "Angelo Benedetto") initials = "AN"; // hack to distinguish Angelo from Alain
     if (this.staff == "Cedric Duchene") initials = "CE"; // hack to distinguish Cedric from Cyril
