@@ -1,0 +1,4 @@
+cron:
+- description: re-generates the calendar on the backend every day at midnight
+  url: /refresh
+  schedule: every day 00:00

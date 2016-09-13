@@ -5,7 +5,7 @@ from itsdangerous import URLSafeSerializer
 
 from google.appengine.api import mail
 
-from .models import planning
+from .models import planning, refresh_planning
 from .changelist import current_changes, get_changes_per_staff, remove_staff_changes
 
 bp = Blueprint(
@@ -73,6 +73,12 @@ def silence_staff_changelist(staff):
 def admin():
     """Return the admin page."""
     return render_template('index.html', planning=planning, admin=True)
+
+@bp.route('/refresh')
+def refresh():
+    """Force refresh of calendar. Used to refresh relative dates"""
+    refresh_planning()
+    return 'OK'
 
 @bp.errorhandler(404)
 def page_not_found(e):

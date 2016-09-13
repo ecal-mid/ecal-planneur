@@ -16,6 +16,9 @@ handlers:
 - url: /changelist/.*
   script: src.main.app
   login: admin
+- url: /refresh
+  script: src.main.app
+  login: admin
 - url: /report_staff_changelist/.*
   script: src.main.app
   login: admin

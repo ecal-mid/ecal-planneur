@@ -211,4 +211,8 @@ class Activity(ndb.Model):
         result['key'] = self.key.id()
         return result
 
+def refresh_planning():
+    global planning
+    planning = Planning('2016-2017')
+
 planning = Planning('2016-2017')
