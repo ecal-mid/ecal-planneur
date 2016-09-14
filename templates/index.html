@@ -12,7 +12,7 @@
 <label for="tab3">Events</label>
 
 <section id="content1">
-  <h3>Professors</h3>
+  <i class="vis-icon md-icon on">visibility</i><h3>Professors</h3>
   <ul class="staff">
   {% for staff in planning.staffs %}
     {% if staff.role == "Professor" %}
@@ -28,7 +28,7 @@
   {% endfor %}
   </ul>
 
-  <h3>Assistants</h3>
+  <i class="vis-icon md-icon on">visibility</i><h3>Assistants</h3>
   <ul class="staff">
   {% for staff in planning.staffs %}
     {% if staff.role == "Assistant" %}
@@ -44,7 +44,7 @@
   {% endfor %}
   </ul>
 
-  <h3>Lecturers</h3>
+  <i class="vis-icon md-icon on">visibility</i><h3>Lecturers</h3>
   <ul class="staff">
   {% for staff in planning.staffs %}
     {% if staff.role == "Lecturer" %}
@@ -183,8 +183,10 @@
   <% } %>
   </section>
 </script>
+<!-- third parties -->
 <script src="{{ url_for('static', filename='libs/ejs.min.js') }}"></script>
 <script src="{{ url_for('static', filename='libs/qwest.min.js') }}"></script>
+<!-- scripts -->
 <script src="{{ url_for('static', filename='js/activity.js') }}"></script>
 {% if admin %}
 <script src="{{ url_for('static', filename='js/admin.js') }}"></script>

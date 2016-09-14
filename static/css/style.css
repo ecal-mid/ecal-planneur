@@ -3,7 +3,6 @@ this file is incredibly ugly and messy
 proceed with caution
 */
 
-
 :focus {
   outline-color: transparent;
   outline-style: none;
@@ -188,21 +187,25 @@ svg path {
   fill: red;
 }
 
-.menu ul.staff .vis-icon {
+/* visibility icon */
+.menu .vis-icon {
   position: absolute;
   display: inline-block;
   font-size: 1em;
   padding: 0.1em 0.2em 0.08em;
+  cursor: default;
+  color: #aaa;
 }
-.menu ul.staff .vis-icon:hover {
-  color: #777;
-}
-.menu ul.staff .vis-icon.on {
-  color: black;
-}
+.menu .vis-icon:hover { color: #aaa; }
+.menu .vis-icon.on { color: black; }
+
 .menu ul.staff .name {
   display: inline-block;
   width: 100%;
+  margin-left: 2em;
+}
+
+#content1 h3 {
   margin-left: 2em;
 }
 

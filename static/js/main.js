@@ -91,7 +91,23 @@ function setupStaffVisibilityControls() {
 function onStaffVisIconClicked(ev) {
   ev.stopPropagation();
   var icon = ev.currentTarget;
+  var parentType = icon.parentNode.tagName.toLowerCase();
   icon.classList.toggle('on');
+  // if parent is not li, it's a group visibility
+  // so we apply the same visibility to the whole group
+  if (parentType != 'li') {
+    // bit ugly access to next available UL (h3,text,ul)
+    var nextUlEl = icon.nextSibling.nextSibling.nextSibling;
+    var els = nextUlEl.querySelectorAll(".vis-icon");
+    var add = icon.classList.contains('on');
+    for (var i=0; i<els.length; i++) {
+      if (add) {
+        els[i].classList.add('on');
+      } else {
+        els[i].classList.remove('on');
+      }
+    }
+  }
   updateActivityVisibility();
 }
 function updateActivityVisibility() {
