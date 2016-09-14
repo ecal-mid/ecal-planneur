@@ -30,11 +30,6 @@ def refresh():
     refresh_planning()
     return 'OK'
 
-@bp.errorhandler(404)
-def page_not_found(e):
-    """Return a custom 404 error."""
-    return 'Sorry, nothing at this URL.', 404
-
 @bp.route('/report/<string:token>')
 def report_staff(token):
     """Return the homepage with access to a staff's details."""
@@ -51,3 +46,8 @@ def report_staff(token):
                                 detail=staff,
                                 detail_json=staff.get_json())
     return 'staff not found'
+
+@bp.errorhandler(404)
+def page_not_found(e):
+    """Return a custom 404 error."""
+    return 'Sorry, nothing at this URL.', 404
