@@ -114,6 +114,7 @@ function updateActivityVisibility() {
     }
   }
 }
+
 function hideAllStaffVisibilityControls() {
   var els = document.querySelectorAll("#content1 .vis-icon");
   for (var i=0; i<els.length; i++) {

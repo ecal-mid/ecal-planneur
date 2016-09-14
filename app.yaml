@@ -7,29 +7,29 @@ threadsafe: yes
 handlers:
 - url: /
   script: src.main.app
-- url: /detail/.*
-  script: src.main.app
+# report allow staff to view their planning
 - url: /report/.*
   script: src.main.app
-- url: /changelist
+# API exposes data to frontends
+- url: /api.*
   script: src.main.app
-- url: /changelist/.*
+# Changelist blueprint that deals with pending and recent changes
+- url: /changelist.*
   script: src.main.app
   login: admin
+# Caldav blueprint handles iCal Synchronization
+- url: /caldav/.*
+  script: src.main.app
+  login: admin
+# Refresh regenerates the calendar, used by cron job
 - url: /refresh
   script: src.main.app
   login: admin
-- url: /report_staff_changelist/.*
-  script: src.main.app
-  login: admin
-- url: /silence_staff_changelist/.*
-  script: src.main.app
-  login: admin
+# admin frontend
 - url: /admin
   script: src.main.app
   login: admin
-- url: /api/.*
-  script: src.main.app
+# static files
 - url: /static
   static_dir: static
 - url: /favicon\.ico
