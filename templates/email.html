@@ -9,7 +9,7 @@
 {% for change in changelist %}
   <li style="color:{% if change.kind == 'added' %} green {% else %} red {% endif %};">
   A <b>{{ change.activity.task }}</b> session has been {{ change.kind }}
-  on <b>{% if change.activity.is_pm %} morning {% else %} afternoon {% endif %} of
+  on <b>{% if change.activity.is_pm %} afternoon {% else %} morning {% endif %} of
   {{ change.activity.date }}</b>
   </li>
 {% endfor %}
