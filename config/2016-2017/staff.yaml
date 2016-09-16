@@ -38,6 +38,8 @@ Staffs:
     - kind: diplome_blanc
     - kind: course
       course: 3cvmid22
+    - kind: 3cvmid_thesis
+      coef: 2.2
     - kind: pp
       coef: 2.2
       hours: 15
@@ -49,10 +51,6 @@ Staffs:
     - kind: theory2
       coef: 2.2
       hours: 36
-      locked: 1
-    - kind: thesis
-      coef: 2.2
-      hours: 64
       locked: 1
     - kind: thesis_reading
       hours: 48
