@@ -50,7 +50,7 @@ Staffs:
       locked: 1
     - kind: theory2
       coef: 2.2
-      hours: 36
+      hours: 40
       locked: 1
     - kind: thesis_reading
       hours: 48
@@ -77,7 +77,13 @@ Staffs:
       course: 3cvmid2
     - kind: eval
     - kind: diplome_blanc
-    - kind: when_objects_dream
+    - kind: thymio_vitra
+    - kind: offscreen
+      hours: 280
+      locked: 1
+    - kind: epflecallab
+      hours: 49
+      locked: 1
 
 - name: Angelo Benedetto
   role: Professor
@@ -197,6 +203,17 @@ Staffs:
       course: 3cvmid2
     - kind: diplome_blanc
 
+- name: David Roulin
+  role: Lecturer
+  hours: 40
+  email: david.roulin@epfl.ch
+  tasks:
+    - kind: tech_support
+      course: 2cvmid21b
+    - kind: course
+      course: 3cvmid2
+    - kind: diplome_blanc
+
 - name: Andreas Gysin
   role: Lecturer
   hours: 80
@@ -230,6 +247,14 @@ Staffs:
     - kind: course
       course: 1cvmid12c
 
+- name: Yann Riggenberg
+  role: Lecturer
+  hours: 12
+  email: yann@8ratio.ch
+  tasks:
+    - kind: course
+      course: 2cvmidxx
+
 - name: Jussi Angesleva
   role: Lecturer
   hours: 24
@@ -237,3 +262,19 @@ Staffs:
   tasks:
     - kind: course
       course: 3cvmid11
+
+- name: Niklas Roy
+  role: Lecturer
+  hours: 40
+  email: nikl@s-roy.de
+  tasks:
+    - kind: course
+      course: 3cvmid-ws1
+
+- name: Chris Sugrue
+  role: Lecturer
+  hours: 40
+  email: csugrue@gmail.com
+  tasks:
+    - kind: course
+      course: 2cvmid21b
