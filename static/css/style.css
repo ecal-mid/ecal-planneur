@@ -215,7 +215,7 @@ section.info {
   height: 100%;
   background-color: white;
   flex: initial;
-  width: 300px;
+  width: 310px;
   transition: margin-right 0.25s ease;
   position: relative;
 }
