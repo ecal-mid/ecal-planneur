@@ -18,7 +18,7 @@ handlers:
   script: src.main.app
   login: admin
 # Caldav blueprint handles iCal Synchronization
-- url: /caldav/.*
+- url: /calsync.*
   script: src.main.app
   login: admin
 # Refresh regenerates the calendar, used by cron job
@@ -37,3 +37,7 @@ handlers:
   upload: static/res/favicon\.ico
 
 libraries:
+- name: lxml
+  version: latest
+- name: ssl
+  version: latest
