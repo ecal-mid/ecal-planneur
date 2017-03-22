@@ -6,14 +6,14 @@ class Activities {
 
   static fetch(callback) {
     qwest.get('/api/activity')
-       .then(function(xhr, data) {
-         var result = []
-         for (var act of data) {
-           result.push(new Activity(act))
-         }
-         callback(result);
-       })
-       .catch(function(e){ console.error(e) });
+        .then(function(xhr, data) {
+          var result = [];
+          for (var act of data) {
+            result.push(new Activity(act))
+          }
+          callback(result);
+        })
+        .catch(function(e) { console.error(e) });
   }
 }
 
@@ -32,38 +32,39 @@ class Activity {
   }
 
   put(callback) {
-    qwest.post('/api/activity', this.json())
-       .then(callback)
-       .catch(function(e){ console.error(e) });
+    qwest.post('/api/activity', this.json()).then(callback).catch(function(e) {
+      console.error(e)
+    });
   }
 
   remove(callback) {
-    qwest.get('/api/activity/delete/'+ this.key)
-       .then(callback)
-       .catch(function(e){ console.error(e) });
+    qwest.get('/api/activity/delete/' + this.key)
+        .then(callback)
+        .catch(function(e) { console.error(e) });
   }
 
-  json(){
+  json() {
     return {
-      key: this.key,
-      staff: this.staff,
-      task: this.task.trim(),
-      date: this.date.toUTCString(),
-      is_pm: this.isPm ? 1 : 0
+      key: this.key, staff: this.staff, task: this.task.trim(),
+          date: this.date.toUTCString(), is_pm: this.isPm ? 1 : 0
     }
   }
 
   addView() {
-    var query = 'td[data-date="'+ this.getDateLabel()+'"].' + (this.isPm?'pm':'am');
+    var query = 'td[data-date="' + this.getDateLabel() + '"].' +
+                (this.isPm ? 'pm' : 'am');
     var td = document.querySelector(query);
     if (!td) {
       throw 'could not find cell for activity: ' + query;
       return null;
     }
-    var initials = this.staff.split(' ').map(function(x) { return x[0]; }).join('');
-    if (this.staff == "Angelo Benedetto") initials = "AN"; // hack to distinguish Angelo from Alain
-    if (this.staff == "Cedric Duchene") initials = "CE"; // hack to distinguish Cedric from Cyril
-    var color = 'color-' + this.task.substr(0,3);
+    var initials =
+        this.staff.split(' ').map(function(x) { return x[0]; }).join('');
+    if (this.staff == "Angelo Benedetto")
+      initials = "AN"; // hack to distinguish Angelo from Alain
+    if (this.staff == "Cedric Duchene")
+      initials = "CE"; // hack to distinguish Cedric from Cyril
+    var color = 'color-' + this.task.substr(0, 3);
 
     var el = document.createElement('span');
     el.setAttribute('draggable', true);
@@ -79,8 +80,10 @@ class Activity {
   getDateLabel() {
     var day = this.date.getDate();
     var month = this.date.getMonth();
-    month = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
-    'August', 'September', 'October', 'November', 'December'][month];
+    month = [
+      'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+      'September', 'October', 'November', 'December'
+    ][month];
     var year = this.date.getFullYear();
     return day + '-' + month + '-' + year;
   }
