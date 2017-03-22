@@ -10,6 +10,9 @@ handlers:
 # report allow staff to view their planning
 - url: /report/.*
   script: src.main.app
+- url: /report-list
+  script: src.main.app
+  login: admin
 # API exposes data to frontends
 - url: /api.*
   script: src.main.app

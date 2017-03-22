@@ -11,24 +11,35 @@ bp = Blueprint(
     template_folder='../templates')
 
 # setup serializer that can decrypt staff's tokens
-secret = open('config/'+planning.config.name+'/secret.yaml')
+secret = open('config/' + planning.config.name + '/secret.yaml')
 serializer = URLSafeSerializer(secret.read())
+
 
 @bp.route('/')
 def index():
     """Return the homepage."""
     return render_template('index.html', planning=planning)
 
+
 @bp.route('/admin')
 def admin():
     """Return the admin page."""
     return render_template('index.html', planning=planning, admin=True)
+
+
+@bp.route('/report-list')
+def report_list():
+    """Return the report tokens list."""
+    data = [{x.name: serializer.dumps(x.name)} for x in planning.staffs]
+    return jsonify(data)
+
 
 @bp.route('/refresh')
 def refresh():
     """Force refresh of calendar. Used to update current day in cron job."""
     refresh_planning()
     return 'OK'
+
 
 @bp.route('/report/<string:token>')
 def report_staff(token):
@@ -42,10 +53,11 @@ def report_staff(token):
     if name in [x.name for x in planning.staffs]:
         staff = planning.get_staff_by_name(name)
         return render_template('index.html',
-                                planning=planning,
-                                detail=staff,
-                                detail_json=staff.get_json())
+                               planning=planning,
+                               detail=staff,
+                               detail_json=staff.get_json())
     return 'staff not found'
+
 
 @bp.errorhandler(404)
 def page_not_found(e):
