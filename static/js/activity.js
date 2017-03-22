@@ -26,7 +26,8 @@ class Activity {
     this.staff = data.staff;
     this.task = data.task;
     this.date = new Date(data.date);
-    this.date.setTime(this.date.getTime() - this.date.getTimezoneOffset()*60*1000 );
+    this.date.setTime(this.date.getTime() +
+                      this.date.getTimezoneOffset() * 60 * 1000);
     this.isPm = data.is_pm;
   }
 
