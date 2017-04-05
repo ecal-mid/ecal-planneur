@@ -1,6 +1,6 @@
 """ API """
 
-from datetime import datetime
+import dateutil.parser as dt
 
 from flask import (
     Blueprint,
@@ -14,14 +14,17 @@ from .changelist import Change, add_change, current_changes
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 
+
 @bp.route('/')
 def hello():
     return 'API v1'
+
 
 @bp.route('/staff/<string:name>')
 def get_staff(name):
     staff = planning.get_staff_by_name(name).get_json()
     return jsonify(staff)
+
 
 @bp.route('/activity')
 def get_activities():
@@ -29,15 +32,15 @@ def get_activities():
     result = [act.get_dict() for key, act in activities.iteritems()]
     return jsonify(result)
 
+
 @bp.route('/activity', methods=['POST'])
 def add_activity():
-    date_format = "%a, %d %b %Y %H:%M:%S %Z"
     # todo: add activity
-    ancestor_key = parent=ndb.Key("Planning", Planning.config.name)
+    ancestor_key = parent = ndb.Key("Planning", Planning.config.name)
     activity = Activity(parent=ancestor_key)
     activity.staff = request.form['staff']
     activity.task = request.form['task']
-    activity.date = datetime.strptime(request.form['date'], date_format)
+    activity.date = dt.parse(request.form['date'])
     activity.is_pm = (int(request.form['is_pm']) == 1)
     activity.put()
     # update cache
@@ -53,6 +56,7 @@ def add_activity():
         'staff': staff,
         'activity': activity.get_dict()
     })
+
 
 @bp.route('/activity/delete/<int:id>')
 def delete_activity(id):

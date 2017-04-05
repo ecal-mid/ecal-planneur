@@ -13,7 +13,10 @@ class Activities {
           }
           callback(result);
         })
-        .catch(function(e) { console.error(e) });
+        .catch(function(e) {
+          console.error(e);
+          callback(null);
+        });
   }
 }
 
@@ -25,9 +28,12 @@ class Activity {
     this.key = data.key;
     this.staff = data.staff;
     this.task = data.task;
-    this.date = new Date(data.date);
-    this.date.setTime(this.date.getTime() +
-                      this.date.getTimezoneOffset() * 60 * 1000);
+    // discard timezone
+    let dateStr = data.date.toString();
+    if (dateStr.indexOf("GMT") != -1) {
+      dateStr = dateStr.substr(0, dateStr.indexOf("GMT"));
+    }
+    this.date = new Date(dateStr);
     this.isPm = data.is_pm;
   }
 
@@ -44,9 +50,11 @@ class Activity {
   }
 
   json() {
+    let absDate =
+        this.date.toString().substr(0, this.date.toString().indexOf("GMT"));
     return {
-      key: this.key, staff: this.staff, task: this.task.trim(),
-          date: this.date.toUTCString(), is_pm: this.isPm ? 1 : 0
+      key: this.key, staff: this.staff, task: this.task.trim(), date: absDate,
+          is_pm: this.isPm ? 1 : 0
     }
   }
 
