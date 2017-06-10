@@ -11,4 +11,4 @@ It features:
 - Administration mode
 - And much more :)
 
-Questions: cyril.diagne@ecal.ch
+Questions: cyril.diagne@ecal.ch or github.com/kikko
