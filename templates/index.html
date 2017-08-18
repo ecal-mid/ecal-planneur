@@ -89,7 +89,7 @@
 
 {% block main %}
 <table cellspacing="0" cellpadding="0">
-  <tr>
+  <tr class="months">
     <th></th>
     {% for month in planning.calendar.months %}
     <th colspan="2">{{ month.label[:3] }}</th>
@@ -107,13 +107,15 @@
     <th class="days"> {{ d }}</th>
   {% for month in planning.calendar.months %}
     {% if d > month['num_days'] %}
-      <td class="{{day['tags']}} none" colspan="2"></td>
+      <td class="{{day['tags']}} none am"></td>
+      <td class="{{day['tags']}} none pm"></td>
     {% else %}
       {% set day = month['days'][d-1] %}
       {% if day['holiday'] %}
-        <td class="{{day['tags']}} holiday" colspan="2">
+        <td class="{{day['tags']}} holiday am" data-date="{{day['date']}}">
           <span class="day-label">{{ day['holiday'] }}</span>
         </td>
+        <td class="{{day['tags']}} holiday pm"  data-date="{{day['date']}}"></td>
       {% elif day['workshop'] %}
         <td class="{{day['tags']}} workshop am" data-date="{{day['date']}}">
           <span class="day-label">{{ day['workshop'] }}</span>
@@ -169,7 +171,7 @@
       <li class="<% if (task.locked) { %>locked<% } else if (task.auto) { %>auto<% } else { %>{%if admin%}draggable{%endif%}<% }%>">
         <% if (task.locked) { %> <i class="md-icon">lock_outline</i> <% } %>
         <% if (task.auto) { %> <i class="md-icon">autorenew</i> <% } %>
-        <span class="label color-<%= (task.course || task.kind).substr(0,3) %>" {% if admin %} draggable="true" {% endif %}><%= task.course || task.kind %></span>
+        <span class="label color-<%= (task.course || task.kind).substr(0,3) %>" {% if admin %} draggable="true" {% endif %}><%= task.course || task.kind  %></span>
         <span><%= task.percent.toFixed(2) %></span>
         <span><%= task.hours.toFixed(2) %></span>
       </li>

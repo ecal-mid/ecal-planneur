@@ -53,7 +53,8 @@ section.app {
 }
 /* HEADER */
 header.header {
-  height: 45px;
+  display: flex;
+  height: 38px;
   position: absolute;
   top: 0;
   left: 0;
@@ -73,10 +74,30 @@ header.header .logo {
   margin-left: 1.5em;
 }
 header.header h1 {
-  position: absolute;
-  top: 0.4em;
-  right: 1em;
+  /*position: absolute;*/
+  margin-right: 1em;
   font-size: 1.6em;
+  display: flex;
+  align-items: center;
+}
+
+header menu.year-view {
+  margin-left: auto;
+  margin-right: 5em;
+  font-size: 0.4em;
+  display: flex;
+  align-items: center;
+}
+
+header menu.year-view button {
+  padding: 0.3em 0.5em;
+  border-radius: 5em;
+  transition: border 0.2s;
+  border: 1px solid white;
+}
+
+header menu.year-view button.radio-selected {
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 /* LEFT MENU */
@@ -84,11 +105,11 @@ header.header h1 {
 .menu {
   height: 100%;
   flex: initial;
-  min-width: 230px;
+  min-width: 210px;
   transition: margin-left 0.25s ease;
 }
 .menu.folded {
-  margin-left: -230px;
+  margin-left: -210px;
 }
 .menu section {
   display: none;
@@ -172,6 +193,11 @@ h3.color-res:before, span.label.color-res:before { background-color: #888 !impor
 
 li span.label {
   background-color: white !important;
+}
+li:not(.locked):not(.auto) span.label.color-n_a::before {
+  content: "✕";
+  background-color: white;
+  color: red;
 }
 
 .menu ul.staff {
@@ -351,6 +377,7 @@ main table td.am {
 }
 
 main table td.none    { background-color: #ccc;  border-bottom: none; border-top: none;}
+main table td.none.am { border-right: 1px solid #ccc; border-left: none; }
 main table td.weekend { background-color: #ddd; border: 1px solid #ccc;}
 main table td.holiday { background-color: #ddd;  border: none; border-right: 1px solid #ccc; white-space: normal;}
 main table td.nocourse { background-color: #eee; border: none;}
@@ -361,6 +388,7 @@ main table td.evals.pm { border-right: 1px solid #ddd;}
 
 main table td.workshop { background-color: white; border: none;}
 main table td.workshop.pm { border-right: 1px solid #ddd;}
+main table td.holiday.am { border-right: 1px solid #ddd;}
 
 main table td.na {
   background-image: linear-gradient( to right top, transparent 33%, grey 33%, grey 66%, transparent 66% );
@@ -425,8 +453,34 @@ td span.color-3cv { background-color: #00f !important; }
 td span.color-eva { background-color: magenta !important; }
 td span.color-res { background-color: #888 !important; }
 td span.color-ass { background-color: #fff !important;
-    color: black !important;
-    box-shadow:0px 0px 0px 1px rgba(0,0,0,0.25) inset;
-    }
+  color: black !important;
+  box-shadow:0px 0px 0px 1px rgba(0,0,0,0.25) inset;
+}
+table td span.color-n_a {
+  display: none;
+  padding: 0;
+  font-size: 10px;
+  background: none;
+  width: 100%;
+  text-align: center;
+  margin-left: -1px;
+}
+table td span.color-n_a::after {
+  content: "✕";
+  color: red;
+  line-height: 2px;
+}
+.staff-detail table td span.color-n_a {
+  display: inline-block;
+}
+
 main td span.highlight {  }
 main td span.fade { opacity: 0.2; }
+
+.hide-s2 td:nth-child(n+14) { display: none; }
+.hide-s2 tr.am-pm th:nth-child(n+14) { display: none; }
+.hide-s2 tr.months th:nth-child(n+8) { display: none; }
+
+.hide-s1 td:nth-child(n+2):nth-child(-n+11) { display: none; }
+.hide-s1 tr.am-pm th:nth-child(n+2):nth-child(-n+11) { display: none; }
+.hide-s1 tr.months th:nth-child(n+2):nth-child(-n+6) { display: none; }*/

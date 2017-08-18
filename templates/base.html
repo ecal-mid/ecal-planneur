@@ -17,7 +17,7 @@
       rel="stylesheet"> -->
 </head>
 
-<body>
+<body class="{% if detail is defined %}staff-detail{% endif %}">
   <section id="app" class="app">
     <nav id="menu" class="menu {% if not admin %}folded{% endif %}">
         {% block menu %}
@@ -27,6 +27,11 @@
         {% block header %}
         <button id="toggle-menu">☰</button>
         <img class="logo" src="{{ url_for('static', filename='res/logo.svg') }}">
+        <menu class="year-view">
+          <button class="radio-selected">YEAR</button>
+          <button class="year-view-s1">S1</button>
+          <button class="year-view-s2">S2</button>
+        </menu>
         <h1>{{ planning.name }}</h1>
         {% endblock %}
     </header>

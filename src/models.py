@@ -100,6 +100,9 @@ class Staff(object):
         else:
             self.percent = data['percent']
         self.tasks = []
+        # Add N/A task
+        self.tasks.append(Task({'kind': 'n_a', 'coef':0}))
+        # Add tasks listed in file
         if 'tasks' in self.data:
             for t in self.data['tasks']:
                 self.tasks.append(Task(t))

@@ -3,7 +3,7 @@
 var menu_bt_el = document.getElementById('toggle-menu');
 var menu_el = document.getElementById('menu');
 
-menu_bt_el.addEventListener('click', function(){
+menu_bt_el.addEventListener('click', function() {
   menu_el.classList.toggle('folded');
 }, false);
 
@@ -14,31 +14,32 @@ var staff_template = document.getElementById('staff-template').innerHTML;
 var currName = null;
 
 function setupStaffControls() {
-  var els = document.querySelectorAll("#content1 .staff .detail"); // staff
-  for (var i=0; i<els.length; i++) {
+  var els = document.querySelectorAll('#content1 .staff .detail');  // staff
+  for (var i = 0; i < els.length; i++) {
     var el = els[i];
     el.addEventListener('click', onListItemClicked, false);
   }
   setupStaffRollover();
 }
 
-function setupStaffRollover(){
-  var els = document.querySelectorAll("#content1 .staff li"); // staff
-  for (var i=0; i<els.length; i++) {
+function setupStaffRollover() {
+  var els = document.querySelectorAll('#content1 .staff li');  // staff
+  for (var i = 0; i < els.length; i++) {
     var el = els[i];
-    el.addEventListener('mouseover', function(ev){
+    el.addEventListener('mouseover', function(ev) {
       var name = ev.currentTarget.querySelector('span.name').innerHTML;
       highlightStaffActivity(name);
     }, false);
-    el.addEventListener('mouseout', function(ev){
+    el.addEventListener('mouseout', function(ev) {
       resetActivityHightlight();
     }, false);
   }
 }
 
 function setupStaffPanelRollover() {
-  var els = document.querySelectorAll("section.info ul li:not(.title):not(.total)");
-  for (var i=0; i<els.length; i++) {
+  var els =
+      document.querySelectorAll('section.info ul li:not(.title):not(.total)');
+  for (var i = 0; i < els.length; i++) {
     var el = els[i];
     el.addEventListener('mouseover', function(ev) {
       var task = ev.currentTarget.querySelector('.label').innerHTML;
@@ -52,9 +53,10 @@ function setupStaffPanelRollover() {
 
 function registerCloseButton() {
   var info_closebt_el = document.getElementById('close-infos');
-  info_closebt_el.addEventListener('click', function(){
+  info_closebt_el.addEventListener('click', function() {
     currName = null;
     infos_el.classList.add('folded');
+    updateNAvisibility();
   }, false);
 }
 
@@ -62,14 +64,22 @@ function onListItemClicked(ev) {
   var name = ev.currentTarget.querySelector('span.name').innerHTML;
   if (name == currName) {
     infos_el.classList.toggle('folded');
-  }
-  else {
+  } else {
     currName = name;
     infos_el.classList.remove('folded');
   }
+  updateNAvisibility();
 }
 
-function updateStaffPanel(data){
+function updateNAvisibility() {
+  if (infos_el.classList.contains('folded')) {
+    document.body.classList.remove('staff-detail');
+  } else {
+    document.body.classList.add('staff-detail');
+  }
+}
+
+function updateStaffPanel(data) {
   var output = ejs.render(staff_template, data);
   infos_el.innerHTML = output;
   registerCloseButton();
@@ -82,8 +92,8 @@ setupStaffControls();
 // setup activity visibility
 
 function setupStaffVisibilityControls() {
-  var els = document.querySelectorAll("#content1 .vis-icon");
-  for (var i=0; i<els.length; i++) {
+  var els = document.querySelectorAll('#content1 .vis-icon');
+  for (var i = 0; i < els.length; i++) {
     var el = els[i];
     el.addEventListener('click', onStaffVisIconClicked, false);
   }
@@ -98,9 +108,9 @@ function onStaffVisIconClicked(ev) {
   if (parentType != 'li') {
     // bit ugly access to next available UL (h3,text,ul)
     var nextUlEl = icon.nextSibling.nextSibling.nextSibling;
-    var els = nextUlEl.querySelectorAll(".vis-icon");
+    var els = nextUlEl.querySelectorAll('.vis-icon');
     var add = icon.classList.contains('on');
-    for (var i=0; i<els.length; i++) {
+    for (var i = 0; i < els.length; i++) {
       if (add) {
         els[i].classList.add('on');
       } else {
@@ -112,7 +122,7 @@ function onStaffVisIconClicked(ev) {
 }
 function updateActivityVisibility() {
   // retrieve list of requested staff visibility
-  var els = document.querySelectorAll("#content1 .vis-icon");
+  var els = document.querySelectorAll('#content1 .vis-icon');
   var visibleStaff = [];
   for (var i = 0; i < els.length; i++) {
     if (els[i].classList.contains('on')) {
@@ -121,8 +131,8 @@ function updateActivityVisibility() {
     }
   }
   // loop through all the activities elements
-  var actEls = document.querySelectorAll("main span.activity");
-  for (var i=0; i<actEls.length; i++) {
+  var actEls = document.querySelectorAll('main span.activity');
+  for (var i = 0; i < actEls.length; i++) {
     var el = actEls[i];
     el.classList.remove('hidden');
     if (visibleStaff.indexOf(el.activity.staff) == -1) {
@@ -132,8 +142,8 @@ function updateActivityVisibility() {
 }
 
 function hideAllStaffVisibilityControls() {
-  var els = document.querySelectorAll("#content1 .vis-icon");
-  for (var i=0; i<els.length; i++) {
+  var els = document.querySelectorAll('#content1 .vis-icon');
+  for (var i = 0; i < els.length; i++) {
     var el = els[i];
     el.classList.remove('on');
   }
@@ -144,8 +154,8 @@ setupStaffVisibilityControls();
 
 // activity highlight
 function highlightTaskActivity(task) {
-  var actEls = document.querySelectorAll("main span.activity");
-  for (var i=0; i<actEls.length; i++) {
+  var actEls = document.querySelectorAll('main span.activity');
+  for (var i = 0; i < actEls.length; i++) {
     var el = actEls[i];
     if (el.activity.task == task) {
       el.classList.add('highlight');
@@ -155,8 +165,8 @@ function highlightTaskActivity(task) {
   }
 }
 function highlightStaffActivity(staff) {
-  var actEls = document.querySelectorAll("main span.activity");
-  for (var i=0; i<actEls.length; i++) {
+  var actEls = document.querySelectorAll('main span.activity');
+  for (var i = 0; i < actEls.length; i++) {
     var el = actEls[i];
     if (el.activity.staff == staff) {
       el.classList.add('highlight');
@@ -166,8 +176,8 @@ function highlightStaffActivity(staff) {
   }
 }
 function resetActivityHightlight() {
-  var actEls = document.querySelectorAll("main span.activity");
-  for (var i=0; i<actEls.length; i++) {
+  var actEls = document.querySelectorAll('main span.activity');
+  for (var i = 0; i < actEls.length; i++) {
     var el = actEls[i];
     el.classList.remove('highlight');
     el.classList.remove('fade');
@@ -182,17 +192,36 @@ if (!window.showActivity) {
   }
 }
 
-Activities.fetch(function(activities){
+Activities.fetch(function(activities) {
   // sort array by task name
-  activities.sort(function(a, b){
-    if(a.task < b.task) return -1;
-    if(a.task > b.task) return 1;
+  activities.sort(function(a, b) {
+    if (a.task < b.task) return -1;
+    if (a.task > b.task) return 1;
     return 0;
   });
   // show all
-  for (var i=0; i<activities.length; i++) {
+  for (var i = 0; i < activities.length; i++) {
     var act = activities[i];
     window.showActivity(act);
   }
   updateActivityVisibility();
 });
+
+// Show / Hide semesters
+
+var yearView_bt_els = document.querySelectorAll('.year-view button');
+for (let bt of yearView_bt_els) {
+  bt.addEventListener('click', function(e) {
+    for (let bt of yearView_bt_els) {
+      bt.classList.remove('radio-selected');
+      document.body.classList.remove('hide-s1');
+      document.body.classList.remove('hide-s2');
+    }
+    if (e.currentTarget.classList.contains('year-view-s1')) {
+      document.body.classList.add('hide-s2');
+    } else if (e.currentTarget.classList.contains('year-view-s2')) {
+      document.body.classList.add('hide-s1');
+    }
+    e.currentTarget.classList.add('radio-selected');
+  }, false);
+}
