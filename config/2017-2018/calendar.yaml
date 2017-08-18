@@ -1,0 +1,147 @@
+start: 1 # 1st of August 2017 is a Tuesday
+
+days:
+  - Monday
+  - Tuesday
+  - Wednesday
+  - Thursday
+  - Friday
+  - Saturday
+  - Sunday
+
+months:
+  - label: August
+    days: 31
+  - label: September
+    days: 30
+  - label: October
+    days: 31
+  - label: November
+    days: 30
+  - label: December
+    days: 31
+  - label: January
+    days: 31
+  - label: February
+    days: 28
+  - label: March
+    days: 31
+  - label: April
+    days: 30
+  - label: May
+    days: 31
+  - label: June
+    days: 30
+  - label: July
+    days: 31
+
+special:
+  nocourse:
+    - label: prepare 17-18
+      start: 14/08
+      end: 18/08
+    - label: prepare 17-18
+      start: 21/08
+      end: 25/08
+    - label: prepare 17-18
+      start: 28/08
+      end: 01/09
+    - label: helper courses
+      start: 04/09
+      end: 08/09
+    - label: helper courses
+      start: 11/09
+      end: 15/09
+    - label: projects week
+      start: 12/02
+      end: 16/02
+    - label: remediations
+      start: 29/01
+      end: 2/02
+    - label: remediations
+      start: 5/02
+      end: 9/02
+    - label: remediations
+      start: 2/07
+      end: 6/07
+    - label: remediations
+      start: 9/07
+      end: 13/07
+    - label: documentation
+      start: 25/06
+      end: 29/06
+  holiday:
+    - label: summer
+      start: 01/08
+      end: 11/08
+    - label: jeune federal
+      start: 18/09
+      end: 18/09
+    - label: autumn break
+      start: 16/10
+      end: 20/10
+    - label: christmas
+      start: 25/12
+      end: 05/01
+    - label: winter break
+      start: 19/02
+      end: 23/02
+    - label: saint friday
+      start: 30/03
+      end: 30/03
+    - label: easter
+      start: 2/04
+      end: 6/04
+    - label: ascension
+      start: 10/05
+      end: 11/05
+    - label: pentecote
+      start: 21/05
+      end: 21/05
+    - label: summer
+      start: 16/07
+      end: 31/07
+  workshop:
+    - label: block week s1
+      start: 2/10
+      end: 6/10
+    - label: block week s1
+      start: 30/10
+      end: 3/11
+    - label: workshop s1
+      start: 13/11
+      end: 17/11
+    - label: block week s1
+      start: 4/12
+      end: 8/12
+    - label: block week s2
+      start: 12/03
+      end: 16/03
+    - label: block week s2
+      start: 9/04
+      end: 13/04
+    - label: workshop s2
+      start: 23/04
+      end: 27/04
+    - label: block week s2
+      start: 14/05
+      end: 18/05
+  evals:
+    - label: evals s1
+      start: 15/01
+      end: 19/01
+    - label: evals m&id
+      start: 22/01
+      end: 24/01
+    - label: evals s2
+      start: 11/06
+      end: 13/06
+    - label: evals m&id
+      start: 14/06
+      end: 15/06
+    - label: diplomes
+      start: 20/06
+      end: 21/06
+    - label: diplomes m&id
+      start: 22/06
+      end: 22/06

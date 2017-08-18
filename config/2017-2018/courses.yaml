@@ -1,0 +1,120 @@
+Sections:
+
+- name: '1cvmid'
+- name: '2cvmid'
+- name: '3cvmid'
+
+
+Courses:
+
+# 1st year
+
+- name: '1cvmid11a'
+  desc: 'Creative Coding'
+
+- name: '1cvmid11b'
+  desc: '3D Graphics'
+
+- name: '1cvmid11c'
+  desc: 'Beyond the Screen'
+  is_blockweek: 1
+
+- name: '1cvmid12a'
+  desc: 'Dynamic Display'
+
+- name: '1cvmid12b'
+  desc: 'Interaction Design'
+  is_blockweek: 1
+
+- name: '1cvmid12c'
+  desc: 'Atelier'
+  is_blockweek: 1
+
+# -
+
+- name: '1cvmid21a'
+  desc: 'Creative Coding'
+
+- name: '1cvmid21b'
+  desc: '3D Graphics'
+
+- name: '1cvmid21c'
+  desc: 'Beyond the Screen'
+  is_blockweek: 1
+
+- name: '1cvmid22a'
+  desc: 'Dynamic Display'
+
+- name: '1cvmid22b'
+  desc: 'Interaction Design'
+  is_blockweek: 1
+
+- name: '1cvmid22c'
+  desc: 'Atelier'
+  is_blockweek: 1
+
+# 2nd year
+
+- name: '2cvmid11a'
+  desc: 'Network Related Design'
+
+- name: '2cvmid11b'
+  desc: 'Interface Design / Usability'
+
+- name: '2cvmid12a'
+  desc: 'Interaction Design'
+
+- name: '2cvmid12b'
+  desc: 'Electronics'
+
+- name: '2cvmid11c'
+  desc: 'Atelier'
+  is_blockweek: 1
+
+- name: '2cvmid12c'
+  desc: 'Interaction Design'
+  is_blockweek: 1
+
+# -
+
+- name: '2cvmid21a'
+  desc: 'Network Related Design'
+
+- name: '2cvmid21b'
+  desc: 'Social Medias'
+
+- name: '2cvmid21c'
+  desc: 'Atelier'
+  is_blockweek: 1
+
+- name: '2cvmid22a'
+  desc: 'Interaction Design / Tangible'
+
+- name: '2cvmid22b'
+  desc: 'Electronics'
+
+- name: '2cvmid22c'
+  desc: 'Interaction Design'
+  is_blockweek: 1
+
+# 3rd year
+
+- name: '3cvmid11'
+  desc: 'Projet Libre'
+
+- name: '3cvmid11b'
+  desc: 'KIKK'
+
+- name: '3cvmid-epfl'
+  desc: 'EPFL tech courses'
+
+- name: '3cvmid12'
+  desc: 'Advanced Interaction'
+
+# -
+
+- name: '3cvmid2'
+  desc: 'Studio Diplome'
+
+- name: '3cvmid22'
+  desc: 'Project Management'

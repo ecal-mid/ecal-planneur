@@ -1,0 +1,284 @@
+Staffs:
+
+# Profs
+
+- name: Alain Bellet
+  role: Professor
+  percent: 50
+  email: alain.bellet@ecal.ch
+  tasks:
+    - kind: course
+      course: 2cvmid11b
+    - kind: course
+      course: 2cvmid22a
+    - kind: course
+      course: 3cvmid11
+    - kind: course
+      course: 3cvmid11b
+    - kind: course
+      course: 3cvmid2
+    - kind: eval
+    - kind: diplome_blanc
+    - kind: offscreen
+      hours: 280
+      locked: 1
+    - kind: epflecallab
+      hours: 49
+      locked: 1
+
+- name: Angelo Benedetto
+  role: Professor
+  percent: 16
+  email: angelo.benedetto@ecal.ch
+  tasks:
+    - kind: course
+      course: 1cvmid12a
+    - kind: course
+      course: 1cvmid12b
+    - kind: course
+      course: 1cvmid22a
+    - kind: eval
+
+- name: Cyril Diagne
+  role: Professor
+  percent: 60
+  email: cyril.diagne@ecal.ch
+  tasks:
+    - kind: course
+      course: 2cvmid12a
+    - kind: course
+      course: 3cvmid11
+    - kind: course
+      course: 3cvmid11b
+    - kind: course
+      course: 3cvmid2
+    - kind: course
+      course: 3cvtrans1
+    - kind: entry_test
+      hours: 24
+    - kind: resp mid
+      hours: 374
+    - kind: resp_mid_rdu
+    - kind: projects
+      hours: 80
+    - kind: eval
+    - kind: diplome_blanc
+    - kind: thesis_reading
+      hours: 16
+      locked: 1
+    - kind: eval_thesis
+
+- name: Christophe Guignard
+  role: Professor
+  percent: 40
+  email: christophe.guignard@ecal.ch
+  tasks:
+    - kind: course
+      course: 3cvmid11
+    - kind: course
+      course: 3cvmid2
+    - kind: eval
+    - kind: diplome_blanc
+    - kind: course
+      course: 3cvmid22
+    - kind: 3cvmid_thesis
+      coef: 2.2
+    - kind: pp
+      coef: 2.2
+      hours: 15
+      locked: 1
+    - kind: theory1
+      coef: 2.2
+      hours: 40
+      locked: 1
+    - kind: theory2
+      coef: 2.2
+      hours: 40
+      locked: 1
+    - kind: thesis_reading
+      hours: 48
+      locked: 1
+    - kind: eval_thesis
+    - kind: eval_pp
+      hours: 16
+      locked: 1
+
+- name: Gael Hugo
+  role: Professor
+  percent: 40
+  email: gael.hugo@ecal.ch
+  tasks:
+    - kind: course
+      course: 1cvmid11a
+    - kind: course
+      course: 1cvmid22c
+    - kind: course
+      course: 2cvmid11a
+    - kind: course
+      course: 2cvmid21a
+    - kind: course
+      course: 3cvmid12
+    - kind: course
+      course: 3cvmid2
+    - kind: eval
+    - kind: diplome_blanc
+
+- name: Patrick Keller
+  role: Professor
+  percent: 50
+  email: patrick.keller@ecal.ch
+  tasks:
+    - kind: course
+      course: 1cvmid11b
+    - kind: course
+      course: 3cvmid2
+    - kind: eval
+    - kind: diplome_blanc
+    - kind: theory1
+      coef: 2.2
+      hours: 40
+      locked: 1
+    - kind: theory2
+      coef: 2.2
+      hours: 40
+      locked: 1
+    - kind: r&d
+      hours: 560
+      locked: 1
+
+# Assistants
+
+- name: Pietro Alberti
+  role: Assistant
+  percent: 60
+  email: pietro.alberti@ecal.ch
+  tasks:
+  - kind: assist
+
+- name: Tibor Udvari
+  role: Assistant
+  percent: 50
+  email: tibor.udvari@ecal.ch
+  tasks:
+  - kind: assist
+  - kind: intro_course
+    coef: 2.2
+  - kind: resonate
+    hours: 16
+    locked: 1
+
+- name: Laura Perrenoud
+  role: Assistant
+  percent: 30
+  email: laura.perrenoud@ecal.ch
+  tasks:
+  - kind: assist
+  - kind: intro_course
+    coef: 2.2
+  - kind: resonate
+    hours: 16
+    locked: 1
+
+- name: Marc Dubois
+  role: Assistant
+  percent: 30
+  email: marc.dubois@ecal.ch
+  tasks:
+  - kind: assist
+
+# Lecturers
+
+- name: EPFL+ECAL Lab
+  role: Lecturer
+  hours: 0
+  email: marius.aeberli@epfl.ch
+  tasks:
+    - kind: course
+      course: 3cvmid-epfl
+
+- name: Cedric Duchene
+  role: Lecturer
+  hours: 40
+  email: cedric.duchene@epfl.ch
+  tasks:
+    - kind: course
+      course: 2cvmid12b
+    - kind: course
+      course: 2cvmid22b
+    - kind: course
+      course: 3cvmid2
+    - kind: diplome_blanc
+    - kind: eval
+
+- name: David Roulin
+  role: Lecturer
+  hours: 40
+  email: david.roulin@epfl.ch
+  tasks:
+    - kind: tech_support
+      course: 2cvmid21b
+    - kind: course
+      course: 3cvmid2
+    - kind: diplome_blanc
+
+- name: Mario VonRickenbach
+  role: Lecturer
+  hours: 0
+  email: mario.vonricke@ecal.ch
+  tasks:
+    - kind: course
+      course: 2cvmid12b
+    - kind: course
+      course: 1cvmid11c
+    - kind: course
+      course: 1cvmid21b
+    - kind: course
+      course: 3cvmid2
+    - kind: eval
+
+- name: Jürg Lehni
+  role: Lecturer
+  hours: 0
+  email: juerg@lehni.org
+  tasks:
+    - kind: course
+      course: 1cvmid12b
+    - kind: course
+      course: 1cvmid21a
+    - kind: course
+      course: 3cvmid2
+    - kind: eval
+
+- name: Andreas Gysin
+  role: Lecturer
+  hours: 80
+  email: andreas@ertdfgcvb.com
+  tasks:
+    - kind: course
+      course: 2cvmid11b
+    - kind: course
+      course: 1cvmid22c
+
+- name: Florian Pittet
+  role: Lecturer
+  hours: 40
+  email: florian@sigma6.ch
+  tasks:
+    - kind: course
+      course: 1cvmid12c
+
+- name: Yann Riggenberg
+  role: Lecturer
+  hours: 12
+  email: yann@8ratio.ch
+  tasks:
+    - kind: course
+      course: 2cvmidxx
+
+- name: Jussi Angesleva
+  role: Lecturer
+  hours: 24
+  email: jussi.angesleva@iki.fi
+  tasks:
+    - kind: course
+      course: 3cvmid11
