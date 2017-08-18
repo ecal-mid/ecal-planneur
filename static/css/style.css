@@ -470,9 +470,6 @@ table td span.color-n_a::after {
   color: red;
   line-height: 2px;
 }
-.staff-detail table td span.color-n_a {
-  display: inline-block;
-}
 
 main td span.highlight {  }
 main td span.fade { opacity: 0.2; }

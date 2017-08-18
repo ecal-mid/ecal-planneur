@@ -56,7 +56,8 @@ function registerCloseButton() {
   info_closebt_el.addEventListener('click', function() {
     currName = null;
     infos_el.classList.add('folded');
-    updateNAvisibility();
+    document.body.dataset['staffdetail'] = null;
+    updateActivityVisibility();
   }, false);
 }
 
@@ -68,14 +69,9 @@ function onListItemClicked(ev) {
     currName = name;
     infos_el.classList.remove('folded');
   }
-  updateNAvisibility();
-}
-
-function updateNAvisibility() {
   if (infos_el.classList.contains('folded')) {
-    document.body.classList.remove('staff-detail');
-  } else {
-    document.body.classList.add('staff-detail');
+    document.body.dataset['staffdetail'] = null;
+    updateActivityVisibility();
   }
 }
 
@@ -85,6 +81,7 @@ function updateStaffPanel(data) {
   registerCloseButton();
   setupStaffPanelRollover();
   currName = data.name;
+  document.body.dataset['staffdetail'] = data.name;
 }
 
 setupStaffControls();
@@ -137,6 +134,16 @@ function updateActivityVisibility() {
     el.classList.remove('hidden');
     if (visibleStaff.indexOf(el.activity.staff) == -1) {
       el.classList.add('hidden');
+    }
+    // also hide n_a activities of non-focused staff
+    if (el.activity.task != 'n_a') {
+      continue;
+    }
+    var currFocus = document.body.dataset['staffdetail'];
+    if (!currFocus || currFocus.indexOf(el.activity.staff) == -1) {
+      el.style.display = null;
+    } else {
+      el.style.display = 'inline-block';
     }
   }
 }

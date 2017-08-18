@@ -1,25 +1,29 @@
 'use strict';
 
 var infos_el = document.getElementById('info');
-var els = document.querySelectorAll("#content1 .staff .detail"); // staff
+var els = document.querySelectorAll('#content1 .staff .detail');  // staff
 for (var el of els) {
   el.addEventListener('click', onStaffClicked, false);
 }
 
 function onStaffClicked(ev) {
-  // isolate visibility of staff's activities
-  hideAllStaffVisibilityControls();
-  var icon = ev.currentTarget.querySelector('.vis-icon');
-  icon.classList.toggle('on');
-  updateActivityVisibility();
-  // show staff details
   var name = ev.currentTarget.querySelector('.name').innerHTML;
-  qwest.get('/api/staff/'+name)
-     .then(function(xhr, response) {
+  // do not reload activities when the staff panel is being closed.
+  if (name == currName && !infos_el.classList.contains('folded')) {
+    return;
+  }
+  // show staff details
+  qwest.get('/api/staff/' + name)
+      .then(function(xhr, response) {
         updateStaffPanel(response);
         registerDragStart();
-     })
-     .catch((e) => console.error(e));
+        // isolate visibility of staff's activities
+        // hideAllStaffVisibilityControls();
+        // var icon = ev.currentTarget.querySelector('.vis-icon');
+        // icon.classList.toggle('on');
+        updateActivityVisibility();
+      })
+      .catch((e) => console.error(e));
 }
 
 // add activity
@@ -27,7 +31,7 @@ function onStaffClicked(ev) {
 var dragItem;
 
 function registerDragStart() {
-  var els = document.querySelectorAll("section.info ul li.draggable");
+  var els = document.querySelectorAll('section.info ul li.draggable');
   for (var el of els) {
     el.addEventListener('dragstart', onListItemDragStart, false);
   }
@@ -51,9 +55,8 @@ function moveActivity(activity, el, date, isPm) {
   activity.remove((xhr, response) => {
     el.remove();
     // add new one
-    addActivity({
-      staff:activity.staff, task:activity.task, date:date, is_pm:isPm
-    });
+    addActivity(
+        {staff: activity.staff, task: activity.task, date: date, is_pm: isPm});
   });
 }
 
@@ -80,10 +83,9 @@ function onDrop(ev) {
 
   if (dragItem.classList.contains('activity')) {
     moveActivity(dragItem.activity, dragItem, date, isPm);
-  }
-  else {
+  } else {
     var task = dragItem.querySelector('.label').innerHTML;
-    addActivity({staff:currName, date:date, task:task, is_pm:isPm});
+    addActivity({staff: currName, date: date, task: task, is_pm: isPm});
   }
   dragItem = null;
 }
@@ -99,14 +101,15 @@ function onActivityClicked(ev) {
 }
 
 // overwrite
-window.showActivity = function(activity) {
+window.showActivity =
+    function(activity) {
   var el = activity.addView();
   el.addEventListener('click', onActivityClicked.bind(this), false);
   el.addEventListener('dragstart', onListItemDragStart, false);
   el.activity = activity;
 }
 
-var els = document.querySelectorAll("main td.am, main td.pm");
+var els = document.querySelectorAll('main td.am, main td.pm');
 for (var el of els) {
   el.addEventListener('dragover', onDragOver, false);
   el.addEventListener('dragenter', onDragOver, false);
