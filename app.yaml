@@ -18,10 +18,9 @@ handlers:
 - url: /changelist.*
   script: src.main.app
   login: admin
-# Caldav blueprint handles iCal Synchronization
-- url: /calsync.*
+# iCan export
+- url: /ical.*
   script: src.main.app
-  login: admin
 # Refresh regenerates the calendar, used by cron job
 - url: /refresh
   script: src.main.app
