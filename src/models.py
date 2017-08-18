@@ -63,7 +63,7 @@ class Planning(object):
         # Activity.query(Activity.staff==self.name, ancestor=ancestor_key).fetch()
         result = []
         for key, act in self.get_activities().iteritems():
-            if act.staff == staff_name:
+            if act.staff.lower() == staff_name.lower():
                 result.append(act)
         return result
 
