@@ -7,7 +7,8 @@ class Calendar(object):
         self.name = name;
         self.start = data['start']
         self.months = []
-        i = 0
+        i = self.start
+        years = name.split('-')
         # first fill
         for m in data['months']:
             month = {
@@ -16,7 +17,7 @@ class Calendar(object):
                 'num_days': m['days']
             }
             for d in range(1, m['days']+1):
-                year = '201'+('6' if len(self.months) < 5 else '7')
+                year = years[0 if len(self.months) < 5 else 1]
                 date_str = str(d) + '-' + m['label'] + '-' + year
                 date_val = datetime.strptime(date_str, '%d-%B-%Y')
                 day = {
