@@ -87,6 +87,9 @@ class Activity {
     el.classList.add('activity');
     el.classList.add('draggable');
     el.innerHTML = initials;
+    if (this.task == 'n_a') {
+      el.style.display = 'inline-block';
+    }
     td.appendChild(el);
 
     return el;
