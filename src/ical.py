@@ -55,7 +55,7 @@ def google():
             continue
         start = date(act.date.year, act.date.month, act.date.day)
         event = Event()
-        event.add('summary', 'Cyril @CI')
+        event.add('summary', 'OFF ECAL')
         event.add('dtstart', start)
         event.add('dtend', start)
         event.add('dtstamp', start)
