@@ -20,7 +20,7 @@ Staffs:
     - kind: eval
     - kind: diplome_blanc
     - kind: offscreen
-      hours: 280
+      hours: 150
       locked: 1
     - kind: epflecallab
       hours: 49
