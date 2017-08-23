@@ -163,9 +163,6 @@ Staffs:
   - kind: assist
   - kind: intro_course
     coef: 2.2
-  - kind: resonate
-    hours: 16
-    locked: 1
 
 - name: Laura Perrenoud
   role: Assistant
@@ -175,9 +172,6 @@ Staffs:
   - kind: assist
   - kind: intro_course
     coef: 2.2
-  - kind: resonate
-    hours: 16
-    locked: 1
 
 - name: Marc Dubois
   role: Assistant
