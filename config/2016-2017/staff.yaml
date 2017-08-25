@@ -53,7 +53,7 @@ Staffs:
       hours: 40
       locked: 1
     - kind: thesis_reading
-      hours: 48
+      hours: 64
       locked: 1
     - kind: eval_thesis
     - kind: eval_pp
