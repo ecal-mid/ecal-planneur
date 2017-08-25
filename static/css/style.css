@@ -341,6 +341,10 @@ main table th {
   font-weight: 400;
 }
 
+main table th:first-child {
+  width: 25px;
+}
+
 main table th.days {
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #fff;
