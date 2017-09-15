@@ -31,13 +31,13 @@ def staff(staff_name):
         if act.is_pm:
             start += timedelta(hours=13, minutes=30)
         else:
-            start += timedelta(hours=8, minutes=15)
+            start += timedelta(hours=8, minutes=0)
         name = 'OOO' if act.task == 'n_a' else act.task
         if force_label is not None:
             name = force_label
         event.add('summary', name)
         event.add('dtstart', start)
-        event.add('dtend', start + timedelta(hours=3, minutes=30))
+        event.add('dtend', start + timedelta(hours=4, minutes=0))
         event.add('dtstamp', start)
         cal.add_component(event)
     return cal.to_ical()
