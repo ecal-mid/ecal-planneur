@@ -81,6 +81,11 @@ header.header h1 {
   align-items: center;
 }
 
+header .filters {
+  display: flex;
+  margin-left: auto;
+}
+
 header menu.year-view {
   margin-left: auto;
   margin-right: 5em;
@@ -103,6 +108,7 @@ header menu.year-view button.radio-selected {
 
 header menu.promo-view {
   margin-left: auto;
+  margin-right: 5em;
   font-size: 0.4em;
   display: flex;
   align-items: center;
