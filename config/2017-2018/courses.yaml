@@ -99,14 +99,14 @@ Courses:
 
 # 3rd year
 
-- name: '3cvmid11'
+- name: '3cvmid11a'
   desc: 'Projet Libre'
 
 - name: '3cvmid11b'
   desc: 'KIKK'
 
 - name: '3cvmid-epfl'
-  desc: 'EPFL tech courses'
+  desc: 'KIKK'
 
 - name: '3cvmid12'
   desc: 'Advanced Interaction'

@@ -8,19 +8,20 @@ Staffs:
   email: alain.bellet@ecal.ch
   tasks:
     - kind: course
-      course: 2cvmid11b
+      course: 2cvmid12a
+    - kind: course
+      course: 2cvmid12c
     - kind: course
       course: 2cvmid22a
     - kind: course
       course: 3cvmid11
     - kind: course
-      course: 3cvmid11b
-    - kind: course
       course: 3cvmid2
     - kind: eval
     - kind: diplome_blanc
+    - kind: thymio_vitra
     - kind: offscreen
-      hours: 150
+      hours: 280
       locked: 1
     - kind: epflecallab
       hours: 49
@@ -45,11 +46,11 @@ Staffs:
   email: cyril.diagne@ecal.ch
   tasks:
     - kind: course
+      course: 1cvmid11a
+    - kind: course
       course: 2cvmid12a
     - kind: course
       course: 3cvmid11
-    - kind: course
-      course: 3cvmid11b
     - kind: course
       course: 3cvmid2
     - kind: course
@@ -83,21 +84,21 @@ Staffs:
       course: 3cvmid22
     - kind: 3cvmid_thesis
       coef: 2.2
+    - kind: 2cvmid_thesis
+      coef: 2.2
+    - kind: 1cvmid_theory1
+      coef: 2.2
     - kind: pp
       coef: 2.2
       hours: 15
       locked: 1
-    - kind: theory1
-      coef: 2.2
-      hours: 40
-      locked: 1
-    - kind: theory2
+    - kind: 1cvmid_theory2
       coef: 2.2
       hours: 40
       locked: 1
     - kind: thesis_reading
-      hours: 48
-      locked: 1
+      hours: 64
+      locked: 1e
     - kind: eval_thesis
     - kind: eval_pp
       hours: 16
@@ -122,6 +123,7 @@ Staffs:
       course: 3cvmid2
     - kind: eval
     - kind: diplome_blanc
+    - kind: representation
 
 - name: Patrick Keller
   role: Professor
@@ -163,6 +165,9 @@ Staffs:
   - kind: assist
   - kind: intro_course
     coef: 2.2
+  - kind: resonate
+    hours: 16
+    locked: 1
 
 - name: Laura Perrenoud
   role: Assistant
@@ -172,6 +177,9 @@ Staffs:
   - kind: assist
   - kind: intro_course
     coef: 2.2
+  - kind: resonate
+    hours: 16
+    locked: 1
 
 - name: Marc Dubois
   role: Assistant
@@ -179,6 +187,9 @@ Staffs:
   email: marc.dubois@ecal.ch
   tasks:
   - kind: assist
+  - kind: assist_web
+  - kind: assist_harry
+  - kind: assist_trans
 
 # Lecturers
 
@@ -196,13 +207,10 @@ Staffs:
   email: cedric.duchene@epfl.ch
   tasks:
     - kind: course
-      course: 2cvmid12b
-    - kind: course
       course: 2cvmid22b
     - kind: course
       course: 3cvmid2
     - kind: diplome_blanc
-    - kind: eval
 
 - name: David Roulin
   role: Lecturer
@@ -236,9 +244,11 @@ Staffs:
   email: juerg@lehni.org
   tasks:
     - kind: course
-      course: 1cvmid12b
+      course: 2cvmid12b
     - kind: course
-      course: 1cvmid21a
+      course: 1cvmid11c
+    - kind: course
+      course: 1cvmid21b
     - kind: course
       course: 3cvmid2
     - kind: eval
