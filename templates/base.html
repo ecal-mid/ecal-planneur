@@ -27,6 +27,11 @@
         {% block header %}
         <button id="toggle-menu">☰</button>
         <img class="logo" src="{{ url_for('static', filename='res/logo.svg') }}">
+        <menu class="promo-view">
+          <button class="toggle" data-promo="1">1</button>
+          <button class="toggle" data-promo="2">2</button>
+          <button class="toggle" data-promo="3">3</button>
+        </menu>
         <menu class="year-view">
           <button class="radio-selected">YEAR</button>
           <button class="year-view-s1">S1</button>

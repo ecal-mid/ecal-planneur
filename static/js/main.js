@@ -232,3 +232,13 @@ for (let bt of yearView_bt_els) {
     e.currentTarget.classList.add('radio-selected');
   }, false);
 }
+
+// Show / Hide promotions
+
+var promoView_bt_els = document.querySelectorAll('.promo-view button');
+for (let bt of promoView_bt_els) {
+  bt.addEventListener('click', function(e) {
+    let name = 'hide-' + e.currentTarget.dataset['promo'] + 'e';
+    document.body.classList.toggle(name);
+  }, false);
+}
