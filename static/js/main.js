@@ -238,7 +238,7 @@ for (let bt of yearView_bt_els) {
 var promoView_bt_els = document.querySelectorAll('.promo-view button');
 for (let bt of promoView_bt_els) {
   bt.addEventListener('click', function(e) {
-    let name = 'hide-' + e.currentTarget.dataset['promo'] + 'e';
+    let name = 'hide-' + e.currentTarget.dataset['promo'];
     document.body.classList.toggle(name);
   }, false);
 }

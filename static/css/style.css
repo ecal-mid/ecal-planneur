@@ -123,9 +123,10 @@ header menu.promo-view button {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-body:not(.hide-1e) header menu.promo-view .toggle[data-promo="1"] { background-color: #f00; color: white; border:none;}
-body:not(.hide-2e) header menu.promo-view .toggle[data-promo="2"] { background-color: #0f0; color: white; border:none;}
-body:not(.hide-3e) header menu.promo-view .toggle[data-promo="3"] { background-color: #00f; color: white; border:none;}
+body:not(.hide-1e) header menu.promo-view .toggle[data-promo="1e"] { background-color: #f00; color: white; border:none;}
+body:not(.hide-2e) header menu.promo-view .toggle[data-promo="2e"] { background-color: #0f0; color: white; border:none;}
+body:not(.hide-3e) header menu.promo-view .toggle[data-promo="3e"] { background-color: #00f; color: white; border:none;}
+body:not(.hide-m) header menu.promo-view .toggle[data-promo="m"] { background-color: #000; color: white; border:none;}
 
 /*
 header menu.promo-view button.radio-selected {
@@ -521,3 +522,5 @@ main td span.fade { opacity: 0.2; }
 .hide-1e td span.color-1cv { display: none; }
 .hide-2e td span.color-2cv { display: none; }
 .hide-3e td span.color-3cv { display: none; }
+.hide-m td span.activity:not(.color-1cv):not(.color-2cv):not(.color-3cv)
+ { display: none; }
