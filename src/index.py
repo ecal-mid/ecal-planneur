@@ -1,6 +1,6 @@
 """ Index """
 
-from flask import Blueprint, render_template, jsonify
+from flask import Blueprint, render_template, request, jsonify
 from itsdangerous import URLSafeSerializer
 
 from .models import planning, refresh_planning
@@ -18,13 +18,13 @@ serializer = URLSafeSerializer(secret.read())
 @bp.route('/')
 def index():
     """Return the homepage."""
-    return render_template('index.html', planning=planning)
+    return render_template('index.html', planning=planning, is_mobile=request.MOBILE)
 
 
 @bp.route('/admin')
 def admin():
     """Return the admin page."""
-    return render_template('index.html', planning=planning, admin=True)
+    return render_template('index.html', planning=planning, admin=True, is_mobile=request.MOBILE)
 
 
 @bp.route('/report-list')

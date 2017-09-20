@@ -274,7 +274,7 @@ section.info {
   height: 100%;
   background-color: white;
   flex: initial;
-  width: 310px;
+  width: 300px;
   transition: margin-right 0.25s ease;
   position: relative;
 }
@@ -367,7 +367,6 @@ main table {
   table-layout: fixed;
   border-collapse: collapse;
   border-bottom: 1px solid #ddd;
-  min-width: 480px;
 }
 
 main table th {
@@ -524,3 +523,29 @@ main td span.fade { opacity: 0.2; }
 .hide-3e td span.color-3cv { display: none; }
 .hide-m td span.activity:not(.color-1cv):not(.color-2cv):not(.color-3cv)
  { display: none; }
+
+
+@media (max-width:820px) {
+  header.header .logo,
+  header.header h1 {
+    display: none;
+  }
+
+  header.header .year-view {
+    margin-right: 1em;
+  }
+
+  header menu.promo-view button {
+    width: 2.5em;
+    height: 2.5em;
+  }
+
+  header menu.year-view button {
+    padding: 0.7em 0.7em;
+  }
+
+  main {
+    padding-bottom: 0;
+    padding-right: 0;
+  }
+}

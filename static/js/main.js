@@ -214,7 +214,6 @@ Activities.fetch(function(activities) {
   updateActivityVisibility();
 });
 
-// Show / Hide semesters
 
 var yearView_bt_els = document.querySelectorAll('.year-view button');
 for (let bt of yearView_bt_els) {

@@ -17,7 +17,7 @@
       rel="stylesheet"> -->
 </head>
 
-<body class="{% if detail is defined %}staff-detail{% endif %}">
+<body class="{% if detail is defined %}staff-detail{% endif %} {% if is_mobile %}hide-s2{% endif %}">
   <section id="app" class="app">
     <nav id="menu" class="menu {% if not admin %}folded{% endif %}">
         {% block menu %}
@@ -35,9 +35,15 @@
             <button class="toggle" data-promo="m">M</button>
           </menu>
           <menu class="year-view">
+          {% if is_mobile %}
+            <button class="">YEAR</button>
+            <button class="year-view-s1 radio-selected">S1</button>
+            <button class="year-view-s2">S2</button>
+          {% else %}
             <button class="radio-selected">YEAR</button>
             <button class="year-view-s1">S1</button>
             <button class="year-view-s2">S2</button>
+          {% endif %}
           </menu>
         </div>
         <h1>{{ planning.name }}</h1>
