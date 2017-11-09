@@ -16,6 +16,8 @@ Staffs:
     - kind: course
       course: 3cvmid11
     - kind: course
+      course: 3cvmid11b
+    - kind: course
       course: 3cvmid2
     - kind: eval
     - kind: diplome_blanc
