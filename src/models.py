@@ -2,6 +2,7 @@
 
 import yaml
 from google.appengine.ext import ndb
+from google.appengine.api import memcache
 from flask import jsonify
 from .calendar import Calendar
 
@@ -24,8 +25,6 @@ class Planning(object):
         self.sections = []
         self.courses = []
         self.staffs = []
-        self.activities = {}
-        self.activities_cache_need_update = True
         self.parse_courses(get_yaml(self.name, 'courses'))
         self.parse_staff(get_yaml(self.name, 'staff'))
         self.calendar = Calendar(self.name, get_yaml(self.name, 'calendar'))
@@ -43,24 +42,25 @@ class Planning(object):
 
     def get_activities(self):
         # update cache if necessary
-        if self.activities_cache_need_update is True:
-            self.update_activity_cache()
-            self.activities_cache_need_update = False
-        return self.activities
+        activities = memcache.get(Planning.config.name)
+        if activities is not None:
+            return activities
+        else:
+            ancestor_key = ndb.Key("Planning", Planning.config.name)
+            act = Activity.query(ancestor=ancestor_key).fetch()
+            activities = {}
+            for a in act:
+                activities[a.key.id()] = a
+            memcache.add(Planning.config.name, activities, 3600)
+        return activities
 
     def add_activity(self, activity):
-        aid = activity.key.id()
-        planning.activities[aid] = activity
+        memcache.delete(Planning.config.name)
 
-    def update_activity_cache(self):
-        self.activities = {}
-        ancestor_key = ndb.Key("Planning", Planning.config.name)
-        act = Activity.query(ancestor=ancestor_key).fetch()
-        for a in act:
-            self.activities[a.key.id()] = a
+    def remove_activity(self, aid):
+        memcache.delete(Planning.config.name)
 
     def get_staff_activities(self, staff_name):
-        # Activity.query(Activity.staff==self.name, ancestor=ancestor_key).fetch()
         result = []
         for key, act in self.get_activities().iteritems():
             if act.staff.lower() == staff_name.lower():

@@ -65,7 +65,7 @@ def delete_activity(id):
     staff_name = activity.staff
     activity.key.delete()
     # update cache
-    del planning.activities[id]
+    planning.remove_activity(id)
     # add to changelist
     change = Change(activity, 'removed')
     add_change(change)
