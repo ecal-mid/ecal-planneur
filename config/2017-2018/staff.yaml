@@ -267,3 +267,11 @@ Staffs:
   tasks:
     - kind: course
       course: 3cvmid11
+
+- name: Yves Kalberer
+  role: Lecturer
+  hours: 0
+  email: yves.kalberer@epfl.ch
+  tasks:
+    - kind: course
+      course: 3cvmid2
