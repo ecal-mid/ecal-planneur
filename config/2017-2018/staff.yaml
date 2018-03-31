@@ -48,7 +48,7 @@ Staffs:
   email: cyril.diagne@ecal.ch
   tasks:
     - kind: course
-      course: 1cvmid11a
+      course: 1cvmid21b
     - kind: course
       course: 2cvmid12a
     - kind: course
@@ -167,9 +167,6 @@ Staffs:
   - kind: assist
   - kind: intro_course
     coef: 2.2
-  - kind: resonate
-    hours: 16
-    locked: 1
 
 - name: Laura Perrenoud
   role: Assistant
@@ -179,9 +176,6 @@ Staffs:
   - kind: assist
   - kind: intro_course
     coef: 2.2
-  - kind: resonate
-    hours: 16
-    locked: 1
 
 - name: Marc Dubois
   role: Assistant
@@ -229,21 +223,6 @@ Staffs:
   role: Lecturer
   hours: 0
   email: mario.vonricke@ecal.ch
-  tasks:
-    - kind: course
-      course: 2cvmid12b
-    - kind: course
-      course: 1cvmid11c
-    - kind: course
-      course: 1cvmid21b
-    - kind: course
-      course: 3cvmid2
-    - kind: eval
-
-- name: Jürg Lehni
-  role: Lecturer
-  hours: 0
-  email: juerg@lehni.org
   tasks:
     - kind: course
       course: 2cvmid12b
