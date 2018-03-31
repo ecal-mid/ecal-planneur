@@ -2,10 +2,7 @@
 
 import dateutil.parser as dt
 
-from flask import (
-    Blueprint,
-    jsonify,
-    request)
+from flask import (Blueprint, jsonify, request)
 
 from google.appengine.ext import ndb
 
@@ -52,10 +49,7 @@ def add_activity():
     add_change(change)
     # get updated staff
     staff = planning.get_staff_by_name(activity.staff).get_json()
-    return jsonify({
-        'staff': staff,
-        'activity': activity.get_dict()
-    })
+    return jsonify({'staff': staff, 'activity': activity.get_dict()})
 
 
 @bp.route('/activity/delete/<int:id>')

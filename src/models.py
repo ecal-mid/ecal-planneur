@@ -6,19 +6,23 @@ from google.appengine.api import memcache
 from flask import jsonify
 from .calendar import Calendar
 
+
 def get_yaml(name, filename):
-    yaml_path = 'config/'+name+'/'+filename+'.yaml'
+    yaml_path = 'config/' + name + '/' + filename + '.yaml'
     return yaml.load(open(yaml_path))
 
 
 class Config(object):
+
     def __init__(self, name):
         self.name = name
         self.yaml = get_yaml(name, 'config')
         self.hours_base = self.yaml['hours_base']
 
+
 class Planning(object):
     config = None
+
     def __init__(self, name):
         self.name = name
         Planning.config = Config(self.name)
@@ -76,11 +80,15 @@ class Planning(object):
             return s[0]
         return None
 
+
 class Section(object):
+
     def __init__(self, data):
         self.name = data['name']
 
+
 class Course(object):
+
     def __init__(self, data, sections):
         self.name = data['name']
         self.desc = data['desc']
@@ -89,7 +97,9 @@ class Course(object):
             self.is_blockweek = data['is_blockweek']
         self.section = filter(lambda x: x.name == self.name[:6], sections)[0]
 
+
 class Staff(object):
+
     def __init__(self, data, staff_activities):
         self.data = data
         self.name = data['name']
@@ -101,7 +111,7 @@ class Staff(object):
             self.percent = data['percent']
         self.tasks = []
         # Add N/A task
-        self.tasks.append(Task({'kind': 'n_a', 'coef':0}))
+        self.tasks.append(Task({'kind': 'n_a', 'coef': 0}))
         # Add tasks listed in file
         if 'tasks' in self.data:
             for t in self.data['tasks']:
@@ -128,20 +138,26 @@ class Staff(object):
         # automatically add tasks to professors
         if self.role == 'Professor':
             # automatically add admin (1.6% of staff hours)
-            self.tasks.append(Task({
-                'kind' : 'admin',
-                'auto' : True,
-                'hours' : 0.01 * self.percent * Planning.config.hours_base * 0.016
-            }))
+            self.tasks.append(
+                Task({
+                    'kind':
+                    'admin',
+                    'auto':
+                    True,
+                    'hours':
+                    0.01 * self.percent * Planning.config.hours_base * 0.016
+                }))
             # automatically add training (10% of teaching hours)
-            self.tasks.append(Task({
-                'kind' : 'training',
-                'auto' : True,
-                'hours' : self.get_teaching_hours() * 0.1
-            }))
+            self.tasks.append(
+                Task({
+                    'kind': 'training',
+                    'auto': True,
+                    'hours': self.get_teaching_hours() * 0.1
+                }))
 
     def get_teaching_hours(self):
-        return sum(t.hours * (t.coef if t.coef == 2.2 else 0) for t in self.tasks)
+        return sum(t.hours * (t.coef if t.coef == 2.2 else 0)
+                   for t in self.tasks)
 
     def get_current_percent(self):
         return sum(t.get_percent() for t in self.tasks)
@@ -171,6 +187,7 @@ class Staff(object):
 
 
 class Task(object):
+
     def __init__(self, data):
         self.kind = data['kind']
         self.course = None
@@ -214,8 +231,10 @@ class Activity(ndb.Model):
         result['key'] = self.key.id()
         return result
 
+
 def refresh_planning():
     global planning
     planning = Planning('2017-2018')
+
 
 planning = Planning('2017-2018')
