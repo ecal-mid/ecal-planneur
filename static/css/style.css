@@ -549,3 +549,22 @@ main td span.fade { opacity: 0.2; }
     padding-right: 0;
   }
 }
+
+
+@media print {
+   header.header {
+     display: none;
+   }
+
+   section.app {
+    padding-top: 0;
+  }
+
+  main table td.past {
+    opacity: 1;
+  }
+
+  main table td.today {
+    background-color: white !important;
+  }
+}
