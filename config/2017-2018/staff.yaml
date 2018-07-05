@@ -8,9 +8,7 @@ Staffs:
   email: alain.bellet@ecal.ch
   tasks:
     - kind: course
-      course: 2cvmid12a
-    - kind: course
-      course: 2cvmid12c
+      course: 2cvmid11b
     - kind: course
       course: 2cvmid22a
     - kind: course
