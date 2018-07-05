@@ -2,33 +2,31 @@
 
 from datetime import datetime
 
+
 class Calendar(object):
+
     def __init__(self, name, data):
-        self.name = name;
+        self.name = name
         self.start = data['start']
         self.months = []
         i = self.start
         years = name.split('-')
         # first fill
         for m in data['months']:
-            month = {
-                'label': m['label'],
-                'days': [],
-                'num_days': m['days']
-            }
-            for d in range(1, m['days']+1):
+            month = {'label': m['label'], 'days': [], 'num_days': m['days']}
+            for d in range(1, m['days'] + 1):
                 year = years[0 if len(self.months) < 5 else 1]
                 date_str = str(d) + '-' + m['label'] + '-' + year
                 date_val = datetime.strptime(date_str, '%d-%B-%Y')
                 day = {
                     'date': date_str,
                     'date_value': date_val,
-                    'tags': [] # used as class in template
+                    'tags': []  # used as class in template
                 }
 
                 # add tags :
                 # check if day is weekend
-                if i%7 > 4:
+                if i % 7 > 4:
                     day['tags'].append('weekend')
                 # check if day is today or past
                 now = datetime.now()
@@ -47,6 +45,8 @@ class Calendar(object):
 
         # special weeks
         for kind in ['holiday', 'workshop', 'nocourse', 'evals']:
+            if kind not in data['special'] or data['special'][kind] is None:
+                continue
             for sp in data['special'][kind]:
                 self.add_special(kind, sp['label'], sp['start'], sp['end'])
 
@@ -62,7 +62,7 @@ class Calendar(object):
         end_day = int(end.split('/')[0])
 
         num_days = 0
-        for m in range(month_start_num, month_end_num+1):
+        for m in range(month_start_num, month_end_num + 1):
             start_d = 0
             if m == month_start_num: start_d = start_day
             end_d = 31
