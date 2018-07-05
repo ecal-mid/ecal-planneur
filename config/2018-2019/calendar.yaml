@@ -44,8 +44,8 @@ special:
       start: 27/08
       end: 31/08
     - label: helper courses
-      start: 03/09
-      end: 07/09
+      start: 3/09
+      end: 7/09
     - label: helper courses
       start: 10/09
       end: 14/09
@@ -60,13 +60,13 @@ special:
       end: 8/02
     - label: remediations
       start: 24/06
-      end: 28/07
+      end: 28/06
     - label: remediations
       start: 1/07
       end: 5/07
   holiday:
     - label: summer
-      start: 01/08
+      start: 1/08
       end: 17/08
     - label: jeune federal
       start: 17/09
@@ -79,19 +79,19 @@ special:
       end: 4/01
     - label: winter break
       start: 25/02
-      end: 01/03
+      end: 28/02
     - label: saint friday
-      start: 30/03
-      end: 30/03
-    - label: easter
-      start: 2/04
-      end: 6/04
-    - label: ascension
       start: 19/04
       end: 19/04
-    - label: pentecote
+    - label: easter
       start: 22/04
       end: 26/04
+    - label: ascension
+      start: 30/05
+      end: 31/05
+    - label: pentecote
+      start: 10/06
+      end: 10/06
     - label: summer
       start: 15/07
       end: 31/07
@@ -116,7 +116,10 @@ special:
       end: 29/03
     - label: workshop s2
       start: 29/04
-      end: 3/05
+      end: 30/04
+    - label: workshop s2
+      start: 01/05
+      end: 03/05
     - label: block week s2
       start: 13/05
       end: 17/05
