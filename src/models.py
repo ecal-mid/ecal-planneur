@@ -234,7 +234,7 @@ class Activity(ndb.Model):
 
 def refresh_planning():
     global planning
-    planning = Planning('2017-2018')
+    planning = Planning('2018-2019')
 
 
-planning = Planning('2017-2018')
+planning = Planning('2018-2019')
