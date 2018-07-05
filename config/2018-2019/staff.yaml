@@ -132,6 +132,16 @@ Staffs:
       hours: 560
       locked: 1
 
+- name: Vincent Jacquier
+  role: Professor
+  percent: 100
+  email: vincent.jacquier@ecal.ch
+  tasks:
+    - kind: course
+      course: 2cvmid12c
+    - kind: course
+      course: 3cvtrans1
+
 # Assistants
 
 - name: Tibor Udvari
@@ -174,9 +184,7 @@ Staffs:
   email: mario.vonricke@ecal.ch
   tasks:
     - kind: course
-      course: 2cvmid12b
-    - kind: course
-      course: 1cvmid11c
+      course: 1cvmid12a
     - kind: course
       course: 1cvmid21b
     - kind: course
@@ -200,9 +208,9 @@ Staffs:
   email: andreas@ertdfgcvb.com
   tasks:
     - kind: course
-      course: 2cvmid11b
+      course: 1cvmid12b
     - kind: course
-      course: 1cvmid22c
+      course: 2cvmid22a
 
 - name: Florian Pittet
   role: Lecturer
@@ -210,7 +218,17 @@ Staffs:
   email: florian@sigma6.ch
   tasks:
     - kind: course
+      course: 2cvmid12c
+
+- name: Jürg Lehni
+  role: Lecturer
+  hours: 80
+  email: juerg@lehni.org
+  tasks:
+    - kind: course
       course: 1cvmid12c
+    - kind: course
+      course: 2cvmid22b
 
 - name: Cyril Diagne
   role: Lecturer
