@@ -3,6 +3,13 @@
 var menu_bt_el = document.getElementById('toggle-menu');
 var menu_el = document.getElementById('menu');
 
+if (window.location.hash && window.location.hash == '#s1') {
+  document.body.classList.add('hide-s2');
+}
+if (window.location.hash && window.location.hash == '#s2') {
+  document.body.classList.add('hide-s1');
+}
+
 menu_bt_el.addEventListener('click', function() {
   menu_el.classList.toggle('folded');
 }, false);
