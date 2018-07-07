@@ -9,6 +9,14 @@ It features:
 - Changelists & email notification
 - Staff reports
 - Administration mode
-- And much more :)
 
-Questions: cyril.diagne@ecal.ch or github.com/kikko
+# Install
+
+- Install the google cloud SDK and AppEngine component
+- clone this repository
+- install the dependencies `pip install -t lib -r requirements.txt`
+- Optional: test locally `dev_appserver.py .`
+
+# Deploy
+
+`gcloud app deploy --version 2018-2019 --project=ecal-planneur --quiet`
