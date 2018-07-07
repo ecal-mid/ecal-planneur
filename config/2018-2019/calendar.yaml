@@ -80,6 +80,9 @@ special:
     - label: winter break
       start: 25/02
       end: 28/02
+    - label: winter break
+      start: 1/03
+      end: 1/03
     - label: saint friday
       start: 19/04
       end: 19/04
