@@ -230,6 +230,14 @@ Staffs:
     - kind: course
       course: 2cvmid22b
 
+- name: Thibaut Brevet
+  role: Lecturer
+  hours: 40
+  email: hi@thibault.io
+  tasks:
+    - kind: course
+      course: 1cvmid_robot
+
 - name: Cyril Diagne
   role: Lecturer
   hours: 80
