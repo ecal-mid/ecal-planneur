@@ -36,7 +36,7 @@ Staffs:
 
 - name: Pauline Saglio
   role: Professor
-  percent: 70
+  percent: 80
   email: pauline.saglio@ecal.ch
   tasks:
     - kind: course
